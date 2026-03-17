@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { BlogModal } from "@/components/ui/BlogModal";
 import { CTABand } from "@/components/sections/CTABand";
+import { DancingRobotsBg } from "@/components/ui/DancingRobotsBg";
 import { BLOG_POSTS, BLOG_CATEGORIES } from "@/lib/blog-data";
 import type { BlogPost } from "@/lib/blog-data";
 
@@ -25,6 +26,11 @@ export default function BlogPage() {
     <>
       {/* ── Hero ─────────────────────────────────────────── */}
       <section className="pt-56 pb-44 relative overflow-hidden">
+        {/* Dancing Robots Background Animation */}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #06060C 0%, #0A0E1A 40%, #0F1628 70%, #06060C 100%)" }} />
+        <DancingRobotsBg />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(6,6,12,0.4) 0%, rgba(6,6,12,0.6) 100%)" }} />
         {/* Hero Visual Elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 left-1/4 w-64 h-64 bg-[#29ABE2]/5 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />
