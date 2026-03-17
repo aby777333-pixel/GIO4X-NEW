@@ -7,7 +7,6 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { CTABand } from "@/components/sections/CTABand";
 import { Cpu, TestTube, Zap, Shield, Settings, BarChart3, TrendingUp, GitBranch } from "lucide-react";
-import { CodePenBg } from "@/components/ui/CodePenBg";
 
 const features = [
   { icon: Settings, title: "Strategy Builder", desc: "Visual drag-and-drop interface to create trading strategies without writing a single line of code." },
@@ -35,36 +34,37 @@ export default function AlgoratorPage() {
     <>
       {/* Hero */}
       <section className="pt-32 pb-12 relative overflow-hidden">
-        {/* CodePen Background */}
-        <CodePenBg penUrl="https://codepen.io/VoXelo/pen/raxRoxg" />
-        <div className="absolute inset-0 bg-[#06060C]/60 pointer-events-none" style={{ zIndex: 1 }} />
+        {/* Hero Visual Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 left-1/4 w-64 h-64 bg-[#29ABE2]/5 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />
+          <div className="absolute bottom-10 right-1/4 w-48 h-48 bg-[#1B3A6B]/10 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite_2s]" />
+          <div className="absolute top-1/2 right-10 w-32 h-32 bg-[#C9A84C]/5 rounded-full blur-2xl animate-[float_12s_ease-in-out_infinite_4s]" />
+        </div>
         <div className="max-site text-center relative z-10">
-          <div className="inline-block rounded-2xl bg-[rgba(6,6,12,0.65)] backdrop-blur-md px-8 py-10 md:px-14 md:py-12">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-              <span className="text-[#29ABE2] text-sm font-semibold tracking-[0.25em] uppercase">Algorator</span>
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-[var(--text-h1)] font-bold mt-4 mb-6"
-            >
-              Global Markets, <span className="gradient-text">One Account</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto mb-8"
-            >
-              Build, backtest, and deploy automated trading strategies with no coding required.
-              Harness the power of algorithms with an intuitive visual interface.
-            </motion.p>
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="flex gap-4 justify-center">
-              <Button href="/accounts">Get Started</Button>
-              <Button variant="secondary" href="#features">Explore Features</Button>
-            </motion.div>
-          </div>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <span className="text-[#29ABE2] text-sm font-semibold tracking-[0.25em] uppercase">Algorator</span>
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-[var(--text-h1)] font-bold mt-4 mb-6"
+          >
+            GIO4X Algorator — <span className="gradient-text">Algorithmic Trading Made Easy</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto mb-8"
+          >
+            Build, backtest, and deploy automated trading strategies with no coding required.
+            Harness the power of algorithms with an intuitive visual interface.
+          </motion.p>
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="flex gap-4 justify-center">
+            <Button href="/accounts">Get Started</Button>
+            <Button variant="secondary" href="#features">Explore Features</Button>
+          </motion.div>
         </div>
       </section>
 
