@@ -551,7 +551,7 @@ export default function BooksPage() {
   return (
     <>
       {/* ── Hero ────────────────────────────────────────────── */}
-      <section className="relative pt-48 pb-28 overflow-hidden">
+      <section className="relative pt-56 pb-36 overflow-hidden">
         {/* gradient orbs */}
         <div className="pointer-events-none absolute -top-32 -left-32 w-[420px] h-[420px] rounded-full bg-[radial-gradient(circle,rgba(41,171,226,0.12),transparent_70%)] blur-2xl" />
         <div className="pointer-events-none absolute -bottom-20 -right-24 w-[340px] h-[340px] rounded-full bg-[radial-gradient(circle,rgba(27,58,107,0.18),transparent_70%)] blur-2xl" />

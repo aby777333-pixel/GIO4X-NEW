@@ -136,7 +136,7 @@ export default function FAQPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-48 pb-28 overflow-hidden">
+      <section className="relative pt-56 pb-36 overflow-hidden">
         {/* Gradient orbs */}
         <div className="absolute top-20 left-1/4 w-[400px] h-[400px] bg-[#29ABE2]/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute top-40 right-1/4 w-[300px] h-[300px] bg-[#1B3A6B]/15 rounded-full blur-[100px] pointer-events-none" />
