@@ -109,7 +109,7 @@ export default function RiskPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-40 pb-24 overflow-hidden">
+      <section className="relative pt-48 pb-32 overflow-hidden">
         {/* gradient orbs */}
         <div className="absolute top-20 -left-32 w-[420px] h-[420px] rounded-full bg-amber-500/10 blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[320px] h-[320px] rounded-full bg-orange-500/10 blur-[100px] pointer-events-none" />
