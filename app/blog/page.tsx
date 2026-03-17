@@ -53,7 +53,7 @@ export default function BlogPage() {
             transition={{ delay: 0.1 }}
             className="text-[var(--text-h1)] font-bold mt-4 mb-6"
           >
-            GIO4X <span className="gradient-text">Blog</span>
+            Markets May Dance, <span className="gradient-text">We Won&apos;t.</span>
           </motion.h1>
 
           <motion.p
