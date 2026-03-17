@@ -1,0 +1,76 @@
+/* ============================================================
+   GIO4X Design Tokens — Golden Ratio · Stellar · Da Vinci
+   ============================================================ */
+
+:root {
+  /* Primary Palette */
+  --color-navy: #1B3A6B;
+  --color-navy-dark: #0F2347;
+  --color-sky: #29ABE2;
+  --color-sky-light: #5BCBF5;
+  --color-sky-glow: rgba(41,171,226,0.15);
+  --color-steel: #6D6E71;
+  --color-steel-light: #A0A2A5;
+  --color-gold: #C9A84C;
+  --color-gold-light: #E4C76B;
+  --color-gold-glow: rgba(201,168,76,0.15);
+
+  /* Gradients */
+  --gradient-brand: linear-gradient(135deg, #1B3A6B 0%, #29ABE2 100%);
+  --gradient-hero-dark: radial-gradient(ellipse at 60% 40%, rgba(41,171,226,0.14) 0%, rgba(201,168,76,0.05) 50%, transparent 70%);
+  --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+  --gradient-gold: linear-gradient(135deg, #C9A84C 0%, #E4C76B 50%, #C9A84C 100%);
+  --gradient-glow-line: linear-gradient(90deg, transparent, #29ABE2, transparent);
+
+  /* Typography Scale */
+  --text-hero: clamp(2.8rem, 5.5vw, 5.5rem);
+  --text-h1: clamp(1.9rem, 3.8vw, 3.2rem);
+  --text-h2: clamp(1.4rem, 2.8vw, 2.2rem);
+  --text-h3: clamp(1.1rem, 1.8vw, 1.5rem);
+  --text-body: clamp(0.875rem, 1.1vw, 1rem);
+  --text-small: 0.8125rem;
+  --text-ticker: 0.75rem;
+
+  /* Spacing (tighter golden-ratio inspired) */
+  --space-2xs: 4px;
+  --space-xs: 6px;
+  --space-sm: 10px;
+  --space-md: 16px;
+  --space-lg: 26px;
+  --space-xl: 42px;
+  --space-2xl: 68px;
+  --space-3xl: 110px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --duration-fast: 0.15s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.5s;
+}
+
+/* Dark Theme (default) */
+[data-theme="dark"] {
+  --color-bg: #06060C;
+  --color-text: #ECEDF0;
+  --color-text-secondary: #7D8088;
+  --color-surface: #0C0E18;
+  --color-surface-elevated: #12152A;
+  --color-border: rgba(255,255,255,0.06);
+  --color-glass-bg: rgba(255,255,255,0.035);
+  --color-glass-border: rgba(255,255,255,0.06);
+  --color-card-hover-shadow: rgba(41,171,226,0.12);
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --color-bg: #F4F5F7;
+  --color-text: #0D0F1A;
+  --color-text-secondary: #5D5F66;
+  --color-surface: #FFFFFF;
+  --color-surface-elevated: #F0F1F3;
+  --color-border: rgba(0,0,0,0.07);
+  --color-glass-bg: rgba(255,255,255,0.88);
+  --color-glass-border: rgba(0,0,0,0.05);
+  --color-card-hover-shadow: rgba(27,58,107,0.1);
+}
