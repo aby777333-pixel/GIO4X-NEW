@@ -47,7 +47,7 @@ export default function WhatWeArePage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-40 pb-24 relative overflow-hidden">
+      <section className="pt-48 pb-36 relative overflow-hidden">
         {/* Hero Visual Elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 left-1/4 w-64 h-64 bg-[#29ABE2]/5 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />
