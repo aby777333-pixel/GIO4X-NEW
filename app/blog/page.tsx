@@ -51,7 +51,7 @@ export default function BlogPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-[clamp(2.8rem,7vw,5.5rem)] font-bold mt-4 mb-6 leading-[1.05]"
+            className="text-[clamp(2.2rem,5vw,4rem)] font-bold mt-4 mb-6 leading-[1.1]"
           >
             Markets May Dance, <span className="gradient-text">We Won&apos;t.</span>
           </motion.h1>
