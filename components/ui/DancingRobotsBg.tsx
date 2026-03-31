@@ -273,7 +273,7 @@ export function DancingRobotsBg() {
         if (lastTime !== 0) {
           const t = (time - lastTime) / 16;
           ts += (t - ts) * 0.1;
-          if (ts > 1) ts = 1;
+          if (ts > 0.45) ts = 0.45; // cap speed for a relaxed, natural dance
         }
         lastTime = time;
         ctx.clearRect(0, 0, canvasObj.width, canvasObj.height);
