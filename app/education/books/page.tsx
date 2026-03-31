@@ -871,7 +871,7 @@ export default function BooksPage() {
                   <Award className="w-5 h-5 text-[#C9A84C]" />
                   <span className="text-[#C9A84C] text-sm font-semibold tracking-[0.25em] uppercase">Book of the Month</span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Trading in the Zone</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 cursor-pointer hover:text-[#C9A84C] transition-colors" onClick={() => { const b = enrichedBooks.find(b => b.title === "Trading in the Zone"); if (b) setActiveBook(b); }}>Trading in the Zone</h2>
                 <p className="text-white/40 text-sm mb-2">by Mark Douglas</p>
                 <div className="flex items-center gap-1 mb-6">
                   {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 text-[#C9A84C] fill-[#C9A84C]" />)}
@@ -908,17 +908,18 @@ export default function BooksPage() {
                 </ul>
               </div>
 
-              {/* Visual Book Card */}
+              {/* Visual Book Card — clickable */}
               <div className="flex justify-center">
-                <div className="relative">
-                  <div className="w-64 h-80 rounded-2xl bg-gradient-to-br from-[#1B3A6B] to-[#0A0E1A] border border-white/10 shadow-2xl flex flex-col items-center justify-center p-6 text-center">
+                <div className="relative cursor-pointer group" onClick={() => { const b = enrichedBooks.find(b => b.title === "Trading in the Zone"); if (b) setActiveBook(b); }}>
+                  <div className="w-64 h-80 rounded-2xl bg-gradient-to-br from-[#1B3A6B] to-[#0A0E1A] border border-white/10 shadow-2xl flex flex-col items-center justify-center p-6 text-center group-hover:border-[#C9A84C]/40 transition-all">
                     <div className="w-16 h-16 rounded-full bg-[#C9A84C]/20 flex items-center justify-center mb-4">
                       <Brain className="w-8 h-8 text-[#C9A84C]" />
                     </div>
-                    <h3 className="text-white font-bold text-xl mb-1">Trading in the Zone</h3>
+                    <h3 className="text-white font-bold text-xl mb-1 group-hover:text-[#C9A84C] transition-colors">Trading in the Zone</h3>
                     <p className="text-white/40 text-xs mb-4">Mark Douglas</p>
                     <div className="w-full h-px bg-white/10 mb-4" />
                     <p className="text-white/30 text-xs italic">&quot;The best traders think in probabilities, not certainties.&quot;</p>
+                    <span className="mt-3 text-[10px] text-[#C9A84C] font-semibold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">Click to View Details →</span>
                   </div>
                   <div className="absolute -bottom-4 -right-4 w-64 h-80 rounded-2xl bg-white/5 border border-white/5 -z-10" />
                   <div className="absolute -bottom-8 -right-8 w-64 h-80 rounded-2xl bg-white/3 border border-white/3 -z-20" />
@@ -961,9 +962,14 @@ export default function BooksPage() {
               { month: "October", book: "The Black Swan", focus: "Risk Thinking", icon: Target, color: "#EF4444" },
               { month: "November", book: "Come Into My Trading Room", focus: "Complete System", icon: Star, color: "#C9A84C" },
               { month: "December", book: "Principles by Ray Dalio", focus: "Wealth Building", icon: Award, color: "#10B981" },
-            ].map((item, i) => (
+            ].map((item, i) => {
+              const matchBook = enrichedBooks.find(b => item.book.includes(b.title) || b.title.includes(item.book.replace(" by Ray Dalio", "")));
+              return (
               <AnimateOnScroll key={item.month} delay={i * 0.04}>
-                <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-glass-bg)] p-4 hover:border-[#29ABE2]/30 transition-all group">
+                <div
+                  className="rounded-xl border border-[var(--color-border)] bg-[var(--color-glass-bg)] p-4 hover:border-[#29ABE2]/30 transition-all group cursor-pointer"
+                  onClick={() => { if (matchBook) setActiveBook(matchBook); }}
+                >
                   <div className="flex items-center gap-3 mb-2">
                     <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${item.color}15` }}>
                       <item.icon className="w-4 h-4" style={{ color: item.color }} />
@@ -974,9 +980,11 @@ export default function BooksPage() {
                     </div>
                   </div>
                   <h4 className="font-semibold text-sm group-hover:text-[#29ABE2] transition-colors">{item.book}</h4>
+                  <span className="text-[9px] text-[#29ABE2] opacity-0 group-hover:opacity-100 transition-opacity">View Details →</span>
                 </div>
               </AnimateOnScroll>
-            ))}
+              );
+            })}
           </div>
 
           <AnimateOnScroll delay={0.3}>
