@@ -139,7 +139,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-14">
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-1">
-            <Logo className="h-8 w-auto mb-4" />
+            <Logo className="h-10 w-auto mb-4" />
             <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed mb-5">
               {SITE.slogan}
             </p>

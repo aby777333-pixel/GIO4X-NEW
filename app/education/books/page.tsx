@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CTABand } from "@/components/sections/CTABand";
-import { BookOpen, X, ChevronRight, Scroll, Filter } from "lucide-react";
+import { BookOpen, X, ChevronRight, Scroll, Filter, Award, Star, TrendingUp, Target, Brain, Flame } from "lucide-react";
 
 /* ────────────────────────────────────────────────────────────
    Featured Stories Data
@@ -704,6 +704,137 @@ export default function BooksPage() {
               No books found in this category.
             </div>
           )}
+        </div>
+      </section>
+
+      {/* ── Section 3: Book of the Month ───────────────────── */}
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #0A0E1A 0%, #1B3A6B 50%, #0A0E1A 100%)" }} />
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle, #C9A84C 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
+        <div className="max-site relative z-10">
+          <AnimateOnScroll>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  <Award className="w-5 h-5 text-[#C9A84C]" />
+                  <span className="text-[#C9A84C] text-sm font-semibold tracking-[0.25em] uppercase">Book of the Month</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Trading in the Zone</h2>
+                <p className="text-white/40 text-sm mb-2">by Mark Douglas</p>
+                <div className="flex items-center gap-1 mb-6">
+                  {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 text-[#C9A84C] fill-[#C9A84C]" />)}
+                  <span className="text-white/50 text-xs ml-2">5.0 — Staff Pick</span>
+                </div>
+                <p className="text-white/60 leading-relaxed mb-6">
+                  This month, the GIO4X Academy team unanimously chose Mark Douglas&apos;s masterwork on trading psychology.
+                  If you read only one book this year, make it this one. It will fundamentally change how you think about
+                  risk, probability, and the mental framework required for consistent profitability in forex trading.
+                </p>
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="rounded-xl bg-white/5 border border-white/10 p-3 text-center">
+                    <p className="text-xl font-bold text-[#29ABE2]">256</p>
+                    <span className="text-[10px] text-white/40 uppercase">Pages</span>
+                  </div>
+                  <div className="rounded-xl bg-white/5 border border-white/10 p-3 text-center">
+                    <p className="text-xl font-bold text-[#C9A84C]">#1</p>
+                    <span className="text-[10px] text-white/40 uppercase">Trading Psychology</span>
+                  </div>
+                </div>
+                <h4 className="text-white font-semibold text-sm mb-3">Why GIO4X Academy Recommends It:</h4>
+                <ul className="space-y-2">
+                  {[
+                    "Teaches probabilistic thinking — essential for forex risk management",
+                    "Destroys the myth that being 'right' matters more than being profitable",
+                    "Provides frameworks to overcome fear, greed, and revenge trading",
+                    "Directly applicable to every trade you place on the GIO4X Raptor platform",
+                  ].map(r => (
+                    <li key={r} className="flex items-start gap-2 text-sm text-white/50">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#C9A84C] mt-2 flex-shrink-0" />
+                      {r}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Visual Book Card */}
+              <div className="flex justify-center">
+                <div className="relative">
+                  <div className="w-64 h-80 rounded-2xl bg-gradient-to-br from-[#1B3A6B] to-[#0A0E1A] border border-white/10 shadow-2xl flex flex-col items-center justify-center p-6 text-center">
+                    <div className="w-16 h-16 rounded-full bg-[#C9A84C]/20 flex items-center justify-center mb-4">
+                      <Brain className="w-8 h-8 text-[#C9A84C]" />
+                    </div>
+                    <h3 className="text-white font-bold text-xl mb-1">Trading in the Zone</h3>
+                    <p className="text-white/40 text-xs mb-4">Mark Douglas</p>
+                    <div className="w-full h-px bg-white/10 mb-4" />
+                    <p className="text-white/30 text-xs italic">&quot;The best traders think in probabilities, not certainties.&quot;</p>
+                  </div>
+                  <div className="absolute -bottom-4 -right-4 w-64 h-80 rounded-2xl bg-white/5 border border-white/5 -z-10" />
+                  <div className="absolute -bottom-8 -right-8 w-64 h-80 rounded-2xl bg-white/3 border border-white/3 -z-20" />
+                </div>
+              </div>
+            </div>
+          </AnimateOnScroll>
+        </div>
+      </section>
+
+      {/* ── Section 4: Reading Challenge ───────────────────── */}
+      <section className="py-16 bg-[var(--color-surface)]">
+        <div className="max-site max-w-4xl">
+          <AnimateOnScroll>
+            <div className="text-center mb-10">
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <Flame className="w-5 h-5 text-[#C9A84C]" />
+                <span className="text-[#C9A84C] text-sm font-semibold tracking-[0.25em] uppercase">2026 Challenge</span>
+              </div>
+              <h2 className="text-[var(--text-h2)] font-bold mb-4">
+                The GIO4X <span className="gradient-text">Trading Library Challenge</span>
+              </h2>
+              <p className="text-[var(--color-text-secondary)] max-w-xl mx-auto">
+                Read 12 trading books in 12 months and transform your trading edge. Follow our curated monthly reading plan below.
+              </p>
+            </div>
+          </AnimateOnScroll>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { month: "January", book: "Currency Trading for Dummies", focus: "Foundations", icon: BookOpen, color: "#29ABE2" },
+              { month: "February", book: "Japanese Candlestick Charting", focus: "Price Action", icon: TrendingUp, color: "#06B6D4" },
+              { month: "March", book: "Trading in the Zone", focus: "Psychology", icon: Brain, color: "#8B5CF6" },
+              { month: "April", book: "Technical Analysis of Financial Markets", focus: "Technical Analysis", icon: TrendingUp, color: "#29ABE2" },
+              { month: "May", book: "The Disciplined Trader", focus: "Risk Management", icon: Target, color: "#C9A84C" },
+              { month: "June", book: "Market Wizards", focus: "Inspiration", icon: Star, color: "#F59E0B" },
+              { month: "July", book: "Fibonacci Trading", focus: "Golden Ratio", icon: Target, color: "#10B981" },
+              { month: "August", book: "Naked Forex", focus: "Price Action", icon: TrendingUp, color: "#06B6D4" },
+              { month: "September", book: "Algorithmic Trading", focus: "Automation", icon: TrendingUp, color: "#29ABE2" },
+              { month: "October", book: "The Black Swan", focus: "Risk Thinking", icon: Target, color: "#EF4444" },
+              { month: "November", book: "Come Into My Trading Room", focus: "Complete System", icon: Star, color: "#C9A84C" },
+              { month: "December", book: "Principles by Ray Dalio", focus: "Wealth Building", icon: Award, color: "#10B981" },
+            ].map((item, i) => (
+              <AnimateOnScroll key={item.month} delay={i * 0.04}>
+                <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-glass-bg)] p-4 hover:border-[#29ABE2]/30 transition-all group">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${item.color}15` }}>
+                      <item.icon className="w-4 h-4" style={{ color: item.color }} />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: item.color }}>{item.month}</span>
+                      <p className="text-xs text-[var(--color-text-secondary)]">{item.focus}</p>
+                    </div>
+                  </div>
+                  <h4 className="font-semibold text-sm group-hover:text-[#29ABE2] transition-colors">{item.book}</h4>
+                </div>
+              </AnimateOnScroll>
+            ))}
+          </div>
+
+          <AnimateOnScroll delay={0.3}>
+            <div className="mt-8 rounded-2xl border border-[#C9A84C]/20 bg-[#C9A84C]/5 p-6 text-center">
+              <p className="text-[var(--color-text-secondary)] text-sm">
+                <strong className="text-[var(--color-text)]">Complete the challenge</strong> and you&apos;ll have consumed more trading education than 95% of retail forex traders.
+                Knowledge compounds — start with book one and build your edge month by month.
+              </p>
+            </div>
+          </AnimateOnScroll>
         </div>
       </section>
 

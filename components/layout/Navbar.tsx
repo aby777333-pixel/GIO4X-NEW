@@ -213,7 +213,7 @@ export function Navbar() {
         <div className="max-site flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" aria-label="GIO4X Home" className="shrink-0">
-            <Logo className="h-8 w-auto" />
+            <Logo className="h-12 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}

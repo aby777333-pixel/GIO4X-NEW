@@ -16,6 +16,11 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { EDUCATION_ARTICLES, type EducationArticle } from "@/lib/education-articles";
+import { CandlestickGuide } from "@/components/education/CandlestickGuide";
+import { CorrelationMatrix } from "@/components/education/CorrelationMatrix";
+import { RiskCalculator } from "@/components/education/RiskCalculator";
+import { LearningRoadmap } from "@/components/education/LearningRoadmap";
+import { PerformanceChart } from "@/components/education/PerformanceChart";
 
 /* ───────────────────── Learning Paths ───────────────────── */
 const learningPaths = [
@@ -726,6 +731,13 @@ export default function EducationPage() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* ─── Premium Interactive Tools ─── */}
+      <LearningRoadmap />
+      <CandlestickGuide />
+      <PerformanceChart />
+      <RiskCalculator />
+      <CorrelationMatrix />
 
       <CTABand />
     </>
