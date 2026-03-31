@@ -24,18 +24,47 @@ export const EDUCATION_ARTICLES: EducationArticle[] = [
       <h2>What Is Forex Trading?</h2>
       <p><strong>Forex trading</strong>, short for foreign exchange trading, is the process of buying and selling currencies on the global decentralized market. The <strong>forex market</strong> is the largest and most liquid financial market in the world, with a staggering daily trading volume exceeding <strong>$7 trillion</strong>. Unlike stock exchanges, the forex market operates 24 hours a day, five days a week, giving traders around the globe unparalleled access to <strong>online trading</strong> opportunities.</p>
 
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-value">$7.5T</div><div class="stat-label">Daily Volume</div></div>
+        <div class="stat-card"><div class="stat-value">24/5</div><div class="stat-label">Market Hours</div></div>
+        <div class="stat-card"><div class="stat-value">180+</div><div class="stat-label">Currency Pairs</div></div>
+        <div class="stat-card"><div class="stat-value">4</div><div class="stat-label">Major Sessions</div></div>
+      </div>
+
       <h3>How Does the Forex Market Work?</h3>
       <p>At its core, forex trading involves exchanging one currency for another. Currencies are always traded in <strong>currency pairs</strong>, such as EUR/USD or GBP/JPY. The first currency in the pair is the base currency, while the second is the quote currency. When you buy a currency pair, you are purchasing the base currency and simultaneously selling the quote currency.</p>
       <p>The price of a currency pair reflects how much of the quote currency is needed to purchase one unit of the base currency. For example, if EUR/USD is quoted at 1.1050, it means one euro costs 1.1050 US dollars.</p>
 
       <h3>Major Forex Market Sessions</h3>
       <p>The forex market is divided into four major trading sessions, each offering unique characteristics for <strong>forex for beginners</strong> and experienced traders alike:</p>
-      <ul>
-        <li><strong>Sydney Session</strong> — Opens at 22:00 GMT, marking the start of the trading day with moderate volatility.</li>
-        <li><strong>Tokyo Session</strong> — Active from 00:00 to 09:00 GMT, this session is ideal for trading JPY pairs and Asian currencies.</li>
-        <li><strong>London Session</strong> — Running from 08:00 to 17:00 GMT, it accounts for nearly 35% of all <strong>fx trading</strong> volume.</li>
-        <li><strong>New York Session</strong> — Open from 13:00 to 22:00 GMT, this session overlaps with London, creating the highest liquidity window.</li>
-      </ul>
+
+      <div class="chart-container">
+        <div class="chart-title">Forex Market Sessions — Daily Volume Distribution</div>
+        <svg viewBox="0 0 500 180" style="width:100%;height:auto;">
+          <defs>
+            <linearGradient id="sg1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#8B5CF6"/><stop offset="100%" stop-color="#A78BFA"/></linearGradient>
+            <linearGradient id="sg2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#EF4444"/><stop offset="100%" stop-color="#F87171"/></linearGradient>
+            <linearGradient id="sg3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#29ABE2"/><stop offset="100%" stop-color="#5BCBF5"/></linearGradient>
+            <linearGradient id="sg4" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#10B981"/><stop offset="100%" stop-color="#34D399"/></linearGradient>
+          </defs>
+          <rect x="70" y="15" width="25" height="20" rx="4" fill="url(#sg1)"/><text x="100" y="30" fill="#9D9FA2" font-size="11" font-family="sans-serif">Sydney (5%)</text>
+          <rect x="70" y="45" width="75" height="20" rx="4" fill="url(#sg2)"/><text x="150" y="60" fill="#9D9FA2" font-size="11" font-family="sans-serif">Tokyo (15%)</text>
+          <rect x="70" y="75" width="175" height="20" rx="4" fill="url(#sg3)"/><text x="250" y="90" fill="#9D9FA2" font-size="11" font-family="sans-serif">London (35%)</text>
+          <rect x="70" y="105" width="125" height="20" rx="4" fill="url(#sg4)"/><text x="200" y="120" fill="#9D9FA2" font-size="11" font-family="sans-serif">New York (25%)</text>
+          <rect x="70" y="140" width="350" height="14" rx="4" fill="rgba(41,171,226,0.1)"/>
+          <text x="70" y="167" fill="#C9A84C" font-size="10" font-family="sans-serif" font-weight="bold">⚡ London + New York Overlap = Peak Liquidity (13:00–17:00 GMT)</text>
+        </svg>
+      </div>
+
+      <table>
+        <thead><tr><th>Session</th><th>Hours (GMT)</th><th>Volume</th><th>Best Pairs</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Sydney</strong></td><td>22:00 – 07:00</td><td>~5%</td><td>AUD/USD, NZD/USD</td></tr>
+          <tr><td><strong>Tokyo</strong></td><td>00:00 – 09:00</td><td>~15%</td><td>USD/JPY, EUR/JPY</td></tr>
+          <tr><td><strong>London</strong></td><td>08:00 – 17:00</td><td>~35%</td><td>EUR/USD, GBP/USD</td></tr>
+          <tr><td><strong>New York</strong></td><td>13:00 – 22:00</td><td>~25%</td><td>EUR/USD, USD/CAD</td></tr>
+        </tbody>
+      </table>
 
       <h3>Why Trade Forex?</h3>
       <p>There are several compelling reasons why millions of traders worldwide engage in <strong>forex trading</strong>:</p>
@@ -82,15 +111,23 @@ export const EDUCATION_ARTICLES: EducationArticle[] = [
 
       <h3>Major Currency Pairs</h3>
       <p><strong>Major pairs</strong> are the most traded currency pairs in the world. They all include the US dollar and account for approximately 75% of all forex trading volume:</p>
-      <ul>
-        <li><strong>EUR/USD</strong> — Euro vs. US Dollar (most traded pair globally)</li>
-        <li><strong>GBP/USD</strong> — British Pound vs. US Dollar</li>
-        <li><strong>USD/JPY</strong> — US Dollar vs. Japanese Yen</li>
-        <li><strong>USD/CHF</strong> — US Dollar vs. Swiss Franc</li>
-        <li><strong>AUD/USD</strong> — Australian Dollar vs. US Dollar</li>
-        <li><strong>USD/CAD</strong> — US Dollar vs. Canadian Dollar</li>
-        <li><strong>NZD/USD</strong> — New Zealand Dollar vs. US Dollar</li>
-      </ul>
+
+      <table>
+        <thead><tr><th>Pair</th><th>Name</th><th>Avg. Spread</th><th>Daily Volume</th></tr></thead>
+        <tbody>
+          <tr><td><strong>EUR/USD</strong></td><td>Euro / US Dollar</td><td>0.1 pips</td><td>~28%</td></tr>
+          <tr><td><strong>GBP/USD</strong></td><td>British Pound / US Dollar</td><td>0.3 pips</td><td>~11%</td></tr>
+          <tr><td><strong>USD/JPY</strong></td><td>US Dollar / Japanese Yen</td><td>0.2 pips</td><td>~17%</td></tr>
+          <tr><td><strong>USD/CHF</strong></td><td>US Dollar / Swiss Franc</td><td>0.4 pips</td><td>~5%</td></tr>
+          <tr><td><strong>AUD/USD</strong></td><td>Australian Dollar / US Dollar</td><td>0.4 pips</td><td>~6%</td></tr>
+          <tr><td><strong>USD/CAD</strong></td><td>US Dollar / Canadian Dollar</td><td>0.5 pips</td><td>~5%</td></tr>
+          <tr><td><strong>NZD/USD</strong></td><td>New Zealand Dollar / US Dollar</td><td>0.6 pips</td><td>~3%</td></tr>
+        </tbody>
+      </table>
+
+      <div class="info-box">
+        <strong>GIO4X Tip:</strong> Start with EUR/USD — it has the tightest spreads, highest liquidity, and the most educational resources available. Once comfortable, expand to GBP/USD and USD/JPY.
+      </div>
 
       <h3>Minor Currency Pairs</h3>
       <p><strong>Minor pairs</strong>, also known as cross pairs, do not include the US dollar but involve other major currencies. Popular examples include EUR/GBP, EUR/JPY, and GBP/JPY. These pairs typically have wider spreads than majors but can offer excellent trading opportunities during their respective market sessions.</p>
@@ -118,12 +155,21 @@ export const EDUCATION_ARTICLES: EducationArticle[] = [
 
       <h3>How Leverage Works</h3>
       <p>A <strong>leverage ratio</strong> expresses the relationship between the total position size and the trader's required deposit. Common leverage ratios in forex include:</p>
-      <ul>
-        <li><strong>50:1</strong> — Control $50,000 with a $1,000 deposit</li>
-        <li><strong>100:1</strong> — Control $100,000 with a $1,000 deposit</li>
-        <li><strong>200:1</strong> — Control $200,000 with a $1,000 deposit</li>
-        <li><strong>500:1</strong> — Control $500,000 with a $1,000 deposit</li>
-      </ul>
+
+      <table>
+        <thead><tr><th>Leverage</th><th>Margin Required</th><th>$1,000 Controls</th><th>10 Pip Move ($)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>50:1</strong></td><td>2.0%</td><td>$50,000</td><td>$50</td></tr>
+          <tr><td><strong>100:1</strong></td><td>1.0%</td><td>$100,000</td><td>$100</td></tr>
+          <tr><td><strong>200:1</strong></td><td>0.5%</td><td>$200,000</td><td>$200</td></tr>
+          <tr><td><strong>500:1</strong></td><td>0.2%</td><td>$500,000</td><td>$500</td></tr>
+        </tbody>
+      </table>
+
+      <div class="info-box warning">
+        <strong>⚠️ Risk Warning:</strong> Higher leverage amplifies both profits AND losses equally. A 10-pip move with 500:1 leverage on $1,000 means $500 gain or $500 loss — that's 50% of your entire account. Always use appropriate position sizing.
+      </div>
+
       <p>The higher the <strong>leverage ratio</strong>, the less capital you need to open a position, but the greater your exposure to market fluctuations.</p>
 
       <h3>Understanding Forex Margin</h3>

@@ -294,3 +294,96 @@
 .prose-blog a:hover {
   color: #5BCBF5;
 }
+
+/* Inline chart containers in articles */
+.prose-blog .chart-container {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-glass-bg);
+}
+
+.prose-blog .chart-container .chart-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #29ABE2;
+  margin-bottom: 0.75rem;
+}
+
+.prose-blog .info-box {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  border-left: 4px solid #29ABE2;
+  background: rgba(41,171,226,0.06);
+  color: var(--color-text);
+  font-size: 0.9rem;
+}
+
+.prose-blog .info-box.warning {
+  border-left-color: #C9A84C;
+  background: rgba(201,168,76,0.06);
+}
+
+.prose-blog .info-box.success {
+  border-left-color: #10B981;
+  background: rgba(16,185,129,0.06);
+}
+
+.prose-blog .stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.prose-blog .stat-card {
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-glass-bg);
+}
+
+.prose-blog .stat-card .stat-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #29ABE2;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.prose-blog .stat-card .stat-label {
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+.prose-blog table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.875rem;
+}
+
+.prose-blog thead th {
+  text-align: left;
+  padding: 0.75rem;
+  font-weight: 600;
+  border-bottom: 2px solid var(--color-border);
+  color: var(--color-text);
+  font-size: 0.8rem;
+}
+
+.prose-blog tbody td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.prose-blog tbody tr:hover {
+  background: var(--color-glass-bg);
+}

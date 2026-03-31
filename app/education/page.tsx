@@ -21,6 +21,9 @@ import { CorrelationMatrix } from "@/components/education/CorrelationMatrix";
 import { RiskCalculator } from "@/components/education/RiskCalculator";
 import { LearningRoadmap } from "@/components/education/LearningRoadmap";
 import { PerformanceChart } from "@/components/education/PerformanceChart";
+import { PipCalculator } from "@/components/education/PipCalculator";
+import { SessionClock } from "@/components/education/SessionClock";
+import { TradeSimulator } from "@/components/education/TradeSimulator";
 
 /* ───────────────────── Learning Paths ───────────────────── */
 const learningPaths = [
@@ -31,6 +34,15 @@ const learningPaths = [
     icon: TrendingUp,
     color: "from-[#1B3A6B] to-[#29ABE2]",
     courses: ["Forex Trading Fundamentals", "Technical Analysis Mastery", "Trading Strategies", "Risk Management & Psychology"],
+    stats: { lessons: 62, hours: 28, level: "Intermediate", cert: "Certified Trader" },
+    curriculum: [
+      { week: "1–2", module: "Market Structure & Sessions", skills: "Pips, lots, leverage, session overlaps" },
+      { week: "3–4", module: "Candlestick & Price Action", skills: "Patterns, support/resistance, trendlines" },
+      { week: "5–6", module: "Indicators & Oscillators", skills: "RSI, MACD, Bollinger Bands, moving averages" },
+      { week: "7–8", module: "Fibonacci & Golden Ratio", skills: "Retracements, extensions, cluster zones" },
+      { week: "9–10", module: "Strategy Backtesting", skills: "Building, testing, and journaling strategies" },
+      { week: "11–12", module: "Live Trading & Psychology", skills: "Risk management, emotional control, sizing" },
+    ],
   },
   {
     id: "pamm-copy",
@@ -39,6 +51,13 @@ const learningPaths = [
     icon: Copy,
     color: "from-[#29ABE2] to-[#06B6D4]",
     courses: ["PAMM, MAM & Copy Trading", "Risk Management & Psychology", "Fundamental Analysis"],
+    stats: { lessons: 34, hours: 14, level: "Beginner", cert: "Certified Investor" },
+    curriculum: [
+      { week: "1–2", module: "Understanding Managed Accounts", skills: "PAMM structure, fee models, due diligence" },
+      { week: "3–4", module: "Copy Trading Setup", skills: "Selecting providers, risk allocation, monitoring" },
+      { week: "5–6", module: "Portfolio Diversification", skills: "Multi-strategy allocation, correlation hedging" },
+      { week: "7–8", module: "Performance Analysis", skills: "Drawdown metrics, Sharpe ratio, track records" },
+    ],
   },
   {
     id: "fx-basics",
@@ -47,6 +66,13 @@ const learningPaths = [
     icon: BookOpen,
     color: "from-[#06B6D4] to-[#10B981]",
     courses: ["Forex Trading Fundamentals", "GIO4X Raptor Platform Mastery", "Risk Management & Psychology"],
+    stats: { lessons: 42, hours: 16, level: "Beginner", cert: "Forex Foundations" },
+    curriculum: [
+      { week: "1–2", module: "What is Forex Trading?", skills: "Currency pairs, market hours, terminology" },
+      { week: "3–4", module: "Your First Chart", skills: "Reading charts, timeframes, basic patterns" },
+      { week: "5–6", module: "Platform Mastery", skills: "GIO4X Raptor setup, placing orders, tools" },
+      { week: "7–8", module: "Risk & Money Management", skills: "Position sizing, stop-loss, risk-reward" },
+    ],
   },
 ];
 
@@ -436,7 +462,7 @@ export default function EducationPage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-              className="glass-panel p-8"
+              className="glass-panel p-6 md:p-8"
             >
               <div className="flex items-start gap-4 mb-6">
                 <div className={`p-3 rounded-xl bg-gradient-to-br ${path.color}`}>
@@ -447,6 +473,49 @@ export default function EducationPage() {
                   <p className="text-sm text-[var(--color-text-secondary)]">{path.desc}</p>
                 </div>
               </div>
+
+              {/* Stats row */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+                {[
+                  { label: "Lessons", value: path.stats.lessons.toString(), icon: FileText },
+                  { label: "Duration", value: `${path.stats.hours}h`, icon: Clock },
+                  { label: "Level", value: path.stats.level, icon: Layers },
+                  { label: "Certificate", value: path.stats.cert, icon: GraduationCap },
+                ].map((s) => (
+                  <div key={s.label} className="rounded-xl bg-[var(--color-glass-bg)] p-3 text-center">
+                    <s.icon className="w-4 h-4 text-[#29ABE2] mx-auto mb-1" />
+                    <p className="font-bold text-sm">{s.value}</p>
+                    <span className="text-[10px] text-[var(--color-text-secondary)] uppercase">{s.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Curriculum Table */}
+              <div className="mb-6">
+                <p className="text-xs font-semibold tracking-wider uppercase text-[var(--color-text-secondary)] mb-3">Week-by-Week Curriculum</p>
+                <div className="overflow-x-auto rounded-xl border border-[var(--color-border)]">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-[var(--color-border)] bg-[var(--color-glass-bg)]">
+                        <th className="px-4 py-3 text-left text-xs font-semibold text-[var(--color-text-secondary)]">Week</th>
+                        <th className="px-4 py-3 text-left text-xs font-semibold text-[var(--color-text-secondary)]">Module</th>
+                        <th className="px-4 py-3 text-left text-xs font-semibold text-[var(--color-text-secondary)] hidden sm:table-cell">Key Skills</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {path.curriculum.map((row, ri) => (
+                        <tr key={ri} className="border-b border-[var(--color-border)] last:border-0 hover:bg-[var(--color-glass-bg)] transition-colors">
+                          <td className="px-4 py-3 font-mono font-bold text-[#29ABE2] whitespace-nowrap">{row.week}</td>
+                          <td className="px-4 py-3 font-medium">{row.module}</td>
+                          <td className="px-4 py-3 text-[var(--color-text-secondary)] text-xs hidden sm:table-cell">{row.skills}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Recommended Courses */}
               <div className="space-y-2">
                 <p className="text-xs font-semibold tracking-wider uppercase text-[var(--color-text-secondary)] mb-3">Recommended Courses</p>
                 {path.courses.map((course, ci) => (
@@ -734,8 +803,11 @@ export default function EducationPage() {
 
       {/* ─── Premium Interactive Tools ─── */}
       <LearningRoadmap />
+      <SessionClock />
       <CandlestickGuide />
       <PerformanceChart />
+      <TradeSimulator />
+      <PipCalculator />
       <RiskCalculator />
       <CorrelationMatrix />
 

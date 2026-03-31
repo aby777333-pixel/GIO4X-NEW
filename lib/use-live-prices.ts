@@ -40,6 +40,7 @@ export function useLivePrices(intervalMs = 30_000) {
   const [lastUpdate, setLastUpdate] = useState<Date>(new Date());
   const [isLive, setIsLive] = useState(false);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const fetchPrices = useCallback(async () => {
     try {
       // Use free frankfurter.app API for forex pairs
