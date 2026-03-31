@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
-import { Mail, CheckCircle, BookOpen, BarChart3, Lightbulb } from "lucide-react";
+import { Mail, CheckCircle, BookOpen, BarChart3, Lightbulb, AlertCircle } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
 const perks = [
   { icon: BarChart3, text: "Daily market analysis & trade ideas" },
@@ -14,12 +15,28 @@ const perks = [
 export function NewsletterSignup() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    // TODO: wire to Supabase or email API
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+    try {
+      const { error: dbError } = await supabase
+        .from("newsletter_subscribers")
+        .insert({ email, source: "website" });
+      if (dbError) {
+        if (dbError.code === "23505") setSubmitted(true); // already subscribed
+        else setError("Something went wrong. Please try again.");
+      } else {
+        setSubmitted(true);
+      }
+    } catch {
+      setError("Network error. Please try again.");
+    }
+    setLoading(false);
   };
 
   return (
@@ -85,12 +102,19 @@ export function NewsletterSignup() {
                         />
                         <motion.button
                           type="submit"
-                          className="w-full px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#1B3A6B] to-[#29ABE2] text-white font-semibold hover:opacity-90 transition-opacity"
+                          disabled={loading}
+                          className="w-full px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#1B3A6B] to-[#29ABE2] text-white font-semibold hover:opacity-90 transition-opacity disabled:opacity-60"
                           whileHover={{ scale: 1.01 }}
                           whileTap={{ scale: 0.99 }}
                         >
-                          Subscribe — It&apos;s Free
+                          {loading ? "Subscribing..." : "Subscribe — It's Free"}
                         </motion.button>
+                        {error && (
+                          <div className="flex items-center gap-2 mt-3 text-rose-400 text-xs">
+                            <AlertCircle className="w-3.5 h-3.5" />
+                            {error}
+                          </div>
+                        )}
                       </form>
                       <p className="text-white/30 text-xs mt-4 text-center">
                         By subscribing you agree to receive marketing emails. Privacy-first — we never share your data.
