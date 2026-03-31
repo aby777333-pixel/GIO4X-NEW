@@ -676,26 +676,45 @@ export default function BooksPage() {
               transition={{ duration: 0.25 }}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {filteredBooks.map((book, i) => (
+              {filteredBooks.map((book, i) => {
+                const catColors: Record<string, string> = {
+                  "Technical Analysis": "#29ABE2",
+                  "Market Psychology": "#8B5CF6",
+                  "Risk Management": "#C9A84C",
+                  "Algorithmic Trading": "#10B981",
+                  "Fundamental Analysis": "#06B6D4",
+                  "Price Action": "#F59E0B",
+                  "Options & Derivatives": "#EF4444",
+                  "Wealth Management": "#1B3A6B",
+                };
+                const spineColor = catColors[book.category] || "#29ABE2";
+                return (
                 <AnimateOnScroll key={book.title} delay={i * 0.06}>
-                  <Card className="h-full flex flex-col">
-                    <div className="w-12 h-12 mb-4 rounded-xl bg-[rgba(41,171,226,0.1)] flex items-center justify-center">
-                      <BookOpen className="w-6 h-6 text-[#29ABE2]" />
+                  <Card className="h-full flex flex-col group">
+                    {/* Book spine visualization */}
+                    <div className="flex gap-4 mb-4">
+                      <div className="w-14 h-20 rounded-lg flex-shrink-0 flex items-end justify-center relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${spineColor}30 0%, ${spineColor}10 100%)`, borderLeft: `4px solid ${spineColor}` }}>
+                        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `repeating-linear-gradient(180deg, transparent, transparent 4px, ${spineColor} 4px, ${spineColor} 5px)` }} />
+                        <BookOpen className="w-5 h-5 mb-2 relative z-10" style={{ color: spineColor }} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <Badge
+                          variant={categoryColor[book.category] || "sky"}
+                          className="mb-2"
+                        >
+                          {book.category}
+                        </Badge>
+                        <h3 className="font-semibold leading-snug text-sm group-hover:text-[#29ABE2] transition-colors">{book.title}</h3>
+                        <p className="text-xs text-[#29ABE2]">by {book.author}</p>
+                      </div>
                     </div>
-                    <Badge
-                      variant={categoryColor[book.category] || "sky"}
-                      className="self-start mb-3"
-                    >
-                      {book.category}
-                    </Badge>
-                    <h3 className="font-semibold leading-snug mb-1">{book.title}</h3>
-                    <p className="text-xs text-[#29ABE2] mb-3">by {book.author}</p>
-                    <p className="text-sm text-[var(--color-text-secondary)] flex-1">
+                    <p className="text-sm text-[var(--color-text-secondary)] flex-1 line-clamp-4">
                       {book.description}
                     </p>
                   </Card>
                 </AnimateOnScroll>
-              ))}
+                );
+              })}
             </motion.div>
           </AnimatePresence>
 

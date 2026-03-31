@@ -283,6 +283,8 @@ const learningFormats = [
 const featuredTopics = [
   {
     title: "Candlestick Patterns",
+    icon: BarChart3,
+    chart: "candlestick",
     content: [
       "Candlestick patterns are the foundation of price action analysis. Understanding formations like doji, hammer, engulfing, and morning/evening star patterns gives you insight into market sentiment and potential reversals. At GIO4X Academy, our Candlestick Patterns Masterclass covers over 30 patterns with real chart examples and practical trading strategies.",
       "Single-candle patterns provide immediate insight into the balance between buyers and sellers within a given period. A doji indicates indecision — the open and close are nearly equal, signaling that neither bulls nor bears have control. A hammer, with its small body and long lower wick, suggests that sellers pushed price down but buyers regained control by the close, often signaling a reversal at support levels.",
@@ -292,6 +294,8 @@ const featuredTopics = [
   },
   {
     title: "Fibonacci Retracement",
+    icon: Target,
+    chart: "fibonacci",
     content: [
       "Fibonacci retracement levels (23.6%, 38.2%, 50%, 61.8%, and 78.6%) are among the most widely used tools in technical analysis. They help identify potential support and resistance levels where price may reverse during a pullback in a trending market. Our guide teaches you how to draw Fibonacci levels correctly, combine them with other indicators, and use them for precise entry and exit points on the GIO4X Raptor platform.",
       "The mathematics behind Fibonacci are rooted in the golden ratio (1.618), a proportion found throughout nature, architecture, and financial markets. When a trending market pulls back, traders watch these key ratios to identify where the pullback might end and the original trend resume. The 38.2% and 61.8% levels are considered the most significant — a pullback to the 38.2% level suggests a strong trend, while a deeper retracement to 61.8% may indicate weakening momentum.",
@@ -301,6 +305,8 @@ const featuredTopics = [
   },
   {
     title: "Support & Resistance",
+    icon: Layers,
+    chart: "support",
     content: [
       "Support and resistance levels are the backbone of technical analysis. Support is a price level where buying pressure is strong enough to prevent further decline, while resistance is where selling pressure caps upward movement. Mastering these concepts — including horizontal levels, trendlines, and dynamic support/resistance using moving averages — is essential for timing entries, setting stop-losses, and identifying breakout opportunities.",
       "There are multiple types of support and resistance. Horizontal S/R levels are fixed price zones where price has historically reversed. Trendlines act as diagonal support or resistance in trending markets. Dynamic S/R uses moving averages — the 50-period and 200-period moving averages are watched by institutional traders worldwide, making them self-fulfilling levels. Round numbers (1.2000, 1.3000) also act as psychological support and resistance.",
@@ -310,6 +316,8 @@ const featuredTopics = [
   },
   {
     title: "Top 10 Traders of All Time",
+    icon: Users,
+    chart: "traders",
     content: [
       "Study the strategies and philosophies of the greatest traders in history. George Soros broke the Bank of England shorting GBP. Stanley Druckenmiller mastered macro trading under Soros. Bill Lipschutz turned $12,000 into millions trading forex at Salomon Brothers. Paul Tudor Jones predicted the 1987 crash. Learn from their risk management, conviction, and adaptability — and apply their timeless principles to your own trading on GIO4X.",
       "What separates legendary traders from the rest is not just their strategies but their mindset and risk discipline. George Soros famously said, \"It's not whether you're right or wrong, but how much money you make when you're right and how much you lose when you're wrong.\" Every top trader has experienced devastating losses — what defines them is their ability to manage risk, cut losses quickly, and let winners run. Bill Lipschutz reportedly lost his entire early trading fortune before rebuilding it with strict risk controls.",
@@ -667,8 +675,108 @@ export default function EducationPage() {
           <div className="space-y-5">
             {featuredTopics.map((topic, i) => (
               <AnimateOnScroll key={topic.title} delay={i * 0.1}>
-                <div className="glass-panel p-8">
-                  <h3 className="text-lg font-bold mb-3">{topic.title}</h3>
+                <div className="glass-panel p-6 md:p-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-[#29ABE2]/10 flex items-center justify-center">
+                      <topic.icon className="w-5 h-5 text-[#29ABE2]" />
+                    </div>
+                    <h3 className="text-lg font-bold">{topic.title}</h3>
+                  </div>
+
+                  {/* Inline SVG Chart */}
+                  <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] p-4 mb-5">
+                    {topic.chart === "candlestick" && (
+                      <svg viewBox="0 0 400 120" className="w-full h-28">
+                        <text x="10" y="14" fill="#29ABE2" fontSize="9" fontWeight="bold" fontFamily="sans-serif">CANDLESTICK PATTERNS</text>
+                        {/* Hammer */}
+                        <line x1="40" y1="25" x2="40" y2="95" stroke="#10B981" strokeWidth="1.5" />
+                        <rect x="33" y="30" width="14" height="10" rx="2" fill="#10B981" />
+                        <text x="25" y="112" fill="#9D9FA2" fontSize="8" fontFamily="sans-serif">Hammer</text>
+                        {/* Doji */}
+                        <line x1="100" y1="30" x2="100" y2="90" stroke="#C9A84C" strokeWidth="1.5" />
+                        <rect x="93" y="58" width="14" height="3" rx="1" fill="#C9A84C" />
+                        <text x="90" y="112" fill="#9D9FA2" fontSize="8" fontFamily="sans-serif">Doji</text>
+                        {/* Engulfing */}
+                        <rect x="147" y="45" width="10" height="20" rx="2" fill="#EF4444" />
+                        <rect x="160" y="35" width="14" height="35" rx="2" fill="#10B981" />
+                        <text x="140" y="112" fill="#9D9FA2" fontSize="8" fontFamily="sans-serif">Engulfing</text>
+                        {/* Morning Star */}
+                        <rect x="210" y="35" width="10" height="25" rx="2" fill="#EF4444" />
+                        <rect x="224" y="55" width="8" height="6" rx="1" fill="#C9A84C" />
+                        <rect x="236" y="30" width="10" height="28" rx="2" fill="#10B981" />
+                        <text x="205" y="112" fill="#9D9FA2" fontSize="8" fontFamily="sans-serif">Morning Star</text>
+                        {/* Shooting Star */}
+                        <line x1="300" y1="25" x2="300" y2="85" stroke="#EF4444" strokeWidth="1.5" />
+                        <rect x="293" y="70" width="14" height="10" rx="2" fill="#EF4444" />
+                        <text x="278" y="112" fill="#9D9FA2" fontSize="8" fontFamily="sans-serif">Shooting Star</text>
+                        {/* Three Soldiers */}
+                        <rect x="345" y="55" width="10" height="18" rx="2" fill="#10B981" />
+                        <rect x="358" y="42" width="10" height="20" rx="2" fill="#10B981" />
+                        <rect x="371" y="28" width="10" height="22" rx="2" fill="#10B981" />
+                        <text x="340" y="112" fill="#9D9FA2" fontSize="8" fontFamily="sans-serif">3 Soldiers</text>
+                      </svg>
+                    )}
+                    {topic.chart === "fibonacci" && (
+                      <svg viewBox="0 0 400 130" className="w-full h-32">
+                        <text x="10" y="14" fill="#C9A84C" fontSize="9" fontWeight="bold" fontFamily="sans-serif">FIBONACCI RETRACEMENT LEVELS</text>
+                        {/* Uptrend line */}
+                        <line x1="30" y1="110" x2="200" y2="25" stroke="#29ABE2" strokeWidth="2" opacity="0.4" />
+                        {/* Pullback */}
+                        <polyline points="200,25 260,70 310,40 370,55" fill="none" stroke="#10B981" strokeWidth="1.5" />
+                        {/* Fib levels */}
+                        {[
+                          { y: 25, label: "0.0% (High)", color: "#29ABE2" },
+                          { y: 45, label: "23.6%", color: "#10B981" },
+                          { y: 57, label: "38.2%", color: "#C9A84C" },
+                          { y: 67, label: "50.0%", color: "#C9A84C" },
+                          { y: 78, label: "61.8% ★ Golden", color: "#EF4444" },
+                          { y: 110, label: "100% (Low)", color: "#29ABE2" },
+                        ].map((lv) => (
+                          <g key={lv.label}>
+                            <line x1="25" y1={lv.y} x2="390" y2={lv.y} stroke={lv.color} strokeWidth="0.5" strokeDasharray="4,3" opacity="0.5" />
+                            <text x="300" y={lv.y - 3} fill={lv.color} fontSize="8" fontFamily="monospace">{lv.label}</text>
+                          </g>
+                        ))}
+                      </svg>
+                    )}
+                    {topic.chart === "support" && (
+                      <svg viewBox="0 0 400 120" className="w-full h-28">
+                        <text x="10" y="14" fill="#10B981" fontSize="9" fontWeight="bold" fontFamily="sans-serif">SUPPORT & RESISTANCE</text>
+                        {/* Resistance line */}
+                        <line x1="20" y1="30" x2="380" y2="30" stroke="#EF4444" strokeWidth="1" strokeDasharray="6,3" />
+                        <text x="330" y="26" fill="#EF4444" fontSize="8" fontFamily="sans-serif">Resistance</text>
+                        {/* Support line */}
+                        <line x1="20" y1="90" x2="380" y2="90" stroke="#10B981" strokeWidth="1" strokeDasharray="6,3" />
+                        <text x="340" y="104" fill="#10B981" fontSize="8" fontFamily="sans-serif">Support</text>
+                        {/* Price bouncing between */}
+                        <polyline points="30,60 60,35 90,55 120,32 150,50 180,88 210,55 240,33 270,48 300,87 330,50 360,36 380,45" fill="none" stroke="#29ABE2" strokeWidth="1.5" />
+                        {/* Bounce arrows */}
+                        <circle cx="180" cy="88" r="4" fill="#10B981" opacity="0.5" /><text x="172" y="113" fill="#10B981" fontSize="7" fontFamily="sans-serif">Bounce</text>
+                        <circle cx="120" cy="32" r="4" fill="#EF4444" opacity="0.5" /><text x="112" y="24" fill="#EF4444" fontSize="7" fontFamily="sans-serif">Reject</text>
+                      </svg>
+                    )}
+                    {topic.chart === "traders" && (
+                      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                        {[
+                          { name: "George Soros", style: "Macro", gain: "$1B in 1 day" },
+                          { name: "Paul Tudor Jones", style: "Trend", gain: "200% in '87" },
+                          { name: "Bill Lipschutz", style: "Forex", gain: "$300M/yr" },
+                          { name: "Stanley Druckenmiller", style: "Macro", gain: "30% avg/yr" },
+                          { name: "Jesse Livermore", style: "Speculation", gain: "$100M (1929)" },
+                        ].map((t) => (
+                          <div key={t.name} className="text-center p-2 rounded-lg bg-[var(--color-glass-bg)]">
+                            <div className="w-8 h-8 mx-auto mb-1.5 rounded-full bg-gradient-to-br from-[#1B3A6B] to-[#29ABE2] flex items-center justify-center text-white text-[10px] font-bold">
+                              {t.name.split(" ").map(w => w[0]).join("")}
+                            </div>
+                            <p className="text-[10px] font-bold leading-tight">{t.name}</p>
+                            <p className="text-[9px] text-[#29ABE2]">{t.style}</p>
+                            <p className="text-[9px] text-[#C9A84C] font-mono">{t.gain}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
                   <div className="space-y-3 mb-4">
                     {topic.content.map((paragraph, pi) => (
                       <p key={pi} className="text-sm text-[var(--color-text-secondary)] leading-relaxed">

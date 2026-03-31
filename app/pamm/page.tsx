@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { CTABand } from "@/components/sections/CTABand";
-import { Shield, BarChart3, Wallet, PieChart, Users, TrendingUp, CheckCircle } from "lucide-react";
+import { Shield, BarChart3, Wallet, PieChart, Users, TrendingUp, CheckCircle, DollarSign, Clock, Target } from "lucide-react";
 
 const benefits = [
   { icon: Users, title: "Professional Management", desc: "Your capital is managed by experienced traders with verified track records and strict risk parameters." },
@@ -171,6 +171,143 @@ export default function PAMMPage() {
                 <Button href="/accounts" size="sm">Become a Manager</Button>
               </Card>
             </AnimateOnScroll>
+          </div>
+        </div>
+      </section>
+
+      {/* PAMM Performance Snapshot */}
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #0A0E1A 0%, #1B3A6B 50%, #0A0E1A 100%)" }} />
+        <div className="max-site relative z-10">
+          <AnimateOnScroll>
+            <div className="text-center mb-12">
+              <span className="text-[#C9A84C] text-sm font-semibold tracking-[0.25em] uppercase">Live Performance</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 mb-4">
+                PAMM Manager <span className="text-[#29ABE2]">Leaderboard</span>
+              </h2>
+              <p className="text-white/50 max-w-xl mx-auto">Model performance data from top GIO4X PAMM managers.</p>
+            </div>
+          </AnimateOnScroll>
+
+          <AnimateOnScroll delay={0.1}>
+            <div className="overflow-x-auto rounded-2xl border border-white/10 bg-white/5">
+              <table className="w-full min-w-[600px] text-sm">
+                <thead>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left px-5 py-4 text-xs font-semibold text-white/40">Manager</th>
+                    <th className="text-right px-5 py-4 text-xs font-semibold text-white/40">Monthly Return</th>
+                    <th className="text-right px-5 py-4 text-xs font-semibold text-white/40">Max DD</th>
+                    <th className="text-right px-5 py-4 text-xs font-semibold text-white/40">Investors</th>
+                    <th className="text-right px-5 py-4 text-xs font-semibold text-white/40">Win Rate</th>
+                    <th className="text-right px-5 py-4 text-xs font-semibold text-white/40">AUM</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { name: "AlphaFX Pro", ret: "+4.8%", dd: "-3.2%", inv: 142, wr: "68%", aum: "$2.4M" },
+                    { name: "GoldenEdge Capital", ret: "+3.5%", dd: "-2.1%", inv: 89, wr: "72%", aum: "$1.8M" },
+                    { name: "Systematic Macro", ret: "+6.2%", dd: "-5.4%", inv: 67, wr: "61%", aum: "$950K" },
+                    { name: "Forex Sentinel", ret: "+2.9%", dd: "-1.8%", inv: 203, wr: "74%", aum: "$3.1M" },
+                    { name: "Fibonacci Flow", ret: "+5.1%", dd: "-4.0%", inv: 54, wr: "65%", aum: "$720K" },
+                  ].map((m, i) => (
+                    <tr key={m.name} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                      <td className="px-5 py-3.5">
+                        <div className="flex items-center gap-2">
+                          <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#1B3A6B] to-[#29ABE2] flex items-center justify-center text-white text-[10px] font-bold">
+                            {i + 1}
+                          </div>
+                          <span className="text-white font-semibold">{m.name}</span>
+                        </div>
+                      </td>
+                      <td className="px-5 py-3.5 text-right text-emerald-400 font-mono font-bold">{m.ret}</td>
+                      <td className="px-5 py-3.5 text-right text-rose-400 font-mono">{m.dd}</td>
+                      <td className="px-5 py-3.5 text-right text-white/60 font-mono">{m.inv}</td>
+                      <td className="px-5 py-3.5 text-right text-[#29ABE2] font-mono">{m.wr}</td>
+                      <td className="px-5 py-3.5 text-right text-[#C9A84C] font-mono font-bold">{m.aum}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </AnimateOnScroll>
+
+          {/* Key PAMM Metrics */}
+          <AnimateOnScroll delay={0.2}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+              {[
+                { icon: DollarSign, value: "$8.9M+", label: "Total AUM", color: "#C9A84C" },
+                { icon: Users, value: "555+", label: "Active Investors", color: "#29ABE2" },
+                { icon: Target, value: "68%", label: "Avg Win Rate", color: "#10B981" },
+                { icon: Clock, value: "Weekly", label: "Profit Distribution", color: "#8B5CF6" },
+              ].map((s) => (
+                <div key={s.label} className="rounded-xl bg-white/5 border border-white/10 p-4 text-center">
+                  <s.icon className="w-5 h-5 mx-auto mb-2" style={{ color: s.color }} />
+                  <p className="text-2xl font-bold text-white font-mono">{s.value}</p>
+                  <span className="text-[10px] text-white/40 uppercase">{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </AnimateOnScroll>
+        </div>
+      </section>
+
+      {/* PAMM vs Self-Trading Comparison */}
+      <section className="section-padding">
+        <div className="max-site max-w-4xl">
+          <SectionHeading eyebrow="Compare" title="PAMM vs Self-Directed Trading" subtitle="Understand the differences to make the right choice for your goals." />
+          <AnimateOnScroll>
+            <div className="overflow-x-auto rounded-2xl border border-[var(--color-border)] bg-[var(--color-glass-bg)]">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-[var(--color-border)]">
+                    <th className="px-5 py-4 text-left text-xs font-semibold text-[var(--color-text-secondary)]">Factor</th>
+                    <th className="px-5 py-4 text-center text-xs font-semibold text-[#29ABE2]">PAMM Investing</th>
+                    <th className="px-5 py-4 text-center text-xs font-semibold text-[#C9A84C]">Self-Trading</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { factor: "Experience Required", pamm: "None", self: "Extensive" },
+                    { factor: "Time Commitment", pamm: "Minimal (passive)", self: "Several hours daily" },
+                    { factor: "Emotional Stress", pamm: "Low", self: "High" },
+                    { factor: "Risk Management", pamm: "Professional", self: "Self-managed" },
+                    { factor: "Diversification", pamm: "Multi-manager possible", self: "Single strategy" },
+                    { factor: "Minimum Investment", pamm: "$500", self: "$150" },
+                    { factor: "Control Over Trades", pamm: "Delegated", self: "Full control" },
+                    { factor: "Fee Structure", pamm: "Performance-based", self: "Spreads only" },
+                  ].map((row) => (
+                    <tr key={row.factor} className="border-b border-[var(--color-border)] last:border-0">
+                      <td className="px-5 py-3 font-medium">{row.factor}</td>
+                      <td className="px-5 py-3 text-center text-[var(--color-text-secondary)]">{row.pamm}</td>
+                      <td className="px-5 py-3 text-center text-[var(--color-text-secondary)]">{row.self}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </AnimateOnScroll>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section-padding bg-[var(--color-surface)]">
+        <div className="max-site max-w-3xl">
+          <SectionHeading eyebrow="Questions" title="PAMM FAQ" />
+          <div className="space-y-4">
+            {[
+              { q: "What is the minimum PAMM investment?", a: "The minimum allocation to a PAMM manager on GIO4X is $500. You retain full ownership and withdrawal capability at all times." },
+              { q: "How are profits distributed?", a: "Profits and losses are allocated proportionally based on each investor's share of the total pool. Distribution occurs at the end of each trading period (typically weekly)." },
+              { q: "Can I withdraw at any time?", a: "Yes. You can submit a withdrawal request at any time. Funds will be processed at the end of the current trading period to maintain fair allocation." },
+              { q: "What fees do PAMM managers charge?", a: "Managers set their own performance fee (typically 10-30% of profits). Fees are only charged on net profits — if the manager doesn't make money, neither do they charge." },
+              { q: "Is my money safe?", a: "Your funds remain in your own GIO4X trading account at all times. The manager trades on the master account, and your allocation mirrors those trades proportionally. You maintain full visibility and withdrawal control." },
+            ].map((faq, i) => (
+              <AnimateOnScroll key={i} delay={i * 0.05}>
+                <div className="glass-panel p-5">
+                  <h4 className="font-semibold mb-2">{faq.q}</h4>
+                  <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">{faq.a}</p>
+                </div>
+              </AnimateOnScroll>
+            ))}
           </div>
         </div>
       </section>
