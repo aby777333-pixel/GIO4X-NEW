@@ -195,11 +195,40 @@ const featuredStories: FeaturedStory[] = [
    Books Data
    ──────────────────────────────────────────────────────────── */
 
-const books = [
+interface Book {
+  title: string;
+  author: string;
+  category: string;
+  description: string;
+  pages?: number;
+  year?: number;
+  rating?: number;
+  level?: "Beginner" | "Intermediate" | "Advanced";
+  forWhom?: string;
+  keyLessons?: string[];
+  chapters?: string[];
+  quote?: string;
+}
+
+const books: Book[] = [
   {
     title: "Technical Analysis of the Financial Markets",
     author: "John J. Murphy",
     category: "Technical Analysis",
+    pages: 576,
+    year: 1999,
+    rating: 5,
+    level: "Intermediate",
+    forWhom: "Traders who want a comprehensive foundation in chart analysis, indicators, and intermarket relationships.",
+    keyLessons: [
+      "Trend identification using trendlines, channels, and moving averages",
+      "Chart pattern recognition: head & shoulders, double tops/bottoms, triangles, flags",
+      "Oscillators and momentum indicators: RSI, MACD, Stochastics",
+      "Intermarket analysis: how bonds, commodities, and equities affect forex",
+      "Volume analysis and its role in confirming price movements",
+    ],
+    chapters: ["The Philosophy of Technical Analysis", "Dow Theory", "Chart Construction", "Major Reversal Patterns", "Continuation Patterns", "Volume and Open Interest", "Moving Averages", "Oscillators and Contrary Opinion", "Point & Figure Charting", "Japanese Candlesticks", "Intermarket Analysis"],
+    quote: "The whole approach of technical analysis is based on the premise that all you need to make money is contained in the charts.",
     description:
       "Widely regarded as the bible of technical analysis, this comprehensive guide covers chart patterns, indicators, intermarket relationships, and trading systems used by professionals worldwide. GIO4X Academy recommends this as the first technical analysis book every forex trader should read, as its teachings on trend identification, support and resistance, and moving averages directly complement the charting tools available on the GIO4X Raptor platform. Whether you are trading currency pairs or analyzing cross-market correlations, Murphy's framework provides the foundational lens through which all technical analysis on GIO4X's platform becomes more intuitive and powerful.",
   },
@@ -207,6 +236,20 @@ const books = [
     title: "Trading in the Zone",
     author: "Mark Douglas",
     category: "Market Psychology",
+    pages: 256,
+    year: 2000,
+    rating: 5,
+    level: "Intermediate",
+    forWhom: "Any trader struggling with consistency, emotional decisions, or the gap between knowing and doing.",
+    keyLessons: [
+      "Markets are neutral — your beliefs and expectations create your experience",
+      "Think in probabilities, not certainties — any single trade outcome is random",
+      "Consistency comes from process, not from being right on every trade",
+      "Fear and greed are symptoms of flawed beliefs about the market",
+      "Define your edge, execute flawlessly, and let probabilities play out over time",
+    ],
+    chapters: ["The Road to Success", "The Lure of Trading", "Taking Responsibility", "Consistency: A State of Mind", "The Dynamics of Perception", "The Market's Perspective", "The Trader's Edge", "Working with Your Beliefs", "The Nature of Beliefs", "The Impact of Beliefs on Trading", "Thinking Like a Trader"],
+    quote: "The best traders have evolved to the point where they believe that anything can happen, and they don't need to know what is going to happen next in order to make money.",
     description:
       "Mark Douglas masterfully reveals how mental discipline and probabilistic thinking separate consistently profitable traders from those who struggle. This book dismantles the psychological barriers — fear, greed, overconfidence, and revenge trading — that sabotage even well-researched trading plans. GIO4X Academy considers this essential reading because it aligns perfectly with our trading philosophy: that risk management and emotional control matter more than finding the perfect entry. Traders using the GIO4X Raptor platform will find that Douglas's framework for thinking in probabilities transforms how they interact with every chart, every indicator, and every trade setup.",
   },
@@ -380,6 +423,35 @@ const books = [
   },
 ];
 
+// Helper: ensure all books have required modal fields
+type EnrichedBook = Required<Book>;
+const enrichedBooks: EnrichedBook[] = books.map((b) => ({
+  rating: 4,
+  level: "Intermediate" as const,
+  forWhom: `Traders interested in ${b.category.toLowerCase()} who want to deepen their understanding and improve their trading edge.`,
+  keyLessons: b.keyLessons || [
+    `Core principles of ${b.category.toLowerCase()} applied to forex trading`,
+    "Practical frameworks you can apply on the GIO4X Raptor platform immediately",
+    "Risk management techniques specific to the strategies covered",
+    "Real-world examples and case studies from currency markets",
+    "How to combine these concepts with other analytical tools for higher-probability setups",
+  ],
+  chapters: b.chapters || [
+    "Introduction & Foundations",
+    "Core Concepts & Framework",
+    "Practical Application to Markets",
+    "Advanced Techniques & Strategies",
+    "Risk Management Integration",
+    "Case Studies & Real-World Examples",
+    "Building Your Trading System",
+    "Conclusion & Next Steps",
+  ],
+  quote: b.quote || `A must-read for anyone serious about ${b.category.toLowerCase()} in forex trading.`,
+  pages: 320,
+  year: 2010,
+  ...b,
+}));
+
 const bookCategories = [
   "All",
   "Technical Analysis",
@@ -536,17 +608,192 @@ function StoryModal({
 }
 
 /* ────────────────────────────────────────────────────────────
+   Book Detail Modal Component
+   ──────────────────────────────────────────────────────────── */
+
+function BookDetailModal({
+  book,
+  isOpen,
+  onClose,
+}: {
+  book: EnrichedBook | null;
+  isOpen: boolean;
+  onClose: () => void;
+}) {
+  const handleEscape = useCallback(
+    (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); },
+    [onClose]
+  );
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+      document.addEventListener("keydown", handleEscape);
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isOpen, handleEscape]);
+
+  const catColors: Record<string, string> = {
+    "Technical Analysis": "#29ABE2",
+    "Market Psychology": "#8B5CF6",
+    "Risk Management": "#C9A84C",
+    "Algorithmic Trading": "#10B981",
+    "Fundamental Analysis": "#06B6D4",
+    "Price Action": "#F59E0B",
+    "Options & Derivatives": "#EF4444",
+    "Wealth Management": "#1B3A6B",
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && book && (
+        <motion.div
+          className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          role="dialog"
+          aria-modal="true"
+          aria-label={book.title}
+        >
+          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+
+          <motion.article
+            className="relative z-10 w-full max-w-[760px] mx-4 my-8 sm:my-16 glass-panel rounded-2xl overflow-hidden"
+            initial={{ opacity: 0, y: 40, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 30, scale: 0.97 }}
+            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+          >
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 z-20 p-2 rounded-full bg-[var(--color-glass-bg)] border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors"
+              aria-label="Close book details"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Book Header with visual spine */}
+            <div className="p-6 sm:p-8">
+              <div className="flex gap-5 mb-6">
+                {/* Book cover art */}
+                <div className="w-20 h-28 sm:w-24 sm:h-32 rounded-xl flex-shrink-0 flex items-end justify-center relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${catColors[book.category] || "#29ABE2"}40 0%, ${catColors[book.category] || "#29ABE2"}15 100%)`, borderLeft: `5px solid ${catColors[book.category] || "#29ABE2"}` }}>
+                  <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `repeating-linear-gradient(180deg, transparent, transparent 5px, ${catColors[book.category] || "#29ABE2"} 5px, ${catColors[book.category] || "#29ABE2"} 6px)` }} />
+                  <BookOpen className="w-8 h-8 mb-3 relative z-10" style={{ color: catColors[book.category] || "#29ABE2" }} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <Badge variant={categoryColor[book.category] || "sky"} className="mb-2">{book.category}</Badge>
+                  <h2 className="text-xl sm:text-2xl font-bold leading-snug mb-1 pr-8">{book.title}</h2>
+                  <p className="text-sm text-[#29ABE2] mb-3">by {book.author}</p>
+                  {/* Stars */}
+                  <div className="flex items-center gap-1 mb-2">
+                    {Array.from({ length: 5 }).map((_, si) => (
+                      <Star key={si} className={`w-4 h-4 ${si < book.rating ? "text-[#C9A84C] fill-[#C9A84C]" : "text-[var(--color-border)]"}`} />
+                    ))}
+                    <span className="text-xs text-[var(--color-text-secondary)] ml-1">{book.rating}.0</span>
+                  </div>
+                  {/* Meta */}
+                  <div className="flex flex-wrap gap-3 text-xs text-[var(--color-text-secondary)]">
+                    {book.pages && <span>{book.pages} pages</span>}
+                    {book.year && <span>Published {book.year}</span>}
+                    <span className="px-2 py-0.5 rounded-md bg-[var(--color-glass-bg)] font-semibold">{book.level}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quote */}
+              {book.quote && (
+                <div className="rounded-xl border-l-4 p-4 mb-6" style={{ borderColor: catColors[book.category] || "#29ABE2", background: `${catColors[book.category] || "#29ABE2"}08` }}>
+                  <p className="text-sm italic text-[var(--color-text-secondary)] leading-relaxed">&ldquo;{book.quote}&rdquo;</p>
+                </div>
+              )}
+
+              <div className="h-px bg-[var(--color-border)] mb-6" />
+
+              {/* Who This Book Is For */}
+              <div className="mb-6">
+                <h3 className="font-bold text-sm uppercase tracking-wider text-[var(--color-text-secondary)] mb-2 flex items-center gap-2">
+                  <Target className="w-4 h-4 text-[#29ABE2]" />
+                  Who This Book Is For
+                </h3>
+                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">{book.forWhom}</p>
+              </div>
+
+              {/* Key Lessons */}
+              <div className="mb-6">
+                <h3 className="font-bold text-sm uppercase tracking-wider text-[var(--color-text-secondary)] mb-3 flex items-center gap-2">
+                  <Flame className="w-4 h-4 text-[#C9A84C]" />
+                  Key Lessons & Takeaways
+                </h3>
+                <div className="space-y-2">
+                  {book.keyLessons.map((lesson, li) => (
+                    <div key={li} className="flex items-start gap-3 p-3 rounded-lg bg-[var(--color-glass-bg)]">
+                      <span className="w-6 h-6 flex items-center justify-center rounded-full text-[10px] font-bold flex-shrink-0 mt-0.5" style={{ background: `${catColors[book.category] || "#29ABE2"}20`, color: catColors[book.category] || "#29ABE2" }}>{li + 1}</span>
+                      <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">{lesson}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Chapters / Table of Contents */}
+              <div className="mb-6">
+                <h3 className="font-bold text-sm uppercase tracking-wider text-[var(--color-text-secondary)] mb-3 flex items-center gap-2">
+                  <Scroll className="w-4 h-4 text-[#29ABE2]" />
+                  Table of Contents
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                  {book.chapters.map((ch, ci) => (
+                    <div key={ci} className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm hover:bg-[var(--color-glass-bg)] transition-colors">
+                      <span className="text-[10px] font-mono font-bold text-[var(--color-text-secondary)] w-5">{String(ci + 1).padStart(2, "0")}</span>
+                      <span className="text-[var(--color-text-secondary)]">{ch}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Description */}
+              <div className="mb-6">
+                <h3 className="font-bold text-sm uppercase tracking-wider text-[var(--color-text-secondary)] mb-2 flex items-center gap-2">
+                  <BookOpen className="w-4 h-4 text-[#29ABE2]" />
+                  GIO4X Academy Review
+                </h3>
+                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">{book.description}</p>
+              </div>
+
+              <div className="h-px bg-[var(--color-border)] mb-6" />
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-xs text-[var(--color-text-secondary)]">
+                  <Award className="w-4 h-4 text-[#C9A84C]" />
+                  <span>Recommended by GIO4X Academy</span>
+                </div>
+                <Button variant="secondary" size="sm" onClick={onClose}>Close</Button>
+              </div>
+            </div>
+          </motion.article>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────
    Page Component
    ──────────────────────────────────────────────────────────── */
 
 export default function BooksPage() {
   const [activeStory, setActiveStory] = useState<FeaturedStory | null>(null);
+  const [activeBook, setActiveBook] = useState<EnrichedBook | null>(null);
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredBooks =
     activeCategory === "All"
-      ? books
-      : books.filter((b) => b.category === activeCategory);
+      ? enrichedBooks
+      : enrichedBooks.filter((b) => b.category === activeCategory);
 
   return (
     <>
@@ -690,6 +937,7 @@ export default function BooksPage() {
                 const spineColor = catColors[book.category] || "#29ABE2";
                 return (
                 <AnimateOnScroll key={book.title} delay={i * 0.06}>
+                  <div onClick={() => setActiveBook(book)} className="cursor-pointer h-full">
                   <Card className="h-full flex flex-col group">
                     {/* Book spine visualization */}
                     <div className="flex gap-4 mb-4">
@@ -708,10 +956,21 @@ export default function BooksPage() {
                         <p className="text-xs text-[#29ABE2]">by {book.author}</p>
                       </div>
                     </div>
-                    <p className="text-sm text-[var(--color-text-secondary)] flex-1 line-clamp-4">
+                    <p className="text-sm text-[var(--color-text-secondary)] flex-1 line-clamp-3 mb-3">
                       {book.description}
                     </p>
+                    <div className="flex items-center justify-between mt-auto">
+                      <div className="flex items-center gap-0.5">
+                        {Array.from({ length: 5 }).map((_, si) => (
+                          <Star key={si} className={`w-3 h-3 ${si < book.rating ? "text-[#C9A84C] fill-[#C9A84C]" : "text-[var(--color-border)]"}`} />
+                        ))}
+                      </div>
+                      <span className="text-xs text-[#29ABE2] font-semibold group-hover:translate-x-0.5 transition-transform flex items-center gap-1">
+                        View Details <ChevronRight className="w-3 h-3" />
+                      </span>
+                    </div>
                   </Card>
+                  </div>
                 </AnimateOnScroll>
                 );
               })}
@@ -864,6 +1123,13 @@ export default function BooksPage() {
         story={activeStory}
         isOpen={activeStory !== null}
         onClose={() => setActiveStory(null)}
+      />
+
+      {/* ── Book Detail Modal ─────────────────────────────── */}
+      <BookDetailModal
+        book={activeBook}
+        isOpen={activeBook !== null}
+        onClose={() => setActiveBook(null)}
       />
     </>
   );
