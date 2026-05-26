@@ -18,21 +18,27 @@ import type { NavLink } from "@/lib/constants";
 function DesktopDropdown({
   link,
   isActive,
+  isOpen,
+  onOpen,
+  onClose,
 }: {
   link: NavLink;
   isActive: boolean;
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
 }) {
-  const [open, setOpen] = useState(false);
+  const open = isOpen;
   const timeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleEnter = useCallback(() => {
     if (timeout.current) clearTimeout(timeout.current);
-    setOpen(true);
-  }, []);
+    onOpen();
+  }, [onOpen]);
 
   const handleLeave = useCallback(() => {
-    timeout.current = setTimeout(() => setOpen(false), 120);
-  }, []);
+    timeout.current = setTimeout(() => onClose(), 120);
+  }, [onClose]);
 
   useEffect(() => {
     return () => {
@@ -181,6 +187,7 @@ const SOCIAL_LINKS = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -217,17 +224,28 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-0.5">
-            {NAV_LINKS.map((link) => (
-              <DesktopDropdown
-                key={link.href + link.label}
-                link={link}
-                isActive={
-                  pathname === link.href ||
-                  (link.href !== "/" && pathname.startsWith(link.href))
-                }
-              />
-            ))}
+          <div
+            className="hidden lg:flex items-center gap-0.5"
+            onMouseLeave={() => setOpenDropdown(null)}
+          >
+            {NAV_LINKS.map((link) => {
+              const key = link.href + link.label;
+              return (
+                <DesktopDropdown
+                  key={key}
+                  link={link}
+                  isActive={
+                    pathname === link.href ||
+                    (link.href !== "/" && pathname.startsWith(link.href))
+                  }
+                  isOpen={openDropdown === key}
+                  onOpen={() => setOpenDropdown(key)}
+                  onClose={() =>
+                    setOpenDropdown((curr) => (curr === key ? null : curr))
+                  }
+                />
+              );
+            })}
           </div>
 
           {/* Right Side */}
