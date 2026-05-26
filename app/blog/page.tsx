@@ -60,7 +60,7 @@ export default function BlogPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto"
+            className="text-white/85 text-lg max-w-2xl mx-auto"
           >
             Expert forex market analysis, trading strategies, golden ratio
             insights, and company updates. Stay ahead of the markets with GIO4X.
