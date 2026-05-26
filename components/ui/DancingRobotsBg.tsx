@@ -98,12 +98,8 @@ export function DancingRobotsBg() {
       let ctx: any = null;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const pointer: any = { x: 0, y: 0, dancerDrag: null, pointDrag: null };
-      let ts = 1;          // physics step actually used by the dance (already slowed)
-      let tsRaw = 1;       // true framerate-correction value, smoothed toward delta/16
-      let deltaMs = 16;    // raw ms since last frame (for time-based events like dir flips)
+      let ts = 1;
       let lastTime = 0;
-      const SLOWNESS = 0.45;     // multiplier applied to ts so the dance is calm
-      const FLIP_INTERVAL = 800; // ms between left/right dir flips — display-independent
       let ground = 1.0;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const dancers: any[] = [];
@@ -208,11 +204,9 @@ export function DancingRobotsBg() {
         x: number; points: Point[]; links: Link[];
         frame: number; dir: number; size: number;
         color: number; light: number;
-        timeSinceFlip: number;
         constructor(color: number, light: number, size: number, x: number, y: number) {
           this.x = x; this.points = []; this.links = [];
           this.frame = 0; this.dir = 1;
-          this.timeSinceFlip = 0;
           this.size = size;
           this.color = Math.round(color);
           this.light = light;
@@ -230,11 +224,7 @@ export function DancingRobotsBg() {
           }
         }
         update() {
-          this.timeSinceFlip += deltaMs;
-          if (this.timeSinceFlip >= FLIP_INTERVAL) {
-            this.dir = -this.dir;
-            this.timeSinceFlip = 0;
-          }
+          if (++this.frame % Math.round(20 / ts) === 0) this.dir = -this.dir;
           for (const link of this.links) link.update();
           for (const point of this.points) point.update(this);
           for (const link of this.links) {
@@ -281,10 +271,9 @@ export function DancingRobotsBg() {
         requestAnimationFrame(run);
         if (canvasObj.resize === true) resize();
         if (lastTime !== 0) {
-          deltaMs = time - lastTime;
-          const t = deltaMs / 16;
-          tsRaw += (t - tsRaw) * 0.1;     // smoothed true time-scale (framerate-independent)
-          ts = tsRaw * SLOWNESS;          // physics uses the slowed-down version
+          const t = (time - lastTime) / 16;
+          ts += (t - ts) * 0.1;
+          if (ts > 0.30) ts = 0.30; // physics step cap — keeps the dance calm without breaking dir-flip cadence
         }
         lastTime = time;
         ctx.clearRect(0, 0, canvasObj.width, canvasObj.height);
@@ -343,7 +332,6 @@ export function DancingRobotsBg() {
                   pointer.dancerDrag = dancer;
                   pointer.pointDrag = point;
                   dancer.frame = 0;
-                  dancer.timeSinceFlip = 0;
                 }
               }
             }
@@ -424,7 +412,7 @@ export function DancingRobotsBg() {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 w-full h-full"
-      style={{ zIndex: 0, background: "transparent", opacity: 0.75 }}
+      style={{ zIndex: 0, background: "transparent", opacity: 0.55 }}
     />
   );
 }
