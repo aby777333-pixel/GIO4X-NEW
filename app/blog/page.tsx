@@ -29,8 +29,8 @@ export default function BlogPage() {
         {/* Dancing Robots Background Animation */}
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #06060C 0%, #0A0E1A 40%, #0F1628 70%, #06060C 100%)" }} />
         <DancingRobotsBg />
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(6,6,12,0.4) 0%, rgba(6,6,12,0.6) 100%)" }} />
+        {/* Dark overlay for text readability — darker in the center where the headline sits */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(6,6,12,0.78) 0%, rgba(6,6,12,0.55) 55%, rgba(6,6,12,0.35) 100%)" }} />
         {/* Hero Visual Elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 left-1/4 w-64 h-64 bg-[#29ABE2]/5 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />

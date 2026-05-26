@@ -100,8 +100,6 @@ export function DancingRobotsBg() {
       const pointer: any = { x: 0, y: 0, dancerDrag: null, pointDrag: null };
       let ts = 1;
       let lastTime = 0;
-      let lastDrawTime = 0;
-      const TARGET_FRAME_MS = 1000 / 60; // cap to ~60fps so 120/144Hz displays don't dance faster
       let ground = 1.0;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const dancers: any[] = [];
@@ -272,15 +270,12 @@ export function DancingRobotsBg() {
       const run = (time: number) => {
         requestAnimationFrame(run);
         if (canvasObj.resize === true) resize();
-        // 60fps cap: skip this frame if the previous draw was less than ~one 60Hz frame ago
-        if (lastDrawTime !== 0 && time - lastDrawTime < TARGET_FRAME_MS - 0.5) return;
         if (lastTime !== 0) {
           const t = (time - lastTime) / 16;
           ts += (t - ts) * 0.1;
-          if (ts > 0.45) ts = 0.45; // cap speed for a relaxed, natural dance
+          if (ts > 0.30) ts = 0.30; // physics step cap — keeps the dance calm without breaking dir-flip cadence
         }
         lastTime = time;
-        lastDrawTime = time;
         ctx.clearRect(0, 0, canvasObj.width, canvasObj.height);
         for (const dancer of dancers) {
           dancer.update();
@@ -417,7 +412,7 @@ export function DancingRobotsBg() {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 w-full h-full"
-      style={{ zIndex: 0, background: "transparent" }}
+      style={{ zIndex: 0, background: "transparent", opacity: 0.55 }}
     />
   );
 }
