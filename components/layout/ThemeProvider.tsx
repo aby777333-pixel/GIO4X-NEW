@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, useCallback } from "react";
+import { createContext, useContext, useEffect } from "react";
 import type { Theme } from "@/lib/theme";
 
 interface ThemeContextType {
@@ -9,7 +9,7 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType>({
-  theme: "dark",
+  theme: "light",
   toggleTheme: () => {},
 });
 
@@ -17,26 +17,16 @@ export function useTheme() {
   return useContext(ThemeContext);
 }
 
+// Light mode only. The provider still wraps the tree so existing
+// useTheme() callers keep working, but the value is constant and the
+// toggle is a no-op.
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
-
   useEffect(() => {
-    const stored = (localStorage.getItem("gio4x-theme") as Theme) || "dark";
-    setTheme(stored);
-    document.documentElement.setAttribute("data-theme", stored);
-  }, []);
-
-  const toggleTheme = useCallback(() => {
-    setTheme((prev) => {
-      const next = prev === "dark" ? "light" : "dark";
-      localStorage.setItem("gio4x-theme", next);
-      document.documentElement.setAttribute("data-theme", next);
-      return next;
-    });
+    document.documentElement.setAttribute("data-theme", "light");
   }, []);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme: "light", toggleTheme: () => {} }}>
       {children}
     </ThemeContext.Provider>
   );

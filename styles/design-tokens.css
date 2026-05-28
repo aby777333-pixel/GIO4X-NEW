@@ -1,5 +1,6 @@
 /* ============================================================
    GIO4X Design Tokens — Golden Ratio · Stellar · Da Vinci
+   Light mode only. Dark theme was retired.
    ============================================================ */
 
 :root {
@@ -18,7 +19,7 @@
   /* Gradients */
   --gradient-brand: linear-gradient(135deg, #1B3A6B 0%, #29ABE2 100%);
   --gradient-hero-dark: radial-gradient(ellipse at 60% 40%, rgba(41,171,226,0.14) 0%, rgba(201,168,76,0.05) 50%, transparent 70%);
-  --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.65) 100%);
   --gradient-gold: linear-gradient(135deg, #C9A84C 0%, #E4C76B 50%, #C9A84C 100%);
   --gradient-glow-line: linear-gradient(90deg, transparent, #29ABE2, transparent);
 
@@ -47,22 +48,25 @@
   --duration-fast: 0.15s;
   --duration-normal: 0.3s;
   --duration-slow: 0.5s;
+
+  /* Light theme surface tokens — applied by default at :root so any
+     consumer reading these variables gets the light values even
+     before the inline script runs. */
+  --color-bg: #F4F5F7;
+  --color-text: #0D0F1A;
+  --color-text-secondary: #5D5F66;
+  --color-surface: #FFFFFF;
+  --color-surface-elevated: #F0F1F3;
+  --color-border: rgba(0,0,0,0.07);
+  --color-glass-bg: rgba(255,255,255,0.88);
+  --color-glass-border: rgba(0,0,0,0.05);
+  --color-card-hover-shadow: rgba(27,58,107,0.1);
+
+  color-scheme: light;
 }
 
-/* Dark Theme (default) */
-[data-theme="dark"] {
-  --color-bg: #06060C;
-  --color-text: #ECEDF0;
-  --color-text-secondary: #7D8088;
-  --color-surface: #0C0E18;
-  --color-surface-elevated: #12152A;
-  --color-border: rgba(255,255,255,0.06);
-  --color-glass-bg: rgba(255,255,255,0.035);
-  --color-glass-border: rgba(255,255,255,0.06);
-  --color-card-hover-shadow: rgba(41,171,226,0.12);
-}
-
-/* Light Theme */
+/* Kept for backwards-compat with any tooling that explicitly sets
+   data-theme="light". Same values as :root. */
 [data-theme="light"] {
   --color-bg: #F4F5F7;
   --color-text: #0D0F1A;

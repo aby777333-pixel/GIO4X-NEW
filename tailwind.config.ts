@@ -6,7 +6,7 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: ["class", '[data-theme="dark"]'],
+  // Light mode only — dark theme support intentionally removed.
   theme: {
     extend: {
       colors: {
