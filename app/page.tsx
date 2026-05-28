@@ -8,6 +8,7 @@ import { AccountTypes } from "@/components/sections/AccountTypes";
 import { WhyGIO4X } from "@/components/sections/WhyGIO4X";
 import { MarketSentiment } from "@/components/sections/MarketSentiment";
 import { LiveSpreads } from "@/components/sections/LiveSpreads";
+import { CurrencyCorrelation } from "@/components/sections/CurrencyCorrelation";
 import { TradingKnowledge } from "@/components/sections/TradingKnowledge";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { EARobotFriendly } from "@/components/sections/EARobotFriendly";
@@ -31,6 +32,7 @@ export default function HomePage() {
       <WhyGIO4X />
       <MarketSentiment />
       <LiveSpreads />
+      <CurrencyCorrelation />
       <TradingKnowledge />
       <Testimonials />
       <EARobotFriendly />
