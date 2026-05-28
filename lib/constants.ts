@@ -13,9 +13,9 @@ export interface NavLink {
   children?: NavChild[];
 }
 
-// GIO Raptor platform — the trading app GIO4X now funnels into.
+// GIO Raptor platform — the unified GIO4X trader area that the website funnels into.
 // When the custom domain (e.g. raptor.gio4x.com) is live, swap this one value.
-export const RAPTOR_BASE = "https://dashing-hamster-0028ed.netlify.app";
+export const RAPTOR_BASE = "https://zippy-piroshki-21aa30.netlify.app";
 
 export const SITE = {
   name: "GIO4X",
@@ -29,11 +29,11 @@ export const SITE = {
     "No 48 Immanual Complex, Thirunagar Katpadi, Vellore - 632006, Tamilnadu, India",
   hours: "24/7 Support",
   signInUrl: `${RAPTOR_BASE}/auth/login`,
-  signUpUrl: `${RAPTOR_BASE}/auth/register`,
-  ibUrl: `${RAPTOR_BASE}/auth/broker-login`,
-  demoUrl: `${RAPTOR_BASE}/terminal`,
-  platformUrl: `${RAPTOR_BASE}/terminal`,
-  referralsUrl: `${RAPTOR_BASE}/dashboard/referrals`,
+  signUpUrl: `${RAPTOR_BASE}/auth/signup`,
+  ibUrl: `${RAPTOR_BASE}/auth/login?redirect=/ib`,
+  demoUrl: `${RAPTOR_BASE}/accounts/demo`,
+  platformUrl: `${RAPTOR_BASE}/`,
+  referralsUrl: `${RAPTOR_BASE}/ib/referrals`,
 } as const;
 
 export const NAV_LINKS: NavLink[] = [
