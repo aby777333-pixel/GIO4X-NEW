@@ -54,7 +54,7 @@ export function BlogModal({ post, isOpen, onClose }: BlogModalProps) {
         >
           {/* click-away backdrop */}
           <div
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm"
+            className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm"
             onClick={onClose}
           />
 

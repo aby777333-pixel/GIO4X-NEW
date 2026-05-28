@@ -47,16 +47,16 @@ export function TradingStats() {
 
   return (
     <section ref={ref} className="relative py-24 overflow-hidden">
-      <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #0A0E1A 0%, #1B3A6B 50%, #0A0E1A 100%)" }} />
-      <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle at 25% 25%, #29ABE2 1px, transparent 1px), radial-gradient(circle at 75% 75%, #C9A84C 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #FFFFFF 0%, #E9F1FA 50%, #F4F7FB 100%)" }} />
+      <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: "radial-gradient(circle at 25% 25%, #29ABE2 1px, transparent 1px), radial-gradient(circle at 75% 75%, #C9A84C 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
       <div className="max-site relative z-10">
         <AnimateOnScroll>
           <div className="text-center mb-16">
             <span className="text-[#29ABE2] text-sm font-semibold tracking-[0.25em] uppercase">By The Numbers</span>
-            <h2 className="text-[var(--text-h1)] font-bold text-white mt-3 mb-4">
+            <h2 className="text-[var(--text-h1)] font-bold text-[#1B3A6B] mt-3 mb-4">
               Why Traders Choose <span className="gradient-text">GIO4X</span>
             </h2>
-            <p className="text-white/60 max-w-2xl mx-auto text-lg">
+            <p className="text-[#5D5F66] max-w-2xl mx-auto text-lg">
               Institutional-grade infrastructure delivering exceptional trading conditions for retail and professional traders alike.
             </p>
           </div>
@@ -65,14 +65,14 @@ export function TradingStats() {
           {stats.map((s, i) => (
             <AnimateOnScroll key={s.label} delay={i * 0.08}>
               <div className="text-center group">
-                <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-[#29ABE2]/20 to-[#1B3A6B]/20 flex items-center justify-center group-hover:from-[#29ABE2]/30 group-hover:to-[#1B3A6B]/30 transition-all duration-500">
+                <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-[#29ABE2]/15 to-[#1B3A6B]/15 flex items-center justify-center group-hover:from-[#29ABE2]/25 group-hover:to-[#1B3A6B]/25 transition-all duration-500">
                   <s.icon className="w-7 h-7 text-[#29ABE2]" />
                 </div>
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                <div className="text-4xl md:text-5xl font-bold text-[#1B3A6B] mb-2">
                   <AnimatedCounter target={s.value} suffix={s.suffix} isVisible={visible} />
                 </div>
-                <h3 className="text-white font-semibold mb-1">{s.label}</h3>
-                <p className="text-white/50 text-sm">{s.desc}</p>
+                <h3 className="text-[#1B3A6B] font-semibold mb-1">{s.label}</h3>
+                <p className="text-[#5D5F66] text-sm">{s.desc}</p>
               </div>
             </AnimateOnScroll>
           ))}

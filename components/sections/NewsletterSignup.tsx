@@ -42,9 +42,9 @@ export function NewsletterSignup() {
   return (
     <section className="section-padding bg-[var(--color-surface)]">
       <div className="max-site">
-        <div className="relative rounded-3xl overflow-hidden">
-          <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #1B3A6B 0%, #0A0E1A 60%, #1B3A6B 100%)" }} />
-          <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle, #29ABE2 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+        <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
+          <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #FFFFFF 0%, #E9F1FA 60%, #FFFFFF 100%)" }} />
+          <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: "radial-gradient(circle, #29ABE2 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
 
           <div className="relative z-10 px-6 py-16 md:px-16 md:py-20">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -52,19 +52,19 @@ export function NewsletterSignup() {
               <AnimateOnScroll>
                 <div>
                   <span className="text-[#C9A84C] text-sm font-semibold tracking-[0.25em] uppercase">Stay Ahead</span>
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 mb-4 leading-tight">
+                  <h2 className="text-3xl md:text-4xl font-bold text-[#1B3A6B] mt-3 mb-4 leading-tight">
                     Get the <span className="text-[#29ABE2]">GIO4X Edge</span> in Your Inbox
                   </h2>
-                  <p className="text-white/60 text-lg mb-8">
+                  <p className="text-[#5D5F66] text-lg mb-8">
                     Join thousands of forex traders receiving our free daily market briefing, strategy tips, and exclusive insights.
                   </p>
                   <div className="space-y-4">
                     {perks.map((p) => (
                       <div key={p.text} className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-[#29ABE2]/15 flex items-center justify-center flex-shrink-0">
+                        <div className="w-9 h-9 rounded-xl bg-[#29ABE2]/10 flex items-center justify-center flex-shrink-0">
                           <p.icon className="w-4.5 h-4.5 text-[#29ABE2]" />
                         </div>
-                        <span className="text-white/80 text-sm">{p.text}</span>
+                        <span className="text-[#0D0F1A]/85 text-sm">{p.text}</span>
                       </div>
                     ))}
                   </div>
@@ -73,12 +73,12 @@ export function NewsletterSignup() {
 
               {/* Right — Form */}
               <AnimateOnScroll delay={0.15}>
-                <div className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-8">
+                <div className="rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200 p-8 shadow-sm">
                   {submitted ? (
                     <div className="text-center py-8">
-                      <CheckCircle className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
-                      <h3 className="text-white text-xl font-bold mb-2">You&apos;re In!</h3>
-                      <p className="text-white/60">Check your inbox for a welcome email with your first market briefing.</p>
+                      <CheckCircle className="w-12 h-12 text-emerald-500 mx-auto mb-4" />
+                      <h3 className="text-[#1B3A6B] text-xl font-bold mb-2">You&apos;re In!</h3>
+                      <p className="text-[#5D5F66]">Check your inbox for a welcome email with your first market briefing.</p>
                     </div>
                   ) : (
                     <>
@@ -87,8 +87,8 @@ export function NewsletterSignup() {
                           <Mail className="w-5 h-5 text-white" />
                         </div>
                         <div>
-                          <h3 className="text-white font-bold">Free Daily Briefing</h3>
-                          <p className="text-white/50 text-xs">No spam. Unsubscribe anytime.</p>
+                          <h3 className="text-[#1B3A6B] font-bold">Free Daily Briefing</h3>
+                          <p className="text-[#5D5F66] text-xs">No spam. Unsubscribe anytime.</p>
                         </div>
                       </div>
                       <form onSubmit={handleSubmit} className="space-y-4">
@@ -98,7 +98,7 @@ export function NewsletterSignup() {
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder="Enter your email address"
                           required
-                          className="w-full px-4 py-3.5 rounded-xl bg-white/10 border border-white/15 text-white placeholder:text-white/30 focus:outline-none focus:border-[#29ABE2]/50 transition-colors"
+                          className="w-full px-4 py-3.5 rounded-xl bg-white border border-slate-200 text-[#0D0F1A] placeholder:text-[#A0A2A5] focus:outline-none focus:border-[#29ABE2]/60 transition-colors"
                         />
                         <motion.button
                           type="submit"
@@ -110,13 +110,13 @@ export function NewsletterSignup() {
                           {loading ? "Subscribing..." : "Subscribe — It's Free"}
                         </motion.button>
                         {error && (
-                          <div className="flex items-center gap-2 mt-3 text-rose-400 text-xs">
+                          <div className="flex items-center gap-2 mt-3 text-rose-500 text-xs">
                             <AlertCircle className="w-3.5 h-3.5" />
                             {error}
                           </div>
                         )}
                       </form>
-                      <p className="text-white/30 text-xs mt-4 text-center">
+                      <p className="text-[#A0A2A5] text-xs mt-4 text-center">
                         By subscribing you agree to receive marketing emails. Privacy-first — we never share your data.
                       </p>
                     </>

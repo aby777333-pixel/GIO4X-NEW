@@ -26,16 +26,16 @@ export default function BlogPage() {
     <>
       {/* ── Hero ─────────────────────────────────────────── */}
       <section className="pt-72 pb-60 relative overflow-hidden">
-        {/* Dancing Robots Background Animation */}
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #06060C 0%, #0A0E1A 40%, #0F1628 70%, #06060C 100%)" }} />
+        {/* Light gradient base */}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #FFFFFF 0%, #F4F7FB 45%, #E9F1FA 75%, #F4F5F7 100%)" }} />
         <DancingRobotsBg />
-        {/* Dark overlay for text readability — darker in the center where the headline sits */}
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(6,6,12,0.78) 0%, rgba(6,6,12,0.55) 55%, rgba(6,6,12,0.35) 100%)" }} />
+        {/* Soft white overlay so the animation reads but doesn't fight the headline */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.35) 55%, rgba(255,255,255,0.15) 100%)" }} />
         {/* Hero Visual Elements */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-1/4 w-64 h-64 bg-[#29ABE2]/5 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />
+          <div className="absolute top-20 left-1/4 w-64 h-64 bg-[#29ABE2]/15 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />
           <div className="absolute bottom-10 right-1/4 w-48 h-48 bg-[#1B3A6B]/10 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite_2s]" />
-          <div className="absolute top-1/2 right-10 w-32 h-32 bg-[#C9A84C]/5 rounded-full blur-2xl animate-[float_12s_ease-in-out_infinite_4s]" />
+          <div className="absolute top-1/2 right-10 w-32 h-32 bg-[#C9A84C]/12 rounded-full blur-2xl animate-[float_12s_ease-in-out_infinite_4s]" />
         </div>
         <div className="max-site text-center relative z-10">
           <motion.div
@@ -51,7 +51,7 @@ export default function BlogPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-[clamp(2.2rem,5vw,4rem)] font-bold mt-4 mb-6 leading-[1.1]"
+            className="text-[clamp(2.2rem,5vw,4rem)] font-bold mt-4 mb-6 leading-[1.1] text-[#1B3A6B]"
           >
             Markets May Dance, <span className="gradient-text">We Won&apos;t.</span>
           </motion.h1>
@@ -60,7 +60,7 @@ export default function BlogPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-white/85 text-lg max-w-2xl mx-auto"
+            className="text-[#5D5F66] text-lg max-w-2xl mx-auto"
           >
             Expert forex market analysis, trading strategies, golden ratio
             insights, and company updates. Stay ahead of the markets with GIO4X.

@@ -826,7 +826,7 @@ export default function EducationPage() {
             aria-label={selectedArticle.title}
           >
             {/* Backdrop */}
-            <div className="fixed inset-0 bg-black/70 backdrop-blur-sm" onClick={() => setSelectedArticle(null)} />
+            <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm" onClick={() => setSelectedArticle(null)} />
 
             {/* Modal card */}
             <motion.article

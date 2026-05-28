@@ -177,29 +177,29 @@ export default function PAMMPage() {
 
       {/* PAMM Performance Snapshot */}
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #0A0E1A 0%, #1B3A6B 50%, #0A0E1A 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #FFFFFF 0%, #E9F1FA 50%, #F4F7FB 100%)" }} />
         <div className="max-site relative z-10">
           <AnimateOnScroll>
             <div className="text-center mb-12">
               <span className="text-[#C9A84C] text-sm font-semibold tracking-[0.25em] uppercase">Live Performance</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#1B3A6B] mt-3 mb-4">
                 PAMM Manager <span className="text-[#29ABE2]">Leaderboard</span>
               </h2>
-              <p className="text-white/50 max-w-xl mx-auto">Model performance data from top GIO4X PAMM managers.</p>
+              <p className="text-[#5D5F66] max-w-xl mx-auto">Model performance data from top GIO4X PAMM managers.</p>
             </div>
           </AnimateOnScroll>
 
           <AnimateOnScroll delay={0.1}>
-            <div className="overflow-x-auto rounded-2xl border border-white/10 bg-white/5">
+            <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
               <table className="w-full min-w-[600px] text-sm">
                 <thead>
-                  <tr className="border-b border-white/10">
-                    <th className="text-left px-5 py-4 text-xs font-semibold text-white/40">Manager</th>
-                    <th className="text-right px-5 py-4 text-xs font-semibold text-white/40">Monthly Return</th>
-                    <th className="text-right px-5 py-4 text-xs font-semibold text-white/40">Max DD</th>
-                    <th className="text-right px-5 py-4 text-xs font-semibold text-white/40">Investors</th>
-                    <th className="text-right px-5 py-4 text-xs font-semibold text-white/40">Win Rate</th>
-                    <th className="text-right px-5 py-4 text-xs font-semibold text-white/40">AUM</th>
+                  <tr className="border-b border-slate-200">
+                    <th className="text-left px-5 py-4 text-xs font-semibold text-[#5D5F66]">Manager</th>
+                    <th className="text-right px-5 py-4 text-xs font-semibold text-[#5D5F66]">Monthly Return</th>
+                    <th className="text-right px-5 py-4 text-xs font-semibold text-[#5D5F66]">Max DD</th>
+                    <th className="text-right px-5 py-4 text-xs font-semibold text-[#5D5F66]">Investors</th>
+                    <th className="text-right px-5 py-4 text-xs font-semibold text-[#5D5F66]">Win Rate</th>
+                    <th className="text-right px-5 py-4 text-xs font-semibold text-[#5D5F66]">AUM</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -210,18 +210,18 @@ export default function PAMMPage() {
                     { name: "Forex Sentinel", ret: "+2.9%", dd: "-1.8%", inv: 203, wr: "74%", aum: "$3.1M" },
                     { name: "Fibonacci Flow", ret: "+5.1%", dd: "-4.0%", inv: 54, wr: "65%", aum: "$720K" },
                   ].map((m, i) => (
-                    <tr key={m.name} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                    <tr key={m.name} className="border-b border-slate-100 hover:bg-slate-50 transition-colors last:border-b-0">
                       <td className="px-5 py-3.5">
                         <div className="flex items-center gap-2">
                           <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#1B3A6B] to-[#29ABE2] flex items-center justify-center text-white text-[10px] font-bold">
                             {i + 1}
                           </div>
-                          <span className="text-white font-semibold">{m.name}</span>
+                          <span className="text-[#1B3A6B] font-semibold">{m.name}</span>
                         </div>
                       </td>
-                      <td className="px-5 py-3.5 text-right text-emerald-400 font-mono font-bold">{m.ret}</td>
-                      <td className="px-5 py-3.5 text-right text-rose-400 font-mono">{m.dd}</td>
-                      <td className="px-5 py-3.5 text-right text-white/60 font-mono">{m.inv}</td>
+                      <td className="px-5 py-3.5 text-right text-emerald-600 font-mono font-bold">{m.ret}</td>
+                      <td className="px-5 py-3.5 text-right text-rose-600 font-mono">{m.dd}</td>
+                      <td className="px-5 py-3.5 text-right text-[#5D5F66] font-mono">{m.inv}</td>
                       <td className="px-5 py-3.5 text-right text-[#29ABE2] font-mono">{m.wr}</td>
                       <td className="px-5 py-3.5 text-right text-[#C9A84C] font-mono font-bold">{m.aum}</td>
                     </tr>
@@ -240,10 +240,10 @@ export default function PAMMPage() {
                 { icon: Target, value: "68%", label: "Avg Win Rate", color: "#10B981" },
                 { icon: Clock, value: "Weekly", label: "Profit Distribution", color: "#8B5CF6" },
               ].map((s) => (
-                <div key={s.label} className="rounded-xl bg-white/5 border border-white/10 p-4 text-center">
+                <div key={s.label} className="rounded-xl bg-white border border-slate-200 shadow-sm p-4 text-center">
                   <s.icon className="w-5 h-5 mx-auto mb-2" style={{ color: s.color }} />
-                  <p className="text-2xl font-bold text-white font-mono">{s.value}</p>
-                  <span className="text-[10px] text-white/40 uppercase">{s.label}</span>
+                  <p className="text-2xl font-bold text-[#1B3A6B] font-mono">{s.value}</p>
+                  <span className="text-[10px] text-[#A0A2A5] uppercase">{s.label}</span>
                 </div>
               ))}
             </div>

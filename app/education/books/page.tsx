@@ -381,7 +381,7 @@ function StoryModal({
         >
           {/* backdrop */}
           <div
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm"
+            className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm"
             onClick={onClose}
           />
 
@@ -520,7 +520,7 @@ function BookDetailModal({
           aria-modal="true"
           aria-label={book.title}
         >
-          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+          <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm" onClick={onClose} />
 
           <motion.article
             className="relative z-10 w-full max-w-[760px] mx-4 my-8 sm:my-16 glass-panel rounded-2xl overflow-hidden"
@@ -861,8 +861,8 @@ export default function BooksPage() {
 
       {/* ── Section 3: Book of the Month ───────────────────── */}
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #0A0E1A 0%, #1B3A6B 50%, #0A0E1A 100%)" }} />
-        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle, #C9A84C 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #FFFFFF 0%, #FBF4E0 50%, #F4F7FB 100%)" }} />
+        <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: "radial-gradient(circle, #C9A84C 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
         <div className="max-site relative z-10">
           <AnimateOnScroll>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -871,28 +871,28 @@ export default function BooksPage() {
                   <Award className="w-5 h-5 text-[#C9A84C]" />
                   <span className="text-[#C9A84C] text-sm font-semibold tracking-[0.25em] uppercase">Book of the Month</span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 cursor-pointer hover:text-[#C9A84C] transition-colors" onClick={() => { const b = enrichedBooks.find(b => b.title === "Trading in the Zone"); if (b) setActiveBook(b); }}>Trading in the Zone</h2>
-                <p className="text-white/40 text-sm mb-2">by Mark Douglas</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-[#1B3A6B] mb-4 cursor-pointer hover:text-[#C9A84C] transition-colors" onClick={() => { const b = enrichedBooks.find(b => b.title === "Trading in the Zone"); if (b) setActiveBook(b); }}>Trading in the Zone</h2>
+                <p className="text-[#A0A2A5] text-sm mb-2">by Mark Douglas</p>
                 <div className="flex items-center gap-1 mb-6">
                   {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 text-[#C9A84C] fill-[#C9A84C]" />)}
-                  <span className="text-white/50 text-xs ml-2">5.0 — Staff Pick</span>
+                  <span className="text-[#5D5F66] text-xs ml-2">5.0 — Staff Pick</span>
                 </div>
-                <p className="text-white/60 leading-relaxed mb-6">
+                <p className="text-[#5D5F66] leading-relaxed mb-6">
                   This month, the GIO4X Academy team unanimously chose Mark Douglas&apos;s masterwork on trading psychology.
                   If you read only one book this year, make it this one. It will fundamentally change how you think about
                   risk, probability, and the mental framework required for consistent profitability in forex trading.
                 </p>
                 <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="rounded-xl bg-white/5 border border-white/10 p-3 text-center">
+                  <div className="rounded-xl bg-white border border-slate-200 shadow-sm p-3 text-center">
                     <p className="text-xl font-bold text-[#29ABE2]">256</p>
-                    <span className="text-[10px] text-white/40 uppercase">Pages</span>
+                    <span className="text-[10px] text-[#A0A2A5] uppercase">Pages</span>
                   </div>
-                  <div className="rounded-xl bg-white/5 border border-white/10 p-3 text-center">
+                  <div className="rounded-xl bg-white border border-slate-200 shadow-sm p-3 text-center">
                     <p className="text-xl font-bold text-[#C9A84C]">#1</p>
-                    <span className="text-[10px] text-white/40 uppercase">Trading Psychology</span>
+                    <span className="text-[10px] text-[#A0A2A5] uppercase">Trading Psychology</span>
                   </div>
                 </div>
-                <h4 className="text-white font-semibold text-sm mb-3">Why GIO4X Academy Recommends It:</h4>
+                <h4 className="text-[#1B3A6B] font-semibold text-sm mb-3">Why GIO4X Academy Recommends It:</h4>
                 <ul className="space-y-2">
                   {[
                     "Teaches probabilistic thinking — essential for forex risk management",
@@ -900,7 +900,7 @@ export default function BooksPage() {
                     "Provides frameworks to overcome fear, greed, and revenge trading",
                     "Directly applicable to every trade you place on the GIO4X Raptor platform",
                   ].map(r => (
-                    <li key={r} className="flex items-start gap-2 text-sm text-white/50">
+                    <li key={r} className="flex items-start gap-2 text-sm text-[#5D5F66]">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#C9A84C] mt-2 flex-shrink-0" />
                       {r}
                     </li>
@@ -911,18 +911,18 @@ export default function BooksPage() {
               {/* Visual Book Card — clickable */}
               <div className="flex justify-center">
                 <div className="relative cursor-pointer group" onClick={() => { const b = enrichedBooks.find(b => b.title === "Trading in the Zone"); if (b) setActiveBook(b); }}>
-                  <div className="w-64 h-80 rounded-2xl bg-gradient-to-br from-[#1B3A6B] to-[#0A0E1A] border border-white/10 shadow-2xl flex flex-col items-center justify-center p-6 text-center group-hover:border-[#C9A84C]/40 transition-all">
-                    <div className="w-16 h-16 rounded-full bg-[#C9A84C]/20 flex items-center justify-center mb-4">
-                      <Brain className="w-8 h-8 text-[#C9A84C]" />
+                  <div className="w-64 h-80 rounded-2xl bg-gradient-to-br from-[#1B3A6B] to-[#29ABE2] border border-[#1B3A6B]/20 shadow-2xl flex flex-col items-center justify-center p-6 text-center group-hover:border-[#C9A84C]/60 transition-all">
+                    <div className="w-16 h-16 rounded-full bg-[#C9A84C]/25 flex items-center justify-center mb-4">
+                      <Brain className="w-8 h-8 text-[#FBF4E0]" />
                     </div>
-                    <h3 className="text-white font-bold text-xl mb-1 group-hover:text-[#C9A84C] transition-colors">Trading in the Zone</h3>
-                    <p className="text-white/40 text-xs mb-4">Mark Douglas</p>
-                    <div className="w-full h-px bg-white/10 mb-4" />
-                    <p className="text-white/30 text-xs italic">&quot;The best traders think in probabilities, not certainties.&quot;</p>
-                    <span className="mt-3 text-[10px] text-[#C9A84C] font-semibold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">Click to View Details →</span>
+                    <h3 className="text-white font-bold text-xl mb-1 group-hover:text-[#FBF4E0] transition-colors">Trading in the Zone</h3>
+                    <p className="text-white/70 text-xs mb-4">Mark Douglas</p>
+                    <div className="w-full h-px bg-white/25 mb-4" />
+                    <p className="text-white/80 text-xs italic">&quot;The best traders think in probabilities, not certainties.&quot;</p>
+                    <span className="mt-3 text-[10px] text-[#FBF4E0] font-semibold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">Click to View Details →</span>
                   </div>
-                  <div className="absolute -bottom-4 -right-4 w-64 h-80 rounded-2xl bg-white/5 border border-white/5 -z-10" />
-                  <div className="absolute -bottom-8 -right-8 w-64 h-80 rounded-2xl bg-white/3 border border-white/3 -z-20" />
+                  <div className="absolute -bottom-4 -right-4 w-64 h-80 rounded-2xl bg-white/70 border border-slate-200 -z-10" />
+                  <div className="absolute -bottom-8 -right-8 w-64 h-80 rounded-2xl bg-white/50 border border-slate-100 -z-20" />
                 </div>
               </div>
             </div>
