@@ -108,10 +108,22 @@ export function CurrencyCorrelation() {
         <AnimateOnScroll>
           <Card className="p-6">
             <div className="overflow-x-auto" onMouseLeave={hoverOff}>
-              <table className="min-w-[640px] w-full border-separate border-spacing-0 text-sm">
+              {/*
+                table-fixed + equal colgroup makes every value column the same
+                width so the heatmap reads as a true grid (and not auto-sized
+                to whichever number is widest). w-full expands to the full Card
+                area; min-w-[820px] keeps the mobile scroll fallback.
+              */}
+              <table className="w-full min-w-[820px] table-fixed border-separate border-spacing-0 text-base">
+                <colgroup>
+                  <col className="w-[110px]" />
+                  {PAIRS.map((p) => (
+                    <col key={p} />
+                  ))}
+                </colgroup>
                 <thead>
                   <tr>
-                    <th className="sticky left-0 z-10 bg-[var(--color-bg,white)] px-3 py-2 text-left text-xs uppercase tracking-wider text-[var(--color-text-secondary)]">
+                    <th className="sticky left-0 z-10 bg-[var(--color-bg,white)] px-4 py-3 text-left text-xs uppercase tracking-wider text-[var(--color-text-secondary)]">
                       Pair
                     </th>
                     {PAIRS.map((p, j) => (
@@ -122,7 +134,7 @@ export function CurrencyCorrelation() {
                         onFocus={() => hoverOn(p)}
                         onClick={() => togglePair(p)}
                         tabIndex={0}
-                        className={`cursor-pointer select-none px-3 py-2 text-center font-mono text-xs transition-colors ${headerHighlight(
+                        className={`cursor-pointer select-none px-3 py-3 text-center font-mono text-sm transition-colors ${headerHighlight(
                           p, hovered, j, hoveredIndex,
                         )}`}
                       >
@@ -143,7 +155,7 @@ export function CurrencyCorrelation() {
                           onFocus={() => hoverOn(rowPair)}
                           onClick={() => togglePair(rowPair)}
                           tabIndex={0}
-                          className={`sticky left-0 z-10 cursor-pointer select-none bg-[var(--color-bg,white)] px-3 py-2 text-left font-mono text-xs font-semibold transition-colors ${headerHighlight(
+                          className={`sticky left-0 z-10 cursor-pointer select-none bg-[var(--color-bg,white)] px-4 py-3 text-left font-mono text-sm font-semibold transition-colors ${headerHighlight(
                             rowPair, hovered, i, hoveredIndex,
                           )}`}
                         >
@@ -160,7 +172,7 @@ export function CurrencyCorrelation() {
                               key={colPair}
                               onMouseEnter={() => hoverOn(rowPair)}
                               className={[
-                                "px-3 py-2 text-center font-mono text-xs transition-all",
+                                "px-3 py-3 text-center font-mono text-sm transition-all",
                                 tone,
                                 dimmed ? "opacity-25" : "opacity-100",
                                 inHoveredRowOrCol ? "ring-1 ring-inset ring-[#29ABE2]/50" : "",
