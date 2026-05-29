@@ -29,6 +29,35 @@ export default function ContactPage() {
       });
 
       if (dbError) throw dbError;
+
+      // Best-effort: mirror the lead into the portal CRM (/staff/crm). Never
+      // blocks the user's success state if the bridge is down or unconfigured.
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const utm: Record<string, string> = {};
+        for (const k of ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"]) {
+          const v = params.get(k);
+          if (v) utm[k] = v;
+        }
+        await fetch("/api/leads/capture", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            phone: form.phone,
+            subject: form.subject,
+            message: form.message,
+            source: "web_contact",
+            campaign: params.get("utm_campaign") || undefined,
+            referral_code: params.get("ref") || undefined,
+            utm,
+          }),
+        });
+      } catch {
+        // swallow — CRM mirroring is a side channel
+      }
+
       setSuccess(true);
       setForm({ name: "", email: "", phone: "", subject: "", message: "" });
     } catch {
