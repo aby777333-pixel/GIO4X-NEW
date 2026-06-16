@@ -1,5 +1,7 @@
 "use client";
 
+import { HeroBackdrop } from "@/components/ui/HeroBackdrop";
+
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card } from "@/components/ui/Card";
@@ -375,6 +377,7 @@ export default function EducationPage() {
     <>
       {/* ─── Hero with animated gradient orbs ─── */}
       <section className="pt-56 pb-40 relative overflow-hidden">
+        <HeroBackdrop image="gio4x12.png" />
         {/* Animated gradient orbs */}
         <motion.div
           className="absolute top-20 -left-32 w-96 h-96 rounded-full opacity-15 blur-3xl pointer-events-none"

@@ -1,5 +1,7 @@
 "use client";
 
+import { HeroBackdrop } from "@/components/ui/HeroBackdrop";
+
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -18,6 +20,7 @@ export default function ToolsPage() {
     <>
       {/* Hero */}
       <section className="pt-72 pb-60 relative overflow-hidden">
+        <HeroBackdrop image="gio4x11.png" />
         {/* Hero Visual Elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 left-1/4 w-64 h-64 bg-[#29ABE2]/5 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />

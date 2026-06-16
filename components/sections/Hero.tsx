@@ -14,24 +14,15 @@ import { SITE } from "@/lib/constants";
 /*  full-bleed background behind the hero copy.                        */
 /* ------------------------------------------------------------------ */
 
+// Curated subset for the home hero. The remaining photos are distributed
+// across the inner-page heroes via <HeroBackdrop /> so imagery isn't all
+// crammed onto the landing page.
 const HERO_IMAGES = [
   "gio4x6.png",
-  "gio4x7.png",
   "gio4x8.png",
-  "gio4x9.png",
-  "gio4x10.png",
-  "gio4x11.png",
-  "gio4x12.png",
-  "gio13.png",
   "gio4x14.png",
-  "gio4x15.png",
-  "gio4x17.png",
-  "gio4x18.png",
   "gio4x19.png",
-  "gio4x20.png",
-  "gio4x21.png",
   "gio4x22.png",
-  "gio4x23.png",
 ];
 
 /* Rotating hero copy. Slide 0 keeps the canonical brand line so the
@@ -177,7 +168,7 @@ export function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(90deg, rgba(10,26,51,0.93) 0%, rgba(10,26,51,0.72) 38%, rgba(10,26,51,0.30) 68%, rgba(10,26,51,0.55) 100%)",
+            "linear-gradient(90deg, rgba(8,21,43,0.96) 0%, rgba(8,21,43,0.90) 32%, rgba(8,21,43,0.66) 56%, rgba(8,21,43,0.38) 78%, rgba(8,21,43,0.58) 100%)",
         }}
         aria-hidden="true"
       />
@@ -224,7 +215,7 @@ export function Hero() {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <span
-              className="inline-block text-[11px] font-semibold tracking-[0.3em] uppercase"
+              className="inline-block text-[11px] font-semibold tracking-[0.3em] uppercase drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]"
               style={{
                 background: "var(--gradient-gold)",
                 WebkitBackgroundClip: "text",
@@ -235,12 +226,12 @@ export function Hero() {
               {slide.eyebrow}
             </span>
 
-            <h1 className="mt-4 text-[clamp(2.6rem,6.5vw,5rem)] font-bold leading-[1.06] mb-5 text-balance text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)]">
+            <h1 className="mt-4 text-[clamp(2.6rem,6.5vw,5rem)] font-bold leading-[1.06] mb-5 text-balance text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
               {slide.titlePre}
               <span className="gradient-text-gold">{slide.titleAccent}</span>
             </h1>
 
-            <p className="text-white/85 text-base md:text-lg max-w-2xl mb-8 leading-relaxed">
+            <p className="text-white/90 text-base md:text-lg max-w-2xl mb-8 leading-relaxed drop-shadow-[0_1px_10px_rgba(0,0,0,0.55)]">
               {slide.caption}
             </p>
           </motion.div>
