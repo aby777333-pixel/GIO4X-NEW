@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ship": "powershell -ExecutionPolicy Bypass -File ./ship.ps1"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.99.1",
