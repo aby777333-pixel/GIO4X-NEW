@@ -1,6 +1,6 @@
 "use client";
 
-import { HeroBackdrop } from "@/components/ui/HeroBackdrop";
+import { PageHero } from "@/components/ui/PageHero";
 
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -72,26 +72,16 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-72 pb-60 relative overflow-hidden">
-        <HeroBackdrop image="gio4x17.png" />
-        {/* Hero Visual Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-1/4 w-64 h-64 bg-[#29ABE2]/5 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />
-          <div className="absolute bottom-10 right-1/4 w-48 h-48 bg-[#1B3A6B]/10 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite_2s]" />
-          <div className="absolute top-1/2 right-10 w-32 h-32 bg-[#C9A84C]/5 rounded-full blur-2xl animate-[float_12s_ease-in-out_infinite_4s]" />
-        </div>
-        <div className="max-site text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-[#29ABE2] text-sm font-semibold tracking-[0.25em] uppercase">Contact Us</span>
-          </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-[var(--text-h1)] font-bold mt-4 mb-6">
-            Get in <span className="gradient-text">Touch</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto">
-            Have a question or need assistance? Our team is ready to help.
-          </motion.p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Contact Us"
+        image="gio4x17.png"
+        title={<>Get in <span className="gradient-text">Touch</span></>}
+        caption="Have a question or need assistance? Our team is ready to help."
+        ctas={[
+          { label: "Open an Account", href: SITE.signUpUrl },
+          { label: "Email Us", href: `mailto:${SITE.email}`, variant: "secondary" },
+        ]}
+      />
 
       {/* Contact Form + Info */}
       <section className="section-padding bg-[var(--color-surface)]">

@@ -1,8 +1,8 @@
 "use client";
 
-import { HeroBackdrop } from "@/components/ui/HeroBackdrop";
+import { PageHero } from "@/components/ui/PageHero";
+import { SITE } from "@/lib/constants";
 
-import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
@@ -59,28 +59,16 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-72 pb-60 relative overflow-hidden">
-        <HeroBackdrop image="gio13.png" />
-        {/* Hero Visual Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-1/4 w-64 h-64 bg-[#29ABE2]/5 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />
-          <div className="absolute bottom-10 right-1/4 w-48 h-48 bg-[#1B3A6B]/10 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite_2s]" />
-          <div className="absolute top-1/2 right-10 w-32 h-32 bg-[#C9A84C]/5 rounded-full blur-2xl animate-[float_12s_ease-in-out_infinite_4s]" />
-        </div>
-        <div className="max-site text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-[#29ABE2] text-sm font-semibold tracking-[0.25em] uppercase">About GIO4X</span>
-          </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-[var(--text-h1)] font-bold mt-4 mb-6">
-            The Gentleman&apos;s <span className="gradient-text">Forex Broker</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-[var(--color-text-secondary)] text-lg max-w-3xl mx-auto">
-            Since 2012, GIO4X has been delivering institutional-grade trading conditions to retail and professional traders worldwide.
-            With US$5.55 billion in daily trades, 41 currency pairs, and leverage up to 1:1000, we provide the tools,
-            technology, and transparency that every serious trader deserves — regardless of account size.
-          </motion.p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="About GIO4X"
+        image="gio13.png"
+        title={<>The Gentleman&apos;s <span className="gradient-text">Forex Broker</span></>}
+        caption="Since 2012, GIO4X has been delivering institutional-grade trading conditions to retail and professional traders worldwide. With US$5.55 billion in daily trades, 41 currency pairs, and leverage up to 1:1000, we provide the tools, technology, and transparency that every serious trader deserves — regardless of account size."
+        ctas={[
+          { label: "Open an Account", href: SITE.signUpUrl },
+          { label: "Contact Us", href: "/contact", variant: "secondary" },
+        ]}
+      />
 
       {/* Stats */}
       <section className="pb-16">

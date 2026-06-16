@@ -1,6 +1,6 @@
 "use client";
 
-import { HeroBackdrop } from "@/components/ui/HeroBackdrop";
+import { PageHero } from "@/components/ui/PageHero";
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -375,47 +375,18 @@ export default function EducationPage() {
 
   return (
     <>
-      {/* ─── Hero with animated gradient orbs ─── */}
-      <section className="pt-56 pb-40 relative overflow-hidden">
-        <HeroBackdrop image="gio4x12.png" />
-        {/* Animated gradient orbs */}
-        <motion.div
-          className="absolute top-20 -left-32 w-96 h-96 rounded-full opacity-15 blur-3xl pointer-events-none"
-          style={{ background: "radial-gradient(circle, #29ABE2 0%, transparent 70%)" }}
-          animate={{ x: [0, 40, 0], y: [0, -30, 0], scale: [1, 1.15, 1] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-0 right-0 w-80 h-80 rounded-full opacity-10 blur-3xl pointer-events-none"
-          style={{ background: "radial-gradient(circle, #1B3A6B 0%, transparent 70%)" }}
-          animate={{ x: [0, -30, 0], y: [0, 20, 0], scale: [1, 1.2, 1] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute top-40 right-1/4 w-64 h-64 rounded-full opacity-10 blur-3xl pointer-events-none"
-          style={{ background: "radial-gradient(circle, #06B6D4 0%, transparent 70%)" }}
-          animate={{ x: [0, 20, -20, 0], y: [0, -20, 10, 0] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        <div className="max-site text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-[#29ABE2] text-sm font-semibold tracking-[0.25em] uppercase">GIO4X Academy</span>
-          </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-[var(--text-h1)] font-bold mt-4 mb-6">
-            Master the Markets with <span className="gradient-text">Confidence</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-[var(--color-text-secondary)] text-lg max-w-3xl mx-auto mb-8">
-            Welcome to GIO4X Academy — the most comprehensive forex education platform. 10 full courses,
-            150+ lessons, live webinars, in-person seminars, and interactive Zoom classes. From your first pip
-            to automated trading mastery — all free for GIO4X clients.
-          </motion.p>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="flex flex-wrap justify-center gap-3">
-            <Button href="/accounts">Start Learning Free</Button>
-            <Button variant="secondary" href="#courses">Browse Courses</Button>
-          </motion.div>
-        </div>
-      </section>
+      {/* ─── Hero ─── */}
+      <PageHero
+        eyebrow="GIO4X Academy"
+        image="gio4x12.png"
+        paddingClass="pt-56 pb-40"
+        title={<>Master the Markets with <span className="gradient-text">Confidence</span></>}
+        caption="Welcome to GIO4X Academy — the most comprehensive forex education platform. 10 full courses, 150+ lessons, live webinars, in-person seminars, and interactive Zoom classes. From your first pip to automated trading mastery — all free for GIO4X clients."
+        ctas={[
+          { label: "Start Learning Free", href: "/accounts" },
+          { label: "Browse Courses", href: "#courses", variant: "secondary" },
+        ]}
+      />
 
       {/* ─── Quick Stats ─── */}
       <section className="pb-12">

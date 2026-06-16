@@ -1,8 +1,8 @@
 "use client";
 
-import { HeroBackdrop } from "@/components/ui/HeroBackdrop";
+import { PageHero } from "@/components/ui/PageHero";
+import { SITE } from "@/lib/constants";
 
-import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
@@ -31,28 +31,16 @@ export default function FundingPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-72 pb-60 relative overflow-hidden">
-        <HeroBackdrop image="gio4x21.png" />
-        {/* Hero Visual Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-1/4 w-64 h-64 bg-[#29ABE2]/5 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />
-          <div className="absolute bottom-10 right-1/4 w-48 h-48 bg-[#1B3A6B]/10 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite_2s]" />
-          <div className="absolute top-1/2 right-10 w-32 h-32 bg-[#C9A84C]/5 rounded-full blur-2xl animate-[float_12s_ease-in-out_infinite_4s]" />
-        </div>
-        <div className="max-site text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-[#29ABE2] text-sm font-semibold tracking-[0.25em] uppercase">Funding</span>
-          </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-[var(--text-h1)] font-bold mt-4 mb-6">
-            Deposits & <span className="gradient-text">Withdrawals</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-[var(--color-text-secondary)] text-lg max-w-3xl mx-auto">
-            Fund your GIO4X trading account quickly and securely. We accept 11 currencies, charge no internal
-            deposit fees, and process withdrawals within 1-2 business days. Your funds are always held in
-            segregated accounts across reliable banks.
-          </motion.p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Funding"
+        image="gio4x21.png"
+        title={<>Deposits & <span className="gradient-text">Withdrawals</span></>}
+        caption="Fund your GIO4X trading account quickly and securely. We accept 11 currencies, charge no internal deposit fees, and process withdrawals within 1-2 business days. Your funds are always held in segregated accounts across reliable banks."
+        ctas={[
+          { label: "Open an Account", href: SITE.signUpUrl },
+          { label: "Fund Your Account", href: SITE.signInUrl, variant: "secondary" },
+        ]}
+      />
 
       {/* Key Points */}
       <section className="pb-16">
