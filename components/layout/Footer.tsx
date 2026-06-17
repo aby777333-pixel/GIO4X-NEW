@@ -188,6 +188,7 @@ export function Footer() {
               <p className="font-medium text-[var(--color-text)] mb-1">Headquarters</p>
               <p>{SITE.hq}</p>
             </div>
+            {/* Support Office — hidden for now (restore by uncommenting)
             <div>
               <p className="font-medium text-[var(--color-text)] mb-1">Support Office</p>
               <p>{SITE.supportOffice}</p>
@@ -195,6 +196,7 @@ export function Footer() {
               <p>Phone: {SITE.phone}</p>
               <p>Hours: {SITE.hours}</p>
             </div>
+            */}
           </div>
         </div>
 
