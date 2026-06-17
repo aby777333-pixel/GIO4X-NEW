@@ -1,7 +1,7 @@
 "use client";
 
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+import { PageHero } from "@/components/ui/PageHero";
 import { CTABand } from "@/components/sections/CTABand";
 import { AlertTriangle, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -109,25 +109,14 @@ export default function RiskPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-56 pb-40 overflow-hidden">
-        {/* gradient orbs */}
-        <div className="absolute top-20 -left-32 w-[420px] h-[420px] rounded-full bg-amber-500/10 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-[320px] h-[320px] rounded-full bg-orange-500/10 blur-[100px] pointer-events-none" />
-
-        <div className="max-site section-padding relative z-10">
-          <AnimateOnScroll>
-            <SectionHeading
-              eyebrow="Legal"
-              title="Risk Disclosure"
-              subtitle="Please read this risk disclosure carefully before opening an account or placing any trades with GIO4X."
-            />
-          </AnimateOnScroll>
-
-          <p className="text-sm text-[var(--color-text-secondary)] text-center mt-2">
-            Last updated: March 2026
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Legal"
+        image="raptor30.png"
+        title="Risk Disclosure"
+        caption="Please read this risk disclosure carefully before opening an account or placing any trades with GIO4X."
+      >
+        <p className="mt-4 text-sm text-white/70">Last updated: March 2026</p>
+      </PageHero>
 
       {/* Amber Warning Banner */}
       <section className="section-padding !pt-0">

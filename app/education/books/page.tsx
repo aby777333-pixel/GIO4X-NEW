@@ -9,6 +9,7 @@ import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CTABand } from "@/components/sections/CTABand";
 import { BookOpen, X, ChevronRight, Scroll, Filter, Award, Star, TrendingUp, Target, Brain, Flame, ExternalLink, ShoppingCart } from "lucide-react";
+import { PageHero } from "@/components/ui/PageHero";
 
 /* ────────────────────────────────────────────────────────────
    Featured Stories Data
@@ -672,47 +673,12 @@ export default function BooksPage() {
   return (
     <>
       {/* ── Hero ────────────────────────────────────────────── */}
-      <section className="relative pt-56 pb-36 overflow-hidden">
-        {/* gradient orbs */}
-        <div className="pointer-events-none absolute -top-32 -left-32 w-[420px] h-[420px] rounded-full bg-[radial-gradient(circle,rgba(41,171,226,0.12),transparent_70%)] blur-2xl" />
-        <div className="pointer-events-none absolute -bottom-20 -right-24 w-[340px] h-[340px] rounded-full bg-[radial-gradient(circle,rgba(27,58,107,0.18),transparent_70%)] blur-2xl" />
-        {/* floating shapes */}
-        <motion.div
-          className="pointer-events-none absolute top-24 right-[12%] w-16 h-16 rounded-xl border border-[rgba(41,171,226,0.2)] rotate-12 opacity-40"
-          animate={{ y: [0, -12, 0], rotate: [12, 18, 12] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="pointer-events-none absolute bottom-8 left-[15%] w-10 h-10 rounded-full border border-[rgba(41,171,226,0.15)] opacity-30"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        <div className="max-site text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-[#29ABE2] text-sm font-semibold tracking-[0.25em] uppercase">
-              Education
-            </span>
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-[var(--text-h1)] font-bold mt-4 mb-6"
-          >
-            Stories &amp; <span className="gradient-text">Recommended Reading</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto"
-          >
-            Immersive trading narratives and curated books from the GIO4X
-            research team — essential learning for traders at every level.
-          </motion.p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Education"
+        image="raptor33.png"
+        title={<>Stories &amp; <span className="gradient-text">Recommended Reading</span></>}
+        caption="Immersive trading narratives and curated books from the GIO4X research team — essential learning for traders at every level."
+      />
 
       {/* ── Section 1: Featured Stories ─────────────────────── */}
       <section className="py-16 bg-[var(--color-surface)]">

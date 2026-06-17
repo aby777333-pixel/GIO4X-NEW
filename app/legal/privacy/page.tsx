@@ -1,18 +1,19 @@
 import { Metadata } from "next";
+import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = { title: "Privacy Policy" };
 
 export default function PrivacyPage() {
   return (
-    <section className="pt-56 section-padding relative overflow-hidden">
-      {/* Hero Visual Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-1/4 w-64 h-64 bg-[#29ABE2]/5 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />
-        <div className="absolute bottom-10 right-1/4 w-48 h-48 bg-[#1B3A6B]/10 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite_2s]" />
-        <div className="absolute top-1/2 right-10 w-32 h-32 bg-[#C9A84C]/5 rounded-full blur-2xl animate-[float_12s_ease-in-out_infinite_4s]" />
-      </div>
+    <>
+      <PageHero
+        eyebrow="Legal"
+        image="raptor31.png"
+        title="Privacy Policy"
+        caption="How GIO4X collects, uses, and protects your personal information."
+      />
+      <section className="section-padding relative overflow-hidden">
       <div className="max-site max-w-3xl relative z-10">
-        <h1 className="text-[var(--text-h1)] font-bold mb-8">Privacy Policy</h1>
         <p className="text-sm text-[var(--color-text-secondary)] mb-8">Last updated: March 2026</p>
 
         <div className="space-y-8 text-[var(--color-text-secondary)] leading-relaxed text-sm">
@@ -40,6 +41,7 @@ export default function PrivacyPage() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 
