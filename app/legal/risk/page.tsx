@@ -175,7 +175,7 @@ export default function RiskPage() {
             <div className="glass-panel p-6 border-[var(--color-border)]">
               <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed">
                 <strong className="text-[var(--color-text)]">
-                  GIO4X Ltd, Reg.No: 15807.
+                  GIO4X, a subsidiary of 777 Capital Markets Limited (UK), Company No. 17049134.
                 </strong>{" "}
                 By opening an account with GIO4X, you acknowledge that you have
                 read, understood, and accepted this Risk Disclosure document in

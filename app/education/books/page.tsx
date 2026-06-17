@@ -115,7 +115,7 @@ const featuredStories: FeaturedStory[] = [
     badge: "First-Person Narrative",
     badgeVariant: "success",
     excerpt:
-      "\"Abe\" was a self-confessed forex gambler — chasing losses, blowing accounts, and repeating the cycle. This deeply personal 10-chapter journey traces how he transformed from reckless speculation to disciplined investing through GIO4X's ICFXL Managed Account program.",
+      "\"Abe\" was a self-confessed forex gambler — chasing losses, blowing accounts, and repeating the cycle. This deeply personal 10-chapter journey traces how he transformed from reckless speculation to disciplined investing through GIO4X's Managed Account program.",
     chapters: [
       {
         title: "Chapter 1: The Forex Gambler",
@@ -167,9 +167,9 @@ const featuredStories: FeaturedStory[] = [
         ],
       },
       {
-        title: "Chapter 8: The ICFXL Managed Account",
+        title: "Chapter 8: The GIO4X Managed Account",
         paragraphs: [
-          "That is when I found GIO4X's ICFXL Managed Account program. What immediately stood out was the transparency: a verifiable track record, regulated brokerage structure, and a philosophy centered on capital preservation rather than aggressive returns. They did not promise the moon — they promised disciplined, risk-managed trading.",
+          "That is when I found GIO4X's Managed Account program. What immediately stood out was the transparency: a verifiable track record, regulated brokerage structure, and a philosophy centered on capital preservation rather than aggressive returns. They did not promise the moon — they promised disciplined, risk-managed trading.",
           "The setup was exactly what I needed: my funds stayed in my own trading account (I retained full visibility and withdrawal capability), the trading was executed by experienced professionals using systematic strategies, and the fee structure was performance-based — they only earned when I earned. This alignment of interests gave me confidence.",
         ],
       },
@@ -184,7 +184,7 @@ const featuredStories: FeaturedStory[] = [
         title: "Chapter 10: A New Outlook on Forex",
         paragraphs: [
           "Looking back, my transformation was not from \"loser\" to \"winner\" — it was from gambler to investor. I stopped trying to be something I was not (a self-directed trader) and embraced a model that played to my strengths (capital allocation and patience). I still study the markets, but as an informed investor, not an anxious speculator.",
-          "Forex is no longer a source of stress in my life. It is a legitimate, professionally managed component of my investment portfolio. I credit GIO4X and the ICFXL team for not just making me profits, but for teaching me the most important lesson of all: the best traders are not always the ones pressing the buttons — sometimes they are the ones wise enough to let professionals do it for them.",
+          "Forex is no longer a source of stress in my life. It is a legitimate, professionally managed component of my investment portfolio. I credit GIO4X and its team for not just making me profits, but for teaching me the most important lesson of all: the best traders are not always the ones pressing the buttons — sometimes they are the ones wise enough to let professionals do it for them.",
         ],
       },
     ],

@@ -18,9 +18,11 @@ const orgSchema = {
   ],
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Mutsamudu",
-    addressRegion: "Autonomous Island of Anjouan",
-    addressCountry: "KM",
+    streetAddress: "2nd Floor College House, 17 King Edwards Road",
+    addressLocality: "Ruislip",
+    addressRegion: "London",
+    postalCode: "HA4 7AE",
+    addressCountry: "GB",
   },
   contactPoint: {
     "@type": "ContactPoint",

@@ -105,7 +105,8 @@ export default function AboutPage() {
                 <strong className="text-[var(--color-text)]"> 1:1000</strong> (ECN DMA NDD: 1:100), and is fully compatible with all Expert Advisors and Trading Robots.
               </p>
               <p className="text-[var(--color-text-secondary)] leading-relaxed">
-                Registered at Reg.No: 15807, Hamchako, Mutsamudu, Autonomous Island of Anjouan, Union of Comoros, with a support office at
+                A subsidiary of 777 Capital Markets Limited (United Kingdom), Company No. 17049134, with its registered office at
+                2nd Floor College House, 17 King Edwards Road, Ruislip, London, HA4 7AE, United Kingdom, and a support office at
                 No 48 Immanual Complex, Thirunagar Katpadi, Vellore - 632006, Tamilnadu, India, GIO4X serves traders from offices in the
                 UK, UAE, Singapore, South Africa, and across India.
               </p>
@@ -304,7 +305,8 @@ export default function AboutPage() {
                 <div>
                   <h3 className="font-semibold mb-2">Registration Details</h3>
                   <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                    GIO4X is registered at Reg.No: 15807, Hamchako, Mutsamudu, Autonomous Island of Anjouan, Union of Comoros.
+                    GIO4X is a subsidiary of 777 Capital Markets Limited (United Kingdom), Company No. 17049134, with its registered
+                    office at 2nd Floor College House, 17 King Edwards Road, Ruislip, London, HA4 7AE, United Kingdom.
                     We adhere to strict compliance protocols to ensure the safety and security of our clients&apos; funds and data.
                   </p>
                 </div>

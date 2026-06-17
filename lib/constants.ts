@@ -24,7 +24,7 @@ export const SITE = {
     "Access global markets with institutional-grade execution, razor-thin spreads, and a platform built for serious traders.",
   email: "support@gio4x.com",
   phone: "+91 1111 1111 11111",
-  hq: "Reg.No: 15807, Hamchako, Mutsamudu, Autonomous Island of Anjouan, Union of Comoros",
+  hq: "777 Capital Markets Limited, 2nd Floor College House, 17 King Edwards Road, Ruislip, London, HA4 7AE, United Kingdom",
   supportOffice:
     "No 48 Immanual Complex, Thirunagar Katpadi, Vellore - 632006, Tamilnadu, India",
   hours: "24/7 Support",

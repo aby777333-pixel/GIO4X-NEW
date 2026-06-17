@@ -206,7 +206,7 @@ export function Footer() {
             work against you as well as for you. Before deciding to trade foreign exchange you should carefully
             consider your investment objectives, level of experience, and risk appetite. The possibility exists that
             you could sustain a loss of some or all of your initial investment and therefore you should not invest
-            money that you cannot afford to lose. GIO4X Ltd, Reg.No: 15807.
+            money that you cannot afford to lose. GIO4X, a subsidiary of 777 Capital Markets Limited (UK), Company No. 17049134.
           </p>
         </div>
 
