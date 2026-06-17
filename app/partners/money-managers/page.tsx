@@ -1,15 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
-import { Button } from "@/components/ui/Button";
 import { CTABand } from "@/components/sections/CTABand";
-import { Badge } from "@/components/ui/Badge";
+import { PageHero } from "@/components/ui/PageHero";
 import { SITE } from "@/lib/constants";
 import {
   Users, DollarSign, BarChart3, Headphones, Settings, Shield,
-  CheckCircle, ArrowRight
+  CheckCircle
 } from "lucide-react";
 
 const features = [
@@ -67,29 +65,16 @@ export default function MoneyManagersPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-72 pb-60 relative overflow-hidden">
-        {/* Hero Visual Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-1/4 w-64 h-64 bg-[#29ABE2]/5 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />
-          <div className="absolute bottom-10 right-1/4 w-48 h-48 bg-[#1B3A6B]/10 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite_2s]" />
-          <div className="absolute top-1/2 right-10 w-32 h-32 bg-[#C9A84C]/5 rounded-full blur-2xl animate-[float_12s_ease-in-out_infinite_4s]" />
-        </div>
-        <div className="max-site text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <Badge variant="sky">Partners</Badge>
-          </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-[var(--text-h1)] font-bold mt-4 mb-4">
-            Money Managers <span className="gradient-text">Program</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto">
-            Professional fund management infrastructure for experienced traders. Manage client capital with institutional-grade tools, transparent fee structures, and dedicated support.
-          </motion.p>
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-            <Button href={SITE.signUpUrl} size="lg">Apply Now <ArrowRight className="w-5 h-5" /></Button>
-            <Button variant="secondary" href="/contact" size="lg">Talk to Our Team</Button>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Partners"
+        image="raptor27.png"
+        title={<>Money Managers <span className="gradient-text">Program</span></>}
+        caption="Professional fund management infrastructure for experienced traders. Manage client capital with institutional-grade tools, transparent fee structures, and dedicated support."
+        ctas={[
+          { label: "Apply Now", href: SITE.signUpUrl },
+          { label: "Talk to Our Team", href: "/contact", variant: "secondary" },
+        ]}
+      />
 
       {/* Features */}
       <section className="section-padding bg-[var(--color-surface)]">

@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CTABand } from "@/components/sections/CTABand";
+import { PageHero } from "@/components/ui/PageHero";
+import { SITE } from "@/lib/constants";
 import { Search } from "lucide-react";
 
 const glossaryTerms = [
@@ -226,41 +227,18 @@ export default function GlossaryPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-56 pb-36">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-1/4 w-64 h-64 bg-[#29ABE2]/5 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />
-          <div className="absolute bottom-10 right-1/4 w-48 h-48 bg-[#1B3A6B]/10 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite_2s]" />
-        </div>
-        <div className="max-site text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-[#29ABE2] text-sm font-semibold tracking-[0.25em] uppercase">Education</span>
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-[var(--text-h1)] font-bold mt-4 mb-6"
-          >
-            Trading <span className="gradient-text">Glossary</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto"
-          >
-            Over 130 essential forex trading terms explained. From Aggregate Demand to Yield — your comprehensive A-Z terminology reference.
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-[var(--color-text-secondary)] text-sm mt-3"
-          >
-            {glossaryTerms.length} terms &bull; Updated regularly
-          </motion.p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Education"
+        image="raptor28.png"
+        title={<>Trading <span className="gradient-text">Glossary</span></>}
+        caption="Over 130 essential forex trading terms explained. From Aggregate Demand to Yield — your comprehensive A-Z terminology reference."
+        ctas={[
+          { label: "Open an Account", href: SITE.signUpUrl },
+          { label: "Explore Education", href: "/education", variant: "secondary" },
+        ]}
+      >
+        <p className="mt-4 text-sm text-white/70">{glossaryTerms.length} terms · Updated regularly</p>
+      </PageHero>
 
       {/* Search + Alphabet + Terms */}
       <section className="py-12 bg-[var(--color-surface)]">

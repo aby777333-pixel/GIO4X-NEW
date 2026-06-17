@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { Button } from "@/components/ui/Button";
 import { CTABand } from "@/components/sections/CTABand";
+import { PageHero } from "@/components/ui/PageHero";
+import { SITE } from "@/lib/constants";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 const faqCategories = [
@@ -136,23 +138,16 @@ export default function FAQPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-56 pb-36 overflow-hidden">
-        {/* Gradient orbs */}
-        <div className="absolute top-20 left-1/4 w-[400px] h-[400px] bg-[#29ABE2]/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute top-40 right-1/4 w-[300px] h-[300px] bg-[#1B3A6B]/15 rounded-full blur-[100px] pointer-events-none" />
-
-        <div className="max-site text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-[#29ABE2] text-sm font-semibold tracking-[0.25em] uppercase">Support</span>
-          </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-[var(--text-h1)] font-bold mt-4 mb-4">
-            Frequently Asked <span className="gradient-text">Questions</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto">
-            Everything you need to know about trading with GIO4X. Browse by category or search through {faqs.length}+ answers below.
-          </motion.p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Support"
+        image="raptor29.png"
+        title={<>Frequently Asked <span className="gradient-text">Questions</span></>}
+        caption={<>Everything you need to know about trading with GIO4X. Browse by category or search through {faqs.length}+ answers below.</>}
+        ctas={[
+          { label: "Contact Support", href: "/contact" },
+          { label: "Open an Account", href: SITE.signUpUrl, variant: "secondary" },
+        ]}
+      />
 
       {/* FAQ Section */}
       <section className="py-12 bg-[var(--color-surface)]">

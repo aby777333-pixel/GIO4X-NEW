@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { CTABand } from "@/components/sections/CTABand";
-import { Badge } from "@/components/ui/Badge";
+import { PageHero } from "@/components/ui/PageHero";
+import { SITE } from "@/lib/constants";
 import {
   Shield, Landmark, ShieldCheck, Scale, Lock, CheckCircle
 } from "lucide-react";
@@ -48,25 +48,16 @@ export default function ClientFundSecurityPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-72 pb-60 relative overflow-hidden">
-        {/* Hero Visual Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-1/4 w-64 h-64 bg-[#29ABE2]/5 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />
-          <div className="absolute bottom-10 right-1/4 w-48 h-48 bg-[#1B3A6B]/10 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite_2s]" />
-          <div className="absolute top-1/2 right-10 w-32 h-32 bg-[#C9A84C]/5 rounded-full blur-2xl animate-[float_12s_ease-in-out_infinite_4s]" />
-        </div>
-        <div className="max-site text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <Badge variant="sky">Security</Badge>
-          </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-[var(--text-h1)] font-bold mt-4 mb-4">
-            Client Fund <span className="gradient-text">Security</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto">
-            Your capital is protected by multiple layers of security, from segregated banking to negative balance protection.
-          </motion.p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Security"
+        image="raptor24.png"
+        title={<>Client Fund <span className="gradient-text">Security</span></>}
+        caption="Your capital is protected by multiple layers of security, from segregated banking to negative balance protection."
+        ctas={[
+          { label: "Open an Account", href: SITE.signUpUrl },
+          { label: "Contact Us", href: "/contact", variant: "secondary" },
+        ]}
+      />
 
       {/* Trust Indicators */}
       <section className="pb-12">
