@@ -82,7 +82,13 @@ export default function CareersPage() {
                       </span>
                     </div>
                   </div>
-                  <Button variant="secondary" size="sm">Apply</Button>
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    href={`mailto:careers@gio4x.com?subject=${encodeURIComponent(`Application: ${job.title}`)}`}
+                  >
+                    Apply
+                  </Button>
                 </Card>
               </AnimateOnScroll>
             ))}
