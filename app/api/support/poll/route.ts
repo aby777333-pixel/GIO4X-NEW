@@ -43,8 +43,13 @@ export async function GET(req: Request) {
 
   const { data: messages } = await query;
 
-  return NextResponse.json({
-    status: conv.status as string,
-    messages: messages ?? [],
-  });
+  // Never let a CDN/browser cache a poll response — staff replies must always
+  // reach the guest on the very next tick, regardless of conversation status.
+  return NextResponse.json(
+    {
+      status: conv.status as string,
+      messages: messages ?? [],
+    },
+    { headers: { "cache-control": "no-store, max-age=0" } },
+  );
 }

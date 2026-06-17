@@ -9,7 +9,7 @@ type Msg = { id: string; role: "user" | "assistant"; content: string };
 type GuestMsg = { id: string; body: string; is_staff_reply: boolean; created_at: string };
 
 const STORAGE_KEY = "gio4x_support_conversation";
-const POLL_MS = 4000;
+const POLL_MS = 2500;
 
 const GREETING =
   "Hi, I'm Gio 👋 — your GIO4X assistant. Ask me about accounts, spreads, funding, the Raptor platform, or anything else. I can also connect you to a human agent.";
