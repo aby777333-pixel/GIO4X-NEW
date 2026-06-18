@@ -17,6 +17,9 @@ export interface NavLink {
 // When the custom domain (e.g. raptor.gio4x.com) is live, swap this one value.
 export const RAPTOR_BASE = "https://dashing-hamster-0028ed.netlify.app";
 
+// GIO4X client portal (app.gio4x.com) — where Sign In / Open Account land.
+export const APP_BASE = "https://app.gio4x.com";
+
 export const SITE = {
   name: "GIO4X",
   slogan: "The Gentleman's Forex Broker.",
@@ -28,8 +31,8 @@ export const SITE = {
   supportOffice:
     "No 48 Immanual Complex, Thirunagar Katpadi, Vellore - 632006, Tamilnadu, India",
   hours: "24/7 Support",
-  signInUrl: `${RAPTOR_BASE}/auth/login`,
-  signUpUrl: `${RAPTOR_BASE}/auth/register`,
+  signInUrl: `${APP_BASE}/auth/login?redirect=%2F`,
+  signUpUrl: `${APP_BASE}/auth/signup`,
   ibUrl: `${RAPTOR_BASE}/auth/broker-login`,
   demoUrl: `${RAPTOR_BASE}/terminal`,
   platformUrl: `${RAPTOR_BASE}/terminal`,
