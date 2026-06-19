@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { CTABand } from "@/components/sections/CTABand";
+import { SITE } from "@/lib/constants";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import {
   BookOpen, BarChart3, Globe, Shield, Monitor, GraduationCap, PlayCircle,
@@ -779,7 +780,7 @@ export default function EducationPage() {
               for GIO4X clients. Open an account today and gain access to everything you need to trade with confidence.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button href="/accounts">Open Free Account</Button>
+              <Button href={SITE.signUpUrl}>Open Free Account</Button>
               <Button variant="secondary" href="/platforms">Explore Raptor Platform</Button>
             </div>
           </AnimateOnScroll>

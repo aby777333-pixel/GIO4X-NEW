@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { CTABand } from "@/components/sections/CTABand";
+import { SITE } from "@/lib/constants";
 import {
   Users, Settings, Eye, Bot, BarChart3,
   ChevronDown, UserPlus, CreditCard, Copy, Monitor,
@@ -261,7 +262,7 @@ export default function CopyTradingPage() {
 
           {/* Internal links */}
           <div className="flex flex-wrap justify-center gap-4 mt-10">
-            <Link href="/accounts" className="text-sm text-[#29ABE2] hover:underline">Open a Trading Account &rarr;</Link>
+            <Link href={SITE.signUpUrl} className="text-sm text-[#29ABE2] hover:underline">Open a Trading Account &rarr;</Link>
             <Link href="/funding" className="text-sm text-[#29ABE2] hover:underline">Deposit & Withdrawal Methods &rarr;</Link>
             <Link href="/education" className="text-sm text-[#29ABE2] hover:underline">Learn Forex Trading &rarr;</Link>
           </div>

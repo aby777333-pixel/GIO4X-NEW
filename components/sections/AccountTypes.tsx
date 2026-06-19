@@ -4,7 +4,7 @@ import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { ACCOUNT_TYPES } from "@/lib/constants";
+import { ACCOUNT_TYPES, SITE } from "@/lib/constants";
 import { Check, X } from "lucide-react";
 
 export function AccountTypes() {
@@ -64,7 +64,7 @@ export function AccountTypes() {
                 <Button
                   variant={account.highlighted ? "primary" : "secondary"}
                   className="w-full"
-                  href="/accounts"
+                  href={SITE.signUpUrl}
                 >
                   Open {account.name} Account
                 </Button>

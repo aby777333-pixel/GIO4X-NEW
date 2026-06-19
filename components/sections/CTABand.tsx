@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+import { SITE } from "@/lib/constants";
 
 export function CTABand() {
   return (
@@ -27,7 +28,7 @@ export function CTABand() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.a
-              href="/accounts"
+              href={SITE.signUpUrl}
               className="inline-flex items-center justify-center gap-2 font-medium px-8 py-4 text-lg rounded-xl bg-white text-[#1B3A6B] hover:bg-white/90 transition-all duration-300 cursor-pointer shadow-lg"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
