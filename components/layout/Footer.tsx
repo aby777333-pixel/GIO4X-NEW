@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 import { SITE } from "@/lib/constants";
+import { supabase } from "@/lib/supabase";
 
 const footerLinks = {
   Trading: [
@@ -97,13 +98,18 @@ export function Footer() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
-      setSubscribed(true);
-      setEmail("");
-      setTimeout(() => setSubscribed(false), 4000);
+    if (!email.trim()) return;
+    try {
+      // 23505 = already subscribed; treat as success either way.
+      await supabase.from("newsletter_subscribers").insert({ email: email.trim(), source: "footer" });
+    } catch {
+      // best-effort — don't block the UX on a network hiccup
     }
+    setSubscribed(true);
+    setEmail("");
+    setTimeout(() => setSubscribed(false), 4000);
   };
 
   return (

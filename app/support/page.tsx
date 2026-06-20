@@ -8,6 +8,7 @@ import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { CTABand } from "@/components/sections/CTABand";
 import { PageHero } from "@/components/ui/PageHero";
 import { SITE } from "@/lib/constants";
+import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import {
   MessageCircle, Mail, Phone, BookOpen, Download, Settings,
@@ -38,12 +39,30 @@ export default function SupportPage() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTicketForm({ name: "", email: "", subject: "", category: "general", message: "" });
-    setTimeout(() => setSubmitted(false), 5000);
+    setLoading(true);
+    setError("");
+    try {
+      const { error: dbError } = await supabase.from("support_tickets").insert({
+        name: ticketForm.name,
+        email: ticketForm.email,
+        subject: ticketForm.subject,
+        category: ticketForm.category,
+        message: ticketForm.message,
+      });
+      if (dbError) throw dbError;
+      setSubmitted(true);
+      setTicketForm({ name: "", email: "", subject: "", category: "general", message: "" });
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch {
+      setError("Could not submit your ticket. Please try again or email us directly.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -208,7 +227,8 @@ export default function SupportPage() {
                       placeholder="Describe your issue in detail..."
                     />
                   </div>
-                  <Button type="submit" className="w-full">Submit Ticket</Button>
+                  {error && <p className="text-red-400 text-sm">{error}</p>}
+                  <Button type="submit" loading={loading} className="w-full">Submit Ticket</Button>
                 </form>
               )}
             </div>
