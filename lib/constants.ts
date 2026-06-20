@@ -25,7 +25,7 @@ export const SITE = {
   slogan: "The Gentleman's Forex Broker.",
   description:
     "Access global markets with institutional-grade execution, razor-thin spreads, and a platform built for serious traders.",
-  email: "support@gio4x.com",
+  email: "info@gio4x.com",
   phone: "+91 1111 1111 11111",
   hq: "777 Capital Markets Limited, 2nd Floor College House, 17 King Edwards Road, Ruislip, London, HA4 7AE, United Kingdom",
   supportOffice:

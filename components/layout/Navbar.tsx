@@ -211,10 +211,8 @@ export function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "glass-panel rounded-none border-x-0 border-t-0"
-            : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-panel rounded-none border-x-0 border-t-0 ${
+          scrolled ? "shadow-lg shadow-black/5" : ""
         }`}
       >
         <div className="max-site flex items-center justify-between h-16">

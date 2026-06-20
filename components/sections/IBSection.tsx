@@ -2,6 +2,7 @@
 
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SITE } from "@/lib/constants";
 import { CheckCircle, Users } from "lucide-react";
@@ -32,16 +33,8 @@ export function IBSection() {
                 Partner with GIO4X and earn industry-leading rebates on every lot your referred clients trade.
                 Our IB programme is designed for professionals who want to build a sustainable revenue stream.
               </p>
-              <ul className="space-y-3 mb-8">
-                {benefits.map((b) => (
-                  <li key={b} className="flex items-start gap-2 text-sm">
-                    <CheckCircle className="w-4 h-4 text-[#29ABE2] shrink-0 mt-0.5" />
-                    <span className="text-[var(--color-text-secondary)]">{b}</span>
-                  </li>
-                ))}
-              </ul>
               <div className="flex flex-wrap gap-3">
-                <Button href={SITE.ibUrl} size="md">
+                <Button href={SITE.signUpUrl} size="md">
                   Register as IB
                 </Button>
                 <Button variant="secondary" href="/partners" size="md">
@@ -75,6 +68,18 @@ export function IBSection() {
               </div>
             </div>
           </AnimateOnScroll>
+        </div>
+
+        {/* Benefits — 3 cards per row (3 + 3), responsive down to 1 on mobile */}
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {benefits.map((b, i) => (
+            <AnimateOnScroll key={b} delay={i * 0.08}>
+              <Card className="h-full flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-[#29ABE2] shrink-0 mt-0.5" />
+                <span className="text-sm text-[var(--color-text-secondary)] leading-relaxed">{b}</span>
+              </Card>
+            </AnimateOnScroll>
+          ))}
         </div>
       </div>
     </section>

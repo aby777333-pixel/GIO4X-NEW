@@ -96,7 +96,7 @@ export default function PartnersPage() {
         title={<>Maximise Your Earnings: <span className="gradient-text">Top Rebates for Introducing Brokers</span></>}
         caption="Partner with GIO4X and unlock industry-leading rebate rates, real-time tracking, multi-tier IB structures, and daily payouts. Whether you are an Introducing Broker, affiliate, or looking to launch your own brand, we have a partnership model designed for your success."
         ctas={[
-          { label: "Become a Partner", href: SITE.ibUrl },
+          { label: "Become a Partner", href: SITE.signUpUrl },
           { label: "Contact Us", href: "/contact", variant: "secondary" },
         ]}
       />
