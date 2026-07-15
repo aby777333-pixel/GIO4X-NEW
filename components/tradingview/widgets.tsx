@@ -5,17 +5,15 @@
 
 import { TVWidget } from "./TVWidget";
 
+// Ticker symbols per "Trading view widgets.docx" (under-menu ticker tape).
 const FX_SYMBOLS = [
+  { proName: "FOREXCOM:SPXUSD", title: "S&P 500" },
+  { proName: "FOREXCOM:NSXUSD", title: "US 100" },
+  { proName: "FOREXCOM:DJI", title: "Dow 30" },
   { proName: "FX:EURUSD", title: "EUR/USD" },
-  { proName: "FX:GBPUSD", title: "GBP/USD" },
-  { proName: "FX:USDJPY", title: "USD/JPY" },
-  { proName: "OANDA:XAUUSD", title: "Gold" },
   { proName: "BITSTAMP:BTCUSD", title: "Bitcoin" },
   { proName: "BITSTAMP:ETHUSD", title: "Ethereum" },
-  { proName: "BLACKBULL:US30", title: "Dow 30" },
-  { proName: "NASDAQ:NDX", title: "Nasdaq 100" },
-  { proName: "SP:SPX", title: "S&P 500" },
-  { proName: "TVC:USOIL", title: "WTI Oil" },
+  { proName: "CMCMARKETS:GOLD", title: "Gold" },
 ];
 
 /** Scrolling ticker tape — real-time TradingView prices. */

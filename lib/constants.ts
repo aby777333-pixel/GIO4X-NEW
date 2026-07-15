@@ -76,6 +76,7 @@ export const NAV_LINKS: NavLink[] = [
     href: "/tools",
     children: [
       { label: "Trading Calculators", href: "/tools" },
+      { label: "Market Widgets", href: "/tools/market-widgets" },
       { label: "Algorator", href: "/tools/algorator" },
       { label: "GIO Bots", href: "/tools/gio-bots" },
     ],
