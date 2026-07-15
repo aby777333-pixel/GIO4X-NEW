@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ChatWidget } from "@/components/chat/ChatWidget";
+import { TVTickerTape } from "@/components/tradingview/widgets";
 import { themeScript } from "@/lib/theme";
 import "./globals.css";
 
@@ -96,6 +97,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <ThemeProvider>
           <Navbar />
+          <TVTickerTape />
           <main className="min-h-screen">{children}</main>
           <Footer />
           <ChatWidget />

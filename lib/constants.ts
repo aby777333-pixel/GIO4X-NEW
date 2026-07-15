@@ -48,6 +48,7 @@ export const NAV_LINKS: NavLink[] = [
     label: "Markets",
     href: "/markets",
     children: [
+      { label: "Live Markets", href: "/markets/live" },
       { label: "Forex", href: "/markets?tab=forex" },
       { label: "Metals", href: "/markets?tab=metals" },
       { label: "CFDs", href: "/markets?tab=cfds" },
