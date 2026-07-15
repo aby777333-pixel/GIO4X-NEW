@@ -6,46 +6,51 @@
 
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TVWidget } from "@/components/tradingview/TVWidget";
-import { TVElement } from "@/components/tradingview/TVElement";
 
-const MARKET_DATA_SECTIONS = JSON.stringify([
+// Doc-specified market-data sections, served through the classic
+// market-quotes embed (the web-component variant failed to load data).
+const MARKET_DATA_GROUPS = [
   {
-    sectionName: "Indices",
+    name: "Indices",
     symbols: [
-      "FOREXCOM:SPXUSD",
-      "FOREXCOM:NSXUSD",
-      "FOREXCOM:DJI",
-      "INDEX:NKY",
-      "INDEX:DEU40",
-      "FOREXCOM:UKXGBP",
+      { name: "FOREXCOM:SPXUSD", displayName: "S&P 500" },
+      { name: "FOREXCOM:NSXUSD", displayName: "US 100" },
+      { name: "FOREXCOM:DJI", displayName: "Dow 30" },
+      { name: "INDEX:NKY", displayName: "Nikkei 225" },
+      { name: "INDEX:DEU40", displayName: "DAX 40" },
+      { name: "FOREXCOM:UKXGBP", displayName: "FTSE 100" },
     ],
   },
   {
-    sectionName: "Futures",
+    name: "Futures",
     symbols: [
-      "BMFBOVESPA:ISP1!",
-      "BMFBOVESPA:EUR1!",
-      "CMCMARKETS:GOLD",
-      "TVC:USOIL",
-      "BMFBOVESPA:CCM1!",
+      { name: "BMFBOVESPA:ISP1!", displayName: "S&P 500 Futures" },
+      { name: "BMFBOVESPA:EUR1!", displayName: "Euro Futures" },
+      { name: "CMCMARKETS:GOLD", displayName: "Gold" },
+      { name: "TVC:USOIL", displayName: "WTI Crude" },
+      { name: "BMFBOVESPA:CCM1!", displayName: "Corn Futures" },
     ],
   },
   {
-    sectionName: "Bonds",
-    symbols: ["EUREX:FGBL1!", "EUREX:FBTP1!", "EUREX:FGBM1!"],
-  },
-  {
-    sectionName: "Forex",
+    name: "Bonds",
     symbols: [
-      "FX:EURUSD",
-      "FX:GBPUSD",
-      "FX:USDJPY",
-      "FX:USDCHF",
-      "FX:AUDUSD",
-      "FX:USDCAD",
+      { name: "EUREX:FGBL1!", displayName: "Euro Bund" },
+      { name: "EUREX:FBTP1!", displayName: "Euro BTP" },
+      { name: "EUREX:FGBM1!", displayName: "Euro BOBL" },
     ],
   },
-]);
+  {
+    name: "Forex",
+    symbols: [
+      { name: "FX:EURUSD", displayName: "EUR/USD" },
+      { name: "FX:GBPUSD", displayName: "GBP/USD" },
+      { name: "FX:USDJPY", displayName: "USD/JPY" },
+      { name: "FX:USDCHF", displayName: "USD/CHF" },
+      { name: "FX:AUDUSD", displayName: "AUD/USD" },
+      { name: "FX:USDCAD", displayName: "USD/CAD" },
+    ],
+  },
+];
 
 function Panel({
   title,
@@ -79,10 +84,18 @@ export function MarketWidgetsBoard() {
           subtitle="Live quotes across the major asset classes."
         />
         <Panel title="Market Data">
-          <TVElement
-            tag="tv-market-data"
-            attrs={{ "symbol-sectors": MARKET_DATA_SECTIONS }}
-            minHeight={560}
+          <TVWidget
+            widget="market-quotes"
+            height={560}
+            config={{
+              width: "100%",
+              height: "100%",
+              symbolsGroups: MARKET_DATA_GROUPS,
+              showSymbolLogo: true,
+              isTransparent: false,
+              colorTheme: "dark",
+              locale: "en",
+            }}
           />
         </Panel>
 
@@ -94,13 +107,31 @@ export function MarketWidgetsBoard() {
         />
         <div className="grid gap-6 lg:grid-cols-2">
           <Panel title="Forex Cross Rates">
-            <TVElement tag="tv-forex-table" minHeight={460} />
+            <TVWidget
+              widget="forex-cross-rates"
+              height={460}
+              config={{
+                width: "100%",
+                height: "100%",
+                currencies: ["EUR", "USD", "JPY", "GBP", "CHF", "AUD", "CAD", "NZD"],
+                isTransparent: false,
+                colorTheme: "dark",
+                locale: "en",
+              }}
+            />
           </Panel>
           <Panel title="Forex Heat Map">
-            <TVElement
-              tag="tv-forex-table"
-              attrs={{ "displayed-value": "dailyChange", heatmap: true }}
-              minHeight={460}
+            <TVWidget
+              widget="forex-heat-map"
+              height={460}
+              config={{
+                width: "100%",
+                height: "100%",
+                currencies: ["EUR", "USD", "JPY", "GBP", "CHF", "AUD", "CAD", "NZD"],
+                isTransparent: false,
+                colorTheme: "dark",
+                locale: "en",
+              }}
             />
           </Panel>
         </div>
@@ -163,17 +194,28 @@ export function MarketWidgetsBoard() {
                 colorTheme: "dark",
                 displayMode: "regular",
                 isTransparent: false,
+                largeChartUrl: "",
                 locale: "en",
                 width: "100%",
-                height: 550,
+                height: "100%",
               }}
             />
           </Panel>
           <Panel title="Technical Analysis — AAPL">
-            <TVElement
-              tag="tv-technical-analysis"
-              attrs={{ symbol: "NASDAQ:AAPL" }}
-              minHeight={550}
+            <TVWidget
+              widget="technical-analysis"
+              height={550}
+              config={{
+                interval: "1D",
+                width: "100%",
+                height: "100%",
+                isTransparent: false,
+                symbol: "NASDAQ:AAPL",
+                showIntervalTabs: true,
+                displayMode: "single",
+                colorTheme: "dark",
+                locale: "en",
+              }}
             />
           </Panel>
         </div>
