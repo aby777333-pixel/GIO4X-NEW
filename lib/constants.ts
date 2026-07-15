@@ -14,11 +14,12 @@ export interface NavLink {
 }
 
 // GIO Raptor platform — the trading app GIO4X funnels into.
+// 2026 SEP build: terminal + client portal live together on raptor2026sep.
 // When the custom domain (e.g. raptor.gio4x.com) is live, swap this one value.
-export const RAPTOR_BASE = "https://dashing-hamster-0028ed.netlify.app";
+export const RAPTOR_BASE = "https://raptor2026sep.netlify.app";
 
-// GIO4X client portal (app.gio4x.com) — where Sign In / Open Account land.
-export const APP_BASE = "https://app.gio4x.com";
+// GIO4X client area — Sign In / Open Account land on the Raptor platform.
+export const APP_BASE = RAPTOR_BASE;
 
 export const SITE = {
   name: "GIO4X",
@@ -31,8 +32,8 @@ export const SITE = {
   supportOffice:
     "No 48 Immanual Complex, Thirunagar Katpadi, Vellore - 632006, Tamilnadu, India",
   hours: "24/7 Support",
-  signInUrl: `${APP_BASE}/auth/login?redirect=%2F`,
-  signUpUrl: `${APP_BASE}/auth/signup`,
+  signInUrl: `${APP_BASE}/auth/login?redirect=%2Fdashboard`,
+  signUpUrl: `${APP_BASE}/auth/register`,
   ibUrl: `${RAPTOR_BASE}/auth/broker-login`,
   demoUrl: `${RAPTOR_BASE}/terminal`,
   platformUrl: `${RAPTOR_BASE}/terminal`,
