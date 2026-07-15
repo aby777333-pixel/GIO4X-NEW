@@ -32,7 +32,9 @@ export const SITE = {
     "No 48 Immanual Complex, Thirunagar Katpadi, Vellore - 632006, Tamilnadu, India",
   hours: "24/7 Support",
   signInUrl: `${APP_BASE}/auth/login?redirect=%2F`,
-  signUpUrl: `${APP_BASE}/auth/signup`,
+  // Open Account funnels through the account-types page first; each account
+  // card then deep-links portal signup with its plan (see AccountTypes.tsx).
+  signUpUrl: "/accounts",
   ibUrl: `${APP_BASE}/ib`,
   demoUrl: `${RAPTOR_BASE}/terminal`,
   platformUrl: `${RAPTOR_BASE}/terminal`,
