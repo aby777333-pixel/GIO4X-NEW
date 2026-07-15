@@ -9,7 +9,7 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { CTABand } from "@/components/sections/CTABand";
-import { ACCOUNT_TYPES, SITE } from "@/lib/constants";
+import { ACCOUNT_TYPES, APP_BASE, SITE } from "@/lib/constants";
 import { Check, X, ChevronDown, ChevronUp, FileText, Upload, CreditCard, Bot, BarChart3, Droplets, Star } from "lucide-react";
 import Link from "next/link";
 
@@ -143,7 +143,11 @@ export default function AccountsPage() {
                     <Row label="Account Manager" value={account.accountManager ? <Check className="w-4 h-4 text-emerald-400" /> : <X className="w-4 h-4 text-[var(--color-text-secondary)]" />} />
                     <Row label="Priority Support" value={account.prioritySupport ? <Check className="w-4 h-4 text-emerald-400" /> : <X className="w-4 h-4 text-[var(--color-text-secondary)]" />} />
                   </div>
-                  <Button variant={account.highlighted ? "primary" : "secondary"} className="w-full">
+                  <Button
+                    variant={account.highlighted ? "primary" : "secondary"}
+                    className="w-full"
+                    href={`${APP_BASE}/auth/signup?plan=${account.name.toLowerCase()}`}
+                  >
                     Open {account.name} Account
                   </Button>
                 </Card>
