@@ -60,9 +60,11 @@ const modules = [
   { icon: Blocks, name: "Strategy Builder", desc: "Four synced views — natural language, visual blocks, pseudocode and platform code." },
   { icon: Trophy, name: "Strategies", desc: "Full result cards: metrics, agent votes, equity/DD charts, EA export & approval." },
   { icon: PieChart, name: "Portfolio Lab", desc: "Combine strategies, allocate capital, blend equity curves and stress-test the basket." },
-  { icon: Plug, name: "Connections Vault", desc: "Broker-neutral, exchange-neutral connectors with withdrawal-disabled key safety." },
+  { icon: LineChart, name: "Analytics", desc: "Monte Carlo, walk-forward, parameter sensitivity, correlation matrix and risk radar." },
+  { icon: Plug, name: "Connections Vault", desc: "Broker-neutral connectors, Raptor ecosystem map and live data-feed status." },
+  { icon: Shield, name: "Risk & Controls", desc: "Full limit set across five levels plus a layered, configurable kill switch." },
+  { icon: Bot, name: "Alerts & Roles", desc: "Eight alert channels, the full event matrix, and a 13-role permission grid." },
   { icon: ScrollText, name: "Audit Trail", desc: "Every action timestamped, attributed, tamper-evident and exportable." },
-  { icon: Shield, name: "Risk & Modes", desc: "Demo / Paper / Live modes, layered risk limits and an always-on kill switch." },
 ];
 
 const safety = [
@@ -190,7 +192,7 @@ export default function AiLabPage() {
           <SectionHeading
             eyebrow="Inside the Lab"
             title="A full research-to-deployment workspace"
-            subtitle="Eight connected modules — not a single dashboard. Move from a plain-English request to a monitored, approved strategy without leaving the lab."
+            subtitle="Fifteen connected workspaces — not a single dashboard. Move from a plain-English request to a monitored, approved strategy without leaving the lab."
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {modules.map((m, i) => (
