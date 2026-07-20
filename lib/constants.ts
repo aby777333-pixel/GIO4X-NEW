@@ -62,6 +62,10 @@ export const NAV_LINKS: NavLink[] = [
   {
     label: "Platforms",
     href: "/platforms",
+    children: [
+      { label: "Platform Overview", href: "/platforms" },
+      { label: "Raptor Intelligence (EMIL · ABIN · Lara)", href: "/raptor-intelligence" },
+    ],
   },
   {
     label: "Accounts",
