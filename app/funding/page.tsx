@@ -119,15 +119,15 @@ export default function FundingPage() {
               <table className="w-full min-w-[500px]">
                 <thead>
                   <tr className="border-b border-[var(--color-border)]">
-                    <th className="text-left px-6 py-4 text-sm font-semibold text-[var(--color-text-secondary)]">Method</th>
-                    <th className="text-right px-6 py-4 text-sm font-semibold text-[var(--color-text-secondary)]">Fee</th>
-                    <th className="text-right px-6 py-4 text-sm font-semibold text-[var(--color-text-secondary)]">Processing Time</th>
-                    <th className="text-right px-6 py-4 text-sm font-semibold text-[var(--color-text-secondary)]">Minimum</th>
+                    <th className="text-left px-6 py-4 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--color-text-secondary)]">Method</th>
+                    <th className="text-right px-6 py-4 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--color-text-secondary)]">Fee</th>
+                    <th className="text-right px-6 py-4 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--color-text-secondary)]">Processing Time</th>
+                    <th className="text-right px-6 py-4 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--color-text-secondary)]">Minimum</th>
                   </tr>
                 </thead>
                 <tbody>
                   {withdrawalMethods.map((w) => (
-                    <tr key={w.method} className="border-b border-[var(--color-border)] last:border-b-0">
+                    <tr key={w.method} className="border-b border-[var(--color-border)] last:border-b-0 hover:bg-[var(--color-glass-bg)] transition-colors">
                       <td className="px-6 py-4 text-sm font-medium">{w.method}</td>
                       <td className="px-6 py-4 text-right text-sm text-[var(--color-text-secondary)]">{w.fee}</td>
                       <td className="px-6 py-4 text-right text-sm text-[var(--color-text-secondary)]">{w.time}</td>

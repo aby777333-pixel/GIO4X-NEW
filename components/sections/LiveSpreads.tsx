@@ -66,10 +66,10 @@ export function LiveSpreads() {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-[var(--color-border)]">
-                  <th className="text-left px-6 py-4 text-sm font-semibold text-[var(--color-text-secondary)]">Instrument</th>
-                  <th className="text-right px-6 py-4 text-sm font-semibold text-[var(--color-text-secondary)]">Spread (pips)</th>
-                  <th className="text-right px-6 py-4 text-sm font-semibold text-[var(--color-text-secondary)] hidden sm:table-cell">Min</th>
-                  <th className="text-right px-6 py-4 text-sm font-semibold text-[var(--color-text-secondary)] hidden sm:table-cell">Typical</th>
+                  <th className="text-left px-6 py-4 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--color-text-secondary)]">Instrument</th>
+                  <th className="text-right px-6 py-4 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--color-text-secondary)]">Spread (pips)</th>
+                  <th className="text-right px-6 py-4 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--color-text-secondary)] hidden sm:table-cell">Min</th>
+                  <th className="text-right px-6 py-4 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--color-text-secondary)] hidden sm:table-cell">Typical</th>
                 </tr>
               </thead>
               <tbody>

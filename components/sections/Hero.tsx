@@ -206,7 +206,7 @@ export function Hero() {
       <TradingCard />
 
       {/* ---- Content (left-aligned) ---- */}
-      <div className="max-site relative z-20 w-full pt-28 pb-20 md:pl-16">
+      <div className="max-site relative z-20 w-full pt-24 pb-14 md:pl-16">
         <div className="max-w-3xl text-left">
           <motion.div
             key={pos}
@@ -226,12 +226,12 @@ export function Hero() {
               {slide.eyebrow}
             </span>
 
-            <h1 className="mt-4 text-[clamp(2.6rem,6.5vw,5rem)] font-bold leading-[1.06] mb-5 text-balance text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
+            <h1 className="mt-3 text-[clamp(2.1rem,5vw,3.6rem)] font-bold leading-[1.05] mb-4 text-balance text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
               {slide.titlePre}
               <span className="gradient-text-gold">{slide.titleAccent}</span>
             </h1>
 
-            <p className="text-white/90 text-base md:text-lg max-w-2xl mb-8 leading-relaxed drop-shadow-[0_1px_10px_rgba(0,0,0,0.55)]">
+            <p className="text-white/90 text-base md:text-lg max-w-2xl mb-6 leading-relaxed drop-shadow-[0_1px_10px_rgba(0,0,0,0.55)]">
               {slide.caption}
             </p>
           </motion.div>
@@ -240,7 +240,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-10"
+            className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-7"
           >
             <Button size="lg" href={SITE.signUpUrl}>
               Open Live Account

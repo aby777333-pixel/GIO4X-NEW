@@ -116,13 +116,13 @@ export default function ContactPage() {
                       ]} />
                     </div>
                     <div>
-                      <label className="block text-sm text-[var(--color-text-secondary)] mb-1.5">Message</label>
+                      <label className="block text-[13px] font-medium text-[var(--color-text-secondary)] mb-2">Message</label>
                       <textarea
                         required
                         rows={5}
                         value={form.message}
                         onChange={(e) => setForm({ ...form, message: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text)] text-sm focus:border-[#29ABE2] focus:outline-none transition-colors resize-none"
+                        className="w-full px-4 py-3 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text)] text-sm focus:border-[#29ABE2] focus:ring-2 focus:ring-[rgba(41,171,226,0.18)] focus:outline-none transition resize-none"
                       />
                     </div>
                     {error && <p className="text-red-400 text-sm">{error}</p>}
@@ -172,13 +172,13 @@ function Input({ label, value, onChange, type = "text", required = false, option
 }) {
   return (
     <div>
-      <label className="block text-sm text-[var(--color-text-secondary)] mb-1.5">{label}</label>
+      <label className="block text-[13px] font-medium text-[var(--color-text-secondary)] mb-2">{label}</label>
       {options ? (
         <select
           required={required}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full px-4 py-2.5 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text)] text-sm focus:border-[#29ABE2] focus:outline-none transition-colors"
+          className="w-full px-4 py-3 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text)] text-sm focus:border-[#29ABE2] focus:ring-2 focus:ring-[rgba(41,171,226,0.18)] focus:outline-none transition"
         >
           {options.map((o) => (
             <option key={o.value} value={o.value}>{o.label}</option>
@@ -190,7 +190,7 @@ function Input({ label, value, onChange, type = "text", required = false, option
           required={required}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full px-4 py-2.5 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text)] text-sm focus:border-[#29ABE2] focus:outline-none transition-colors"
+          className="w-full px-4 py-3 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text)] text-sm focus:border-[#29ABE2] focus:ring-2 focus:ring-[rgba(41,171,226,0.18)] focus:outline-none transition"
         />
       )}
     </div>

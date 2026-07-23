@@ -68,7 +68,7 @@ export function TradingStats() {
                 <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-[#29ABE2]/15 to-[#1B3A6B]/15 flex items-center justify-center group-hover:from-[#29ABE2]/25 group-hover:to-[#1B3A6B]/25 transition-all duration-500">
                   <s.icon className="w-7 h-7 text-[#29ABE2]" />
                 </div>
-                <div className="text-4xl md:text-5xl font-bold text-[#1B3A6B] mb-2">
+                <div className="text-4xl md:text-5xl font-bold text-[#1B3A6B] mb-2 tabular-nums">
                   <AnimatedCounter target={s.value} suffix={s.suffix} isVisible={visible} />
                 </div>
                 <h3 className="text-[#1B3A6B] font-semibold mb-1">{s.label}</h3>
