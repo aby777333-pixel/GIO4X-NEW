@@ -14,11 +14,11 @@ export function SectionHeading({ eyebrow, title, subtitle, centered = true, clas
           {eyebrow}
         </p>
       )}
-      <h2 className="text-[var(--text-h2)] font-bold text-[var(--color-text)] mb-4">
+      <h2 className="text-[var(--text-h2)] font-bold text-[var(--color-text)] mb-4 text-balance">
         {title}
       </h2>
       {subtitle && (
-        <p className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto">
+        <p className="text-[var(--color-text-secondary)] text-lg leading-relaxed max-w-2xl mx-auto text-balance">
           {subtitle}
         </p>
       )}

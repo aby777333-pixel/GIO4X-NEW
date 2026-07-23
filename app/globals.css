@@ -30,8 +30,8 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    letter-spacing: -0.02em;
-    line-height: 1.2;
+    letter-spacing: var(--tracking-heading, -0.02em);
+    line-height: var(--leading-heading, 1.2);
   }
 
   ::selection {

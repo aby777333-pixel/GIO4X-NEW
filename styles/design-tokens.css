@@ -23,14 +23,27 @@
   --gradient-gold: linear-gradient(135deg, #C9A84C 0%, #E4C76B 50%, #C9A84C 100%);
   --gradient-glow-line: linear-gradient(90deg, transparent, #29ABE2, transparent);
 
-  /* Typography Scale */
-  --text-hero: clamp(2.8rem, 5.5vw, 5.5rem);
-  --text-h1: clamp(1.9rem, 3.8vw, 3.2rem);
-  --text-h2: clamp(1.4rem, 2.8vw, 2.2rem);
-  --text-h3: clamp(1.1rem, 1.8vw, 1.5rem);
+  /* Typography Scale — φ-informed ramp (hero:h1 ≈ 1.618) */
+  --text-hero: clamp(2.6rem, 5.2vw, 5.25rem);
+  --text-h1: clamp(1.95rem, 3.9vw, 3.25rem);
+  --text-h2: clamp(1.4rem, 2.8vw, 2.1rem);
+  --text-h3: clamp(1.1rem, 1.8vw, 1.4rem);
   --text-body: clamp(0.875rem, 1.1vw, 1rem);
   --text-small: 0.8125rem;
   --text-ticker: 0.75rem;
+
+  /* Line-height + letter-spacing (premium heading rhythm) */
+  --leading-display: 1.08;
+  --leading-heading: 1.16;
+  --leading-body: 1.6;
+  --tracking-display: -0.03em;
+  --tracking-heading: -0.022em;
+  --tracking-eyebrow: 0.26em;
+
+  /* Radius scale (φ progression 10·16·26) */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 26px;
 
   /* Spacing (tighter golden-ratio inspired) */
   --space-2xs: 4px;
