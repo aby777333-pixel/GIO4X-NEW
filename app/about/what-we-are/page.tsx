@@ -58,15 +58,15 @@ export default function WhatWeArePage() {
         ]}
       />
 
-      {/* Stats */}
-      <section className="pb-12">
+      {/* Stats — floating stat bar straddling the hero edge */}
+      <section className="relative z-10 -mt-12 md:-mt-16 pb-16 md:pb-20">
         <div className="max-site">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {stats.map((s, i) => (
               <AnimateOnScroll key={s.label} delay={i * 0.08}>
-                <div className="glass-panel p-5 text-center">
-                  <p className="text-2xl font-bold text-[#29ABE2] font-mono">{s.value}</p>
-                  <p className="text-xs text-[var(--color-text-secondary)] mt-1">{s.label}</p>
+                <div className="glass-panel card-elevated p-6 text-center">
+                  <p className="text-3xl font-bold text-[#29ABE2] font-mono tabular-nums leading-none">{s.value}</p>
+                  <p className="mt-2 text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-secondary)]">{s.label}</p>
                 </div>
               </AnimateOnScroll>
             ))}

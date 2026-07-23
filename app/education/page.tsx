@@ -390,7 +390,7 @@ export default function EducationPage() {
       />
 
       {/* ─── Quick Stats ─── */}
-      <section className="pb-12">
+      <section className="pt-14 md:pt-16 pb-12">
         <div className="max-site">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[

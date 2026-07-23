@@ -79,7 +79,7 @@ export default function PlatformsPage() {
       />
 
       {/* EA & Robot Banner */}
-      <section className="pb-12">
+      <section className="pt-14 md:pt-16 pb-12">
         <div className="max-site">
           <AnimateOnScroll>
             <div className="glass-panel p-8 border-[#29ABE2]/30 text-center">

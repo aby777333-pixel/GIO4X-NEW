@@ -43,7 +43,7 @@ export default function FundingPage() {
       />
 
       {/* Key Points */}
-      <section className="pb-16">
+      <section className="pt-14 md:pt-16 pb-16">
         <div className="max-site">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[

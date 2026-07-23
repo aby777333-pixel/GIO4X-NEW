@@ -107,7 +107,7 @@ export default function CopyTradingPage() {
       />
 
       {/* Key Details */}
-      <section className="pb-12">
+      <section className="pt-14 md:pt-16 pb-12">
         <div className="max-site">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {keyDetails.map((detail, i) => (

@@ -70,13 +70,13 @@ export default function AboutPage() {
         ]}
       />
 
-      {/* Stats */}
-      <section className="pb-16">
+      {/* Stats — floating stat bar straddling the hero edge */}
+      <section className="relative z-10 -mt-12 md:-mt-16 pb-16">
         <div className="max-site">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {stats.map((s, i) => (
               <AnimateOnScroll key={s.label} delay={i * 0.08}>
-                <div className="glass-panel p-5 text-center">
+                <div className="glass-panel card-elevated p-5 text-center">
                   <p className="text-2xl font-bold text-[#29ABE2] font-mono">{s.value}</p>
                   <p className="text-xs text-[var(--color-text-secondary)] mt-1">{s.label}</p>
                 </div>
