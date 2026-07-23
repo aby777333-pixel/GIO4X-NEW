@@ -25,7 +25,7 @@ export default function BlogPage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="pt-72 pb-60 relative overflow-hidden">
+      <section className="pt-36 pb-[7.5rem] relative overflow-hidden">
         {/* Light gradient base */}
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #FFFFFF 0%, #F4F7FB 45%, #E9F1FA 75%, #F4F5F7 100%)" }} />
         <DancingRobotsBg />

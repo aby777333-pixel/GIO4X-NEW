@@ -380,7 +380,7 @@ export default function EducationPage() {
       <PageHero
         eyebrow="GIO4X Academy"
         image="gio4x12.png"
-        paddingClass="pt-56 pb-40"
+        paddingClass="pt-28 pb-20"
         title={<>Master the Markets with <span className="gradient-text">Confidence</span></>}
         caption="Welcome to GIO4X Academy — the most comprehensive forex education platform. 10 full courses, 150+ lessons, live webinars, in-person seminars, and interactive Zoom classes. From your first pip to automated trading mastery — all free for GIO4X clients."
         ctas={[

@@ -146,7 +146,7 @@ export function Hero() {
   const slide = SLIDES[pos % SLIDES.length];
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0A1A33]">
+    <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-[#0A1A33]">
       {/* ---- Rotating photography (crossfade) ---- */}
       {order.map((imgIdx, i) =>
         mounted.has(i) ? (

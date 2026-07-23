@@ -28,7 +28,7 @@ export function PageHero({
   image,
   imagePosition = "center",
   ctas = [],
-  paddingClass = "pt-72 pb-60",
+  paddingClass = "pt-36 pb-[7.5rem]",
   children,
 }: {
   eyebrow: string;
