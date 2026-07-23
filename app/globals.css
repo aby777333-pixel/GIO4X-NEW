@@ -38,16 +38,29 @@
     background-color: rgba(41, 171, 226, 0.3);
     color: inherit;
   }
+
+  /* Premium, accessible keyboard focus — only for keyboard users */
+  :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-sky);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
 }
 
 @layer components {
-  /* Glass Panel */
+  /* Glass Panel — premium depth + subtle top sheen */
   .glass-panel {
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     background: var(--color-glass-bg);
     border: 1px solid var(--color-glass-border);
-    border-radius: 16px;
+    border-radius: var(--radius-md, 16px);
+    box-shadow: var(--shadow-sm), var(--hairline-top);
+  }
+
+  /* Elevated card surface — more resting presence than raw glass panels */
+  .card-elevated {
+    box-shadow: var(--shadow-md), var(--hairline-top);
   }
 
   /* Gradient Text */

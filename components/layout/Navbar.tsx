@@ -82,7 +82,7 @@ function DesktopDropdown({
             transition={{ duration: 0.18, ease: [0.4, 0, 0.2, 1] }}
             className="absolute top-full left-0 pt-1.5 z-50 min-w-[200px]"
           >
-            <div className="glass-panel rounded-xl py-1.5 shadow-lg shadow-black/20">
+            <div className="glass-panel rounded-xl py-1.5 shadow-[0_16px_40px_rgba(15,35,71,0.16)]">
               {link.children!.map((child) => (
                 <Link
                   key={child.href}
@@ -212,7 +212,7 @@ export function Navbar() {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-panel rounded-none border-x-0 border-t-0 ${
-          scrolled ? "shadow-lg shadow-black/5" : ""
+          scrolled ? "shadow-[0_10px_30px_rgba(15,35,71,0.10)]" : ""
         }`}
       >
         <div className="max-site flex items-center justify-between h-16">
