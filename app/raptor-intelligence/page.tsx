@@ -21,7 +21,7 @@ import { RAPTOR_BASE } from "@/lib/constants";
 import {
   Brain, Satellite, Shield, Eye, Radar, Shuffle, Sparkles, Globe,
   Mic, BookOpen, Lock, CheckCircle2, Languages, LineChart,
-  Search, Gauge, ShieldCheck, MousePointerClick, ArrowRight,
+  Search, ShieldCheck, MousePointerClick, ArrowRight,
 } from "lucide-react";
 
 const TERMINAL = `${RAPTOR_BASE}/terminal`;
