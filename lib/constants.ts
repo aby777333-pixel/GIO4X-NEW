@@ -64,6 +64,8 @@ export const NAV_LINKS: NavLink[] = [
     href: "/platforms",
     children: [
       { label: "Platform Overview", href: "/platforms" },
+      { label: "All Features", href: "/features" },
+      { label: "Compare vs MT5 & cTrader", href: "/compare" },
       { label: "Raptor Intelligence (EMIL · ABIN · Lara)", href: "/raptor-intelligence" },
     ],
   },
@@ -72,6 +74,7 @@ export const NAV_LINKS: NavLink[] = [
     href: "/accounts",
     children: [
       { label: "Account Types", href: "/accounts" },
+      { label: "Pricing & Spreads", href: "/pricing" },
       { label: "Funding & Withdrawals", href: "/funding" },
       { label: "Copy Trading", href: "/copy-trading" },
       { label: "PAMM", href: "/pamm" },
