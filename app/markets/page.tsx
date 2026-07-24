@@ -3,11 +3,17 @@
 import { PageHero } from "@/components/ui/PageHero";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+import { Card } from "@/components/ui/Card";
+import { Sparkline } from "@/components/ui/Sparkline";
 import { CTABand } from "@/components/sections/CTABand";
 import { FOREX_PAIRS, METALS, CFDS, COMMODITIES, INDICES, CRYPTO, SITE } from "@/lib/constants";
+import { MARKET_DETAILS } from "@/lib/market-details";
+
+const featured = [MARKET_DETAILS.eurusd, MARKET_DETAILS.xauusd, MARKET_DETAILS.btcusd];
 
 const tabs = [
   {
@@ -65,6 +71,40 @@ export default function MarketsPage() {
           { label: "Try Demo Free", href: SITE.demoUrl, variant: "secondary" },
         ]}
       />
+
+      {/* Featured instruments */}
+      <section className="section-aurora py-14">
+        <div className="max-site">
+          <div className="mb-8">
+            <p className="text-[#29ABE2] text-sm font-semibold tracking-[0.2em] uppercase mb-2">Popular right now</p>
+            <h2 className="font-display text-[var(--text-h2)] font-medium text-[var(--color-text)]">Featured instruments</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {featured.map((d, i) => (
+              <AnimateOnScroll key={d.slug} delay={i * 0.06} className="h-full">
+                <Link href={`/markets/${d.slug}`} className="group block h-full">
+                  <Card className="flex h-full flex-col p-6">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className="font-mono text-lg font-bold text-[var(--color-text)]">{d.symbol}</p>
+                        <p className="text-xs text-[var(--color-text-secondary)]">{d.category}</p>
+                      </div>
+                      <Sparkline data={d.trend} up={d.trendUp} width={90} height={30} />
+                    </div>
+                    <p className="mt-4 flex-1 text-sm text-[var(--color-text-secondary)]">{d.tagline}</p>
+                    <div className="mt-4 flex items-center justify-between text-sm">
+                      <span className="text-[var(--color-text-tertiary)]">
+                        Spread from <span className="font-mono nums text-[var(--color-sky)]">{d.spread}</span>
+                      </span>
+                      <span className="font-medium text-[var(--color-sky)] group-hover:underline">Explore &rarr;</span>
+                    </div>
+                  </Card>
+                </Link>
+              </AnimateOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Tabs + Table */}
       <section className="section-padding bg-[var(--color-surface)]">

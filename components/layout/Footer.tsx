@@ -5,6 +5,14 @@ import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 import { SITE } from "@/lib/constants";
 import { supabase } from "@/lib/supabase";
+import { ShieldCheck, Lock, Headphones, Banknote } from "lucide-react";
+
+const trustSeals = [
+  { icon: ShieldCheck, label: "Segregated Funds", sub: "Client money held separately" },
+  { icon: Lock, label: "SSL Encrypted", sub: "Bank-grade security" },
+  { icon: Headphones, label: "24/5 Support", sub: "Multilingual desk" },
+  { icon: Banknote, label: "Fast Withdrawals", sub: "Same-day processing" },
+];
 
 const footerLinks = {
   Trading: [
@@ -114,6 +122,9 @@ export function Footer() {
 
   return (
     <footer className="border-t border-[var(--color-border)] bg-[var(--color-surface)]">
+      {/* Gold hairline — signature top edge */}
+      <div className="hr-gold" />
+
       {/* Newsletter Band */}
       <div className="bg-gradient-to-r from-[#1B3A6B] to-[#29ABE2]">
         <div className="max-site py-8 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -141,6 +152,21 @@ export function Footer() {
       </div>
 
       <div className="max-site section-padding">
+        {/* Trust seals */}
+        <div className="mb-14 grid grid-cols-2 gap-4 rounded-2xl border border-[var(--color-border)] bg-[var(--color-glass-bg)] p-5 sm:grid-cols-4">
+          {trustSeals.map((t) => (
+            <div key={t.label} className="flex items-center gap-3">
+              <span className="icon-chip h-9 w-9 shrink-0">
+                <t.icon className="h-4 w-4" />
+              </span>
+              <div>
+                <p className="text-xs font-semibold text-[var(--color-text)]">{t.label}</p>
+                <p className="text-[11px] text-[var(--color-text-secondary)]">{t.sub}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
         {/* Main Footer Grid */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-14">
           {/* Brand Column */}

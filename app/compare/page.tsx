@@ -19,6 +19,7 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { CTABand } from "@/components/sections/CTABand";
+import { StatStrip } from "@/components/ui/StatStrip";
 import { SITE } from "@/lib/constants";
 import Link from "next/link";
 import { Check, Minus, Brain, ShieldCheck, Cpu, Sparkles } from "lucide-react";
@@ -120,6 +121,15 @@ export default function ComparePage() {
         ctas={[
           { label: "Open Live Account", href: SITE.signUpUrl },
           { label: "Try the Raptor Demo", href: SITE.demoUrl, variant: "secondary" },
+        ]}
+      />
+
+      <StatStrip
+        stats={[
+          { value: 0, decimals: 1, suffix: " pips", label: "Spreads from", accent: "sky" },
+          { value: 500, suffix: ":1", label: "Max leverage", accent: "gold" },
+          { value: 100, suffix: "+", label: "Indicators", accent: "sky" },
+          { value: 5, label: "Platforms", accent: "gold" },
         ]}
       />
 

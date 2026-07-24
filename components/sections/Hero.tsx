@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
@@ -116,6 +116,12 @@ export function Hero() {
   const [mounted, setMounted] = useState<Set<number>>(() => new Set([0]));
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  // Scroll parallax — the hero copy drifts up and fades as you scroll past.
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 72]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0.25]);
+
   useEffect(() => {
     // Fisher–Yates — client only, after hydration.
     const shuffled = HERO_IMAGES.map((_, i) => i);
@@ -146,7 +152,7 @@ export function Hero() {
   const slide = SLIDES[pos % SLIDES.length];
 
   return (
-    <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-[#0A1A33]">
+    <section ref={heroRef} className="relative min-h-[50vh] flex items-center overflow-hidden bg-[#0A1A33]">
       {/* ---- Rotating photography (crossfade) ---- */}
       {order.map((imgIdx, i) =>
         mounted.has(i) ? (
@@ -191,6 +197,30 @@ export function Hero() {
         aria-hidden="true"
       />
 
+      {/* ---- Animated equity curve — draws in behind the copy ---- */}
+      <svg
+        className="pointer-events-none absolute inset-0 z-[5] h-full w-full opacity-[0.16]"
+        viewBox="0 0 1440 500"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient id="hero-equity-grad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#29ABE2" stopOpacity="0" />
+            <stop offset="35%" stopColor="#29ABE2" />
+            <stop offset="100%" stopColor="#E2BE5A" />
+          </linearGradient>
+        </defs>
+        <path
+          className="hero-equity"
+          d="M0,430 C220,410 320,300 500,322 S820,180 1000,220 S1270,90 1440,120"
+          fill="none"
+          stroke="url(#hero-equity-grad)"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        />
+      </svg>
+
       {/* ---- Vertical caption — perpendicular to the logo, contrasting gold ---- */}
       <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-20 hidden w-14 items-center justify-center md:flex">
         <span
@@ -205,8 +235,11 @@ export function Hero() {
       {/* ---- Floating Trading Card ---- */}
       <TradingCard />
 
-      {/* ---- Content (left-aligned) ---- */}
-      <div className="max-site relative z-20 w-full pt-24 pb-14 md:pl-16">
+      {/* ---- Content (left-aligned, scroll-parallax) ---- */}
+      <motion.div
+        style={{ y: contentY, opacity: contentOpacity }}
+        className="max-site relative z-20 w-full pt-24 pb-14 md:pl-16"
+      >
         <div className="max-w-3xl text-left">
           <motion.div
             key={pos}
@@ -268,7 +301,7 @@ export function Hero() {
             </Badge>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* ---- Slide indicator ---- */}
       <div className="absolute bottom-7 right-8 z-20 flex items-center gap-1.5">

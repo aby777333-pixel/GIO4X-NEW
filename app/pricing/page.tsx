@@ -15,8 +15,9 @@ import {
   ACCOUNT_TYPES, SITE,
   FOREX_PAIRS, METALS, INDICES, CRYPTO,
 } from "@/lib/constants";
+import { StatStrip } from "@/components/ui/StatStrip";
 import Link from "next/link";
-import { Check, Minus, Star, Wallet, Percent, Layers } from "lucide-react";
+import { Check, Minus, Star } from "lucide-react";
 
 /* Spread tables shown by asset class — a representative slice of each. */
 const spreadTables: { title: string; rows: readonly { symbol: string; name: string; spread: string; leverage: string }[] }[] = [
@@ -62,21 +63,15 @@ export default function PricingPage() {
         ]}
       />
 
-      {/* ---- Trust strip ---- */}
-      <section className="border-b border-[var(--color-border)] bg-[var(--color-surface)]">
-        <div className="container mx-auto grid grid-cols-1 gap-px px-4 sm:grid-cols-3">
-          {[
-            { icon: Wallet, label: "Zero-fee deposits" },
-            { icon: Percent, label: "Spreads from 0.2 pips" },
-            { icon: Layers, label: "Segregated client funds" },
-          ].map((t) => (
-            <div key={t.label} className="flex items-center justify-center gap-3 px-4 py-6 text-center">
-              <t.icon className="h-5 w-5 shrink-0 text-[var(--color-sky)]" />
-              <span className="text-sm font-medium text-[var(--color-text)]">{t.label}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* ---- Count-up stat strip ---- */}
+      <StatStrip
+        stats={[
+          { value: 0, prefix: "$", label: "Deposit fees", accent: "sky" },
+          { value: 0.2, decimals: 1, suffix: " pips", label: "ECN spreads from", accent: "gold" },
+          { value: 500, suffix: ":1", label: "Max leverage", accent: "sky" },
+          { value: 3.5, decimals: 1, prefix: "$", suffix: "/lot", label: "ECN commission", accent: "gold" },
+        ]}
+      />
 
       {/* ---- Account tiers ---- */}
       <section className="py-20">
