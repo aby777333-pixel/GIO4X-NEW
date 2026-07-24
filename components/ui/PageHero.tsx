@@ -92,23 +92,18 @@ export function PageHero({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <span
-              className="inline-block text-[11px] font-semibold tracking-[0.3em] uppercase drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]"
-              style={{
-                background: "var(--gradient-gold)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              {eyebrow}
-            </span>
+            <div className="flex items-center gap-3">
+              <span className="h-px w-10 bg-gradient-to-r from-[#E2BE5A] to-transparent" aria-hidden="true" />
+              <span className="text-[11px] font-semibold tracking-[0.34em] uppercase text-[#E2BE5A] drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
+                {eyebrow}
+              </span>
+            </div>
 
-            <h1 className="font-display mt-4 text-[clamp(2.2rem,5.5vw,4rem)] font-medium leading-[1.08] mb-5 text-balance text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
+            <h1 className="font-sans mt-4 text-[clamp(2.2rem,5.5vw,4rem)] font-semibold tracking-[-0.022em] leading-[1.06] mb-5 text-balance text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.6)]">
               {title}
             </h1>
 
-            <p className="text-white/90 text-base md:text-lg max-w-2xl mb-8 leading-relaxed drop-shadow-[0_1px_10px_rgba(0,0,0,0.55)]">
+            <p className="font-sans text-white/90 text-base md:text-lg max-w-2xl mb-8 leading-relaxed drop-shadow-[0_1px_10px_rgba(0,0,0,0.55)]">
               {caption}
             </p>
           </motion.div>

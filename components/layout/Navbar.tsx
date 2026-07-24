@@ -56,10 +56,10 @@ function DesktopDropdown({
     >
       <Link
         href={link.href}
-        className={`flex items-center gap-0.5 px-2 py-1.5 text-[12px] font-medium rounded-lg transition-colors whitespace-nowrap ${
+        className={`group relative flex items-center gap-0.5 px-2.5 py-1.5 text-[12px] font-medium rounded-lg transition-colors whitespace-nowrap ${
           isActive
-            ? "text-[#29ABE2] bg-[rgba(41,171,226,0.08)]"
-            : "text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-glass-bg)]"
+            ? "text-[#29ABE2]"
+            : "text-[var(--color-text-secondary)] hover:text-[var(--color-text)]"
         }`}
       >
         {link.label}
@@ -70,6 +70,13 @@ function DesktopDropdown({
             }`}
           />
         )}
+        {/* Animated gradient underline — premium active / hover indicator */}
+        <span
+          className={`pointer-events-none absolute inset-x-2 -bottom-0.5 h-[2px] rounded-full bg-gradient-to-r from-[#1B3A6B] to-[#29ABE2] origin-center transition-transform duration-300 ease-out ${
+            isActive || open ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+          }`}
+          aria-hidden="true"
+        />
       </Link>
 
       {/* Dropdown panel */}
@@ -82,12 +89,12 @@ function DesktopDropdown({
             transition={{ duration: 0.18, ease: [0.4, 0, 0.2, 1] }}
             className="absolute top-full left-0 pt-1.5 z-50 min-w-[200px]"
           >
-            <div className="glass-panel rounded-xl py-1.5 shadow-[0_16px_40px_rgba(15,35,71,0.16)]">
+            <div className="glass-elevated card-topline rounded-xl py-1.5 shadow-[0_20px_48px_rgba(15,35,71,0.20)]">
               {link.children!.map((child) => (
                 <Link
                   key={child.href}
                   href={child.href}
-                  className="block px-4 py-2 text-[13px] text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-glass-bg)] transition-colors"
+                  className="block px-4 py-2 text-[13px] text-[var(--color-text-secondary)] hover:text-[#29ABE2] hover:bg-[rgba(41,171,226,0.06)] transition-colors"
                 >
                   {child.label}
                 </Link>

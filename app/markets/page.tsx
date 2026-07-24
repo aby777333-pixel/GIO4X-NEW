@@ -75,11 +75,7 @@ export default function MarketsPage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                  activeTab === tab.id
-                    ? "bg-gradient-to-r from-[#1B3A6B] to-[#29ABE2] text-white"
-                    : "bg-[var(--color-glass-bg)] text-[var(--color-text-secondary)] hover:text-[var(--color-text)]"
-                }`}
+                className={`tab-pill ${activeTab === tab.id ? "tab-pill--active" : ""}`}
               >
                 {tab.label}
               </button>

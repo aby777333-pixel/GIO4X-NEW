@@ -214,24 +214,22 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <span
-              className="inline-block text-[11px] font-semibold tracking-[0.3em] uppercase drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]"
-              style={{
-                background: "var(--gradient-gold)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              {slide.eyebrow}
-            </span>
+            {/* Magazine-cover kicker: a short gold rule + refined eyebrow */}
+            <div className="flex items-center gap-3 mb-4">
+              <span className="h-px w-10 bg-gradient-to-r from-[#E2BE5A] to-transparent" aria-hidden="true" />
+              <span className="text-[11px] font-semibold tracking-[0.34em] uppercase text-[#E2BE5A] drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
+                {slide.eyebrow}
+              </span>
+            </div>
 
-            <h1 className="font-display mt-3 text-[clamp(2.1rem,5vw,3.6rem)] font-medium leading-[1.05] mb-4 text-balance text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
+            {/* Hero title — Inter, tight editorial tracking, magazine weight */}
+            <h1 className="font-sans mt-1 text-[clamp(2.3rem,5.4vw,4rem)] font-semibold tracking-[-0.022em] leading-[1.02] mb-5 text-balance text-white drop-shadow-[0_2px_22px_rgba(0,0,0,0.62)]">
               {slide.titlePre}
-              <span className="gradient-text-gold">{slide.titleAccent}</span>
+              <span className="gradient-text-gold font-bold">{slide.titleAccent}</span>
             </h1>
 
-            <p className="text-white/90 text-base md:text-lg max-w-2xl mb-6 leading-relaxed drop-shadow-[0_1px_10px_rgba(0,0,0,0.55)]">
+            {/* Hero caption — Inter, generous measure */}
+            <p className="font-sans text-white/90 text-base md:text-lg max-w-2xl mb-6 leading-relaxed drop-shadow-[0_1px_10px_rgba(0,0,0,0.55)]">
               {slide.caption}
             </p>
           </motion.div>

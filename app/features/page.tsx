@@ -13,6 +13,7 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { CTABand } from "@/components/sections/CTABand";
+import { EcosystemShowcase } from "@/components/sections/EcosystemShowcase";
 import { PremiumDivider } from "@/components/ui/PremiumDivider";
 import { SITE } from "@/lib/constants";
 import Link from "next/link";
@@ -333,6 +334,9 @@ export default function FeaturesPage() {
           </div>
         </div>
       </section>
+
+      {/* ---- Ecosystem showcase (device frames) ---- */}
+      <EcosystemShowcase />
 
       {/* ---- The full catalogue ---- */}
       <section className="pb-8">

@@ -258,6 +258,108 @@
   .delta-down {
     color: #E0524B;
   }
+
+  /* ---- Premium tab / filter pills: richer tones, depth, hover lift. ---- */
+  .tab-pill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.35rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.005em;
+    color: var(--color-text-secondary);
+    background: var(--color-glass-bg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-xs);
+    transition: color var(--duration-normal) var(--ease-out),
+                border-color var(--duration-normal) var(--ease-out),
+                box-shadow var(--duration-normal) var(--ease-out),
+                transform var(--duration-normal) var(--ease-out),
+                background var(--duration-normal) var(--ease-out);
+  }
+  .tab-pill:hover {
+    color: var(--color-text);
+    border-color: rgba(41, 171, 226, 0.4);
+    box-shadow: var(--shadow-sm), 0 6px 18px rgba(41, 171, 226, 0.14);
+    transform: translateY(-1px);
+  }
+  .tab-pill--active {
+    color: #fff;
+    border-color: transparent;
+    background: linear-gradient(135deg, #0F2347 0%, #1B3A6B 42%, #29ABE2 100%);
+    box-shadow: 0 10px 26px rgba(41, 171, 226, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  }
+  .tab-pill--active:hover {
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px rgba(41, 171, 226, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.24);
+  }
+
+  /* ---- Section lighting: a soft aurora bloom from the top edge. ---- */
+  .section-aurora {
+    position: relative;
+    isolation: isolate;
+  }
+  .section-aurora::before {
+    content: "";
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    top: -25%;
+    height: 65%;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(55% 100% at 50% 0%, rgba(41, 171, 226, 0.09), transparent 72%);
+  }
+  .section-aurora--gold::before {
+    background: radial-gradient(55% 100% at 50% 0%, rgba(201, 168, 76, 0.08), transparent 72%);
+  }
+
+  /* ---- Elegant gold hairline rule. ---- */
+  .hr-gold {
+    height: 1px;
+    border: 0;
+    background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.45), transparent);
+  }
+
+  /* ---- Device frames for the ecosystem showcase. ---- */
+  .device-browser {
+    position: relative;
+    border-radius: 14px;
+    background: #0B1B34;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow-lg), 0 40px 80px -32px rgba(15, 35, 71, 0.4);
+    overflow: hidden;
+  }
+  .device-browser__bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: linear-gradient(180deg, #10254A, #0B1B34);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .device-browser__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+  }
+  .device-phone {
+    position: relative;
+    border-radius: 30px;
+    background: #0B1B34;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    box-shadow: var(--shadow-lg), 0 30px 60px -28px rgba(15, 35, 71, 0.45);
+  }
+  .device-phone__screen {
+    border-radius: 22px;
+    overflow: hidden;
+    background: #0A1A33;
+  }
 }
 
 /* ============================================================

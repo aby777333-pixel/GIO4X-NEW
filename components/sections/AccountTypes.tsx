@@ -21,19 +21,20 @@ export function AccountTypes() {
             <AnimateOnScroll key={account.name} delay={i * 0.15}>
               <Card
                 glow={account.highlighted}
+                elevated={account.highlighted}
                 className={`h-full flex flex-col ${
-                  account.highlighted ? "border-[#29ABE2]/50 ring-1 ring-[#29ABE2]/20" : ""
+                  account.highlighted ? "ring-1 ring-[#29ABE2]/30 md:-mt-3 md:mb-3" : ""
                 }`}
               >
                 {account.highlighted && (
                   <div className="text-center -mt-3 mb-4">
-                    <span className="px-3 py-1 text-xs font-semibold bg-[#29ABE2] text-white rounded-full">
+                    <span className="inline-flex items-center gap-1 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-white rounded-full bg-gradient-to-r from-[#1B3A6B] to-[#29ABE2] shadow-[0_6px_16px_rgba(41,171,226,0.35)]">
                       Most Popular
                     </span>
                   </div>
                 )}
                 <h3 className="text-2xl font-bold mb-1">{account.name}</h3>
-                <p className="text-[#29ABE2] font-mono text-sm mb-6">From {account.minDeposit}</p>
+                <p className="text-[#29ABE2] font-mono text-sm nums mb-6">From {account.minDeposit}</p>
 
                 <div className="space-y-4 flex-1 mb-6">
                   <Row label="Spread from" value={account.spreadFrom} />
