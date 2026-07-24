@@ -7,12 +7,14 @@ interface GlassPanelProps {
   className?: string;
   hover?: boolean;
   glow?: boolean;
+  /** Two-tier glass: a brighter, more elevated surface for featured cards. */
+  elevated?: boolean;
 }
 
-export function GlassPanel({ children, className = "", hover = false, glow = false }: GlassPanelProps) {
+export function GlassPanel({ children, className = "", hover = false, glow = false, elevated = false }: GlassPanelProps) {
   return (
     <motion.div
-      className={`glass-panel card-elevated p-6 ${className}`}
+      className={`${elevated ? "glass-elevated card-topline" : "glass-panel card-elevated"} p-6 ${className}`}
       style={
         glow
           ? { boxShadow: "var(--shadow-md), var(--hairline-top), var(--shadow-glow-sky)" }

@@ -78,15 +78,15 @@ export function LiveSpreads() {
                   return (
                     <tr key={item.instrument} className="border-b border-[var(--color-border)] last:border-b-0 hover:bg-[var(--color-glass-bg)] transition-colors">
                       <td className="px-6 py-4 font-mono font-semibold text-sm">{item.instrument}</td>
-                      <td className={`px-6 py-4 text-right font-mono text-sm transition-colors duration-500 ${
-                        flash ? (item.spread < item.prev ? "text-emerald-400" : "text-amber-400") : "text-[#29ABE2]"
+                      <td className={`px-6 py-4 text-right font-mono text-sm nums font-semibold transition-colors duration-500 ${
+                        flash ? (item.spread < item.prev ? "delta-up" : "delta-down") : "text-[#29ABE2]"
                       }`}>
                         {item.spread.toFixed(1)}
                       </td>
-                      <td className="px-6 py-4 text-right font-mono text-sm text-[var(--color-text-secondary)] hidden sm:table-cell">
+                      <td className="px-6 py-4 text-right font-mono text-sm nums text-[var(--color-text-secondary)] hidden sm:table-cell">
                         {item.min.toFixed(1)}
                       </td>
-                      <td className="px-6 py-4 text-right font-mono text-sm text-[var(--color-text-secondary)] hidden sm:table-cell">
+                      <td className="px-6 py-4 text-right font-mono text-sm nums text-[var(--color-text-secondary)] hidden sm:table-cell">
                         {item.typical.toFixed(1)}
                       </td>
                     </tr>

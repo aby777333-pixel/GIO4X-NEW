@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect } from "react";
+import { MotionConfig } from "framer-motion";
 import type { Theme } from "@/lib/theme";
 
 interface ThemeContextType {
@@ -27,7 +28,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <ThemeContext.Provider value={{ theme: "light", toggleTheme: () => {} }}>
-      {children}
+      {/* Honour the OS "reduce motion" setting across every framer animation. */}
+      <MotionConfig reducedMotion="user">{children}</MotionConfig>
     </ThemeContext.Provider>
   );
 }

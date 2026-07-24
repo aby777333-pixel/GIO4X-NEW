@@ -158,7 +158,7 @@ export default function ComparePage() {
           />
 
           <div className="mt-12 overflow-x-auto">
-            <table className="w-full min-w-[720px] border-collapse text-left">
+            <table className="premium-table w-full min-w-[720px] border-collapse text-left">
               <thead>
                 <tr>
                   <th className="w-[34%] px-4 py-4 align-bottom text-sm font-semibold text-[var(--color-text-secondary)]">

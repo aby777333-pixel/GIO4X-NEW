@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import { Loader2 } from "lucide-react";
 
 type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
@@ -12,11 +12,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
   loading?: boolean;
   href?: string;
+  /** Subtle pointer-follow "magnetic" pull. Silently inert on touch / reduced-motion. */
+  magnetic?: boolean;
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-gradient-to-r from-[#1B3A6B] to-[#29ABE2] text-white border-0 shadow-[0_6px_18px_rgba(41,171,226,0.28)] hover:shadow-[0_10px_30px_rgba(41,171,226,0.45)]",
+    "btn-shine bg-gradient-to-r from-[#1B3A6B] to-[#29ABE2] text-white border-0 shadow-[0_6px_18px_rgba(41,171,226,0.28)] hover:shadow-[0_10px_30px_rgba(41,171,226,0.45)]",
   secondary:
     "bg-transparent border-2 border-[#29ABE2] text-[#29ABE2] hover:bg-[rgba(41,171,226,0.10)] hover:shadow-[0_6px_18px_rgba(41,171,226,0.18)]",
   ghost:
@@ -32,16 +34,36 @@ const sizeStyles: Record<ButtonSize, string> = {
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant = "primary", size = "md", loading, disabled, children, href, className = "", ...props }, ref) => {
+  ({ variant = "primary", size = "md", loading, disabled, children, href, className = "", magnetic = true, ...props }, ref) => {
     const classes = `inline-flex items-center justify-center gap-2 font-medium transition-all duration-300 ${variantStyles[variant]} ${sizeStyles[size]} ${
       disabled || loading ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
     } ${className}`;
+
+    // Magnetic pull — springy pointer-follow, capped a few px so it stays tasteful.
+    const mx = useMotionValue(0);
+    const my = useMotionValue(0);
+    const x = useSpring(mx, { stiffness: 260, damping: 22, mass: 0.4 });
+    const y = useSpring(my, { stiffness: 260, damping: 22, mass: 0.4 });
+
+    const onMove = (e: React.MouseEvent<HTMLElement>) => {
+      if (!magnetic || disabled || loading) return;
+      const r = e.currentTarget.getBoundingClientRect();
+      mx.set((e.clientX - (r.left + r.width / 2)) * 0.18);
+      my.set((e.clientY - (r.top + r.height / 2)) * 0.28);
+    };
+    const onLeave = () => {
+      mx.set(0);
+      my.set(0);
+    };
 
     if (href) {
       return (
         <motion.a
           href={href}
           className={classes}
+          style={{ x, y }}
+          onMouseMove={onMove}
+          onMouseLeave={onLeave}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
@@ -55,6 +77,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <motion.button
         ref={ref}
         className={classes}
+        style={{ x, y }}
+        onMouseMove={onMove}
+        onMouseLeave={onLeave}
         disabled={disabled || loading}
         whileHover={disabled ? {} : { scale: 1.02 }}
         whileTap={disabled ? {} : { scale: 0.98 }}

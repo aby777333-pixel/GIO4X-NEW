@@ -11,10 +11,12 @@ export function HeroBackdrop({
   image,
   opacity = 1,
   position = "center",
+  kenBurns = true,
 }: {
   image: string;
   opacity?: number;
   position?: string;
+  kenBurns?: boolean;
 }) {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
@@ -23,7 +25,7 @@ export function HeroBackdrop({
         alt=""
         fill
         sizes="100vw"
-        className="object-cover"
+        className={`object-cover ${kenBurns ? "animate-ken-burns" : ""}`}
         style={{ opacity, objectPosition: position }}
       />
     </div>

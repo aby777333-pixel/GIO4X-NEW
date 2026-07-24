@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Fraunces } from "next/font/google";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -17,6 +17,15 @@ const inter = Inter({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
+  display: "swap",
+});
+
+// Display serif — headline-only pairing with Inter. Fraunces is a high-contrast
+// variable serif; the serif+sans pairing is the single strongest "premium"
+// typographic cue. Self-hosted & preloaded automatically by next/font.
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-serif",
   display: "swap",
 });
 
@@ -94,11 +103,11 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} ${fraunces.variable} font-sans antialiased`}>
         <ThemeProvider>
           <Navbar />
           <TVTickerTape />
-          <main className="min-h-screen">{children}</main>
+          <main className="min-h-screen relative mesh-bg grain">{children}</main>
           <Footer />
           <ChatWidget />
         </ThemeProvider>

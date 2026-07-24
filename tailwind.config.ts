@@ -31,8 +31,9 @@ const config: Config = {
         foreground: "var(--color-text)",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        sans: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "JetBrains Mono", "monospace"],
+        serif: ["var(--font-serif)", "Georgia", "Cambria", "serif"],
       },
       spacing: {
         xs: "8px",
@@ -53,6 +54,8 @@ const config: Config = {
         "ticker-scroll": "ticker-scroll 30s linear infinite",
         "float": "float 6s ease-in-out infinite",
         "pulse-glow": "pulse-glow 3s ease-in-out infinite",
+        "ken-burns": "ken-burns 26s ease-in-out infinite alternate",
+        "beam-sweep": "beam-sweep 7s ease-in-out infinite",
       },
       keyframes: {
         "ticker-scroll": {
@@ -66,6 +69,16 @@ const config: Config = {
         "pulse-glow": {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.7" },
+        },
+        // Slow cinematic zoom/pan for hero photography.
+        "ken-burns": {
+          "0%": { transform: "scale(1)" },
+          "100%": { transform: "scale(1.08)" },
+        },
+        // Thin gradient beam sweeping a hero's bottom edge.
+        "beam-sweep": {
+          "0%, 100%": { transform: "translateX(-30%)", opacity: "0.2" },
+          "50%": { transform: "translateX(30%)", opacity: "0.9" },
         },
       },
     },

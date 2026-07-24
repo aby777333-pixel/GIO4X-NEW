@@ -157,7 +157,7 @@ export function Hero() {
             fill
             priority={i === 0}
             sizes="100vw"
-            className="object-cover transition-opacity duration-[1200ms] ease-in-out"
+            className="object-cover animate-ken-burns transition-opacity duration-[1200ms] ease-in-out"
             style={{ opacity: i === pos ? 1 : 0 }}
           />
         ) : null
@@ -226,7 +226,7 @@ export function Hero() {
               {slide.eyebrow}
             </span>
 
-            <h1 className="mt-3 text-[clamp(2.1rem,5vw,3.6rem)] font-bold leading-[1.05] mb-4 text-balance text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
+            <h1 className="font-display mt-3 text-[clamp(2.1rem,5vw,3.6rem)] font-medium leading-[1.05] mb-4 text-balance text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
               {slide.titlePre}
               <span className="gradient-text-gold">{slide.titleAccent}</span>
             </h1>
@@ -284,6 +284,14 @@ export function Hero() {
             }}
           />
         ))}
+      </div>
+
+      {/* ---- Signature: thin gold beam sweeping the hero's bottom edge ---- */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-px overflow-hidden" aria-hidden="true">
+        <div
+          className="h-px w-1/2 animate-beam-sweep"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(226,190,90,0.9), transparent)" }}
+        />
       </div>
 
       {/* ---- Scroll Indicator ---- */}

@@ -13,6 +13,7 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { CTABand } from "@/components/sections/CTABand";
+import { PremiumDivider } from "@/components/ui/PremiumDivider";
 import { SITE } from "@/lib/constants";
 import Link from "next/link";
 import {
@@ -336,6 +337,7 @@ export default function FeaturesPage() {
       {/* ---- The full catalogue ---- */}
       <section className="pb-8">
         <div className="container mx-auto px-4">
+          <PremiumDivider className="mb-14" />
           <SectionHeading
             eyebrow="The full toolkit"
             title="Twelve modules, one account"

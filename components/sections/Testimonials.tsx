@@ -4,7 +4,7 @@ import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { TESTIMONIALS } from "@/lib/constants";
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 
 export function Testimonials() {
   return (
@@ -18,15 +18,18 @@ export function Testimonials() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {TESTIMONIALS.map((t, i) => (
             <AnimateOnScroll key={t.name} delay={i * 0.15}>
-              <Card className="h-full flex flex-col">
-                {/* Stars */}
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: t.rating }).map((_, j) => (
-                    <Star key={j} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  ))}
+              <Card elevated className="h-full flex flex-col">
+                {/* Gold quote mark + stars */}
+                <div className="flex items-center justify-between mb-4">
+                  <Quote className="w-7 h-7 text-[var(--color-gold)] opacity-50" />
+                  <div className="flex gap-1">
+                    {Array.from({ length: t.rating }).map((_, j) => (
+                      <Star key={j} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    ))}
+                  </div>
                 </div>
                 {/* Quote */}
-                <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed flex-1 mb-6">
+                <p className="font-display text-[var(--color-text)] text-lg leading-relaxed flex-1 mb-6">
                   &ldquo;{t.quote}&rdquo;
                 </p>
                 {/* Author */}

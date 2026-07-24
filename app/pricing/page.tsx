@@ -118,7 +118,7 @@ export default function PricingPage() {
           </div>
 
           <div className="mt-12 hidden overflow-x-auto lg:block">
-            <table className="w-full border-collapse text-left">
+            <table className="premium-table w-full border-collapse text-left">
               <thead>
                 <tr>
                   <th className="w-1/4 px-4 py-4 text-sm font-semibold text-[var(--color-text-secondary)]">Feature</th>
@@ -183,7 +183,7 @@ export default function PricingPage() {
               <AnimateOnScroll key={t.title} delay={(i % 2) * 0.05} className="h-full">
                 <Card className="h-full p-6">
                   <h3 className="mb-4 text-lg font-semibold text-[var(--color-text)]">{t.title}</h3>
-                  <table className="w-full text-left text-sm">
+                  <table className="premium-table w-full text-left text-sm">
                     <thead>
                       <tr className="text-xs uppercase tracking-wider text-[var(--color-text-tertiary)]">
                         <th className="pb-2 font-medium">Symbol</th>
@@ -197,8 +197,8 @@ export default function PricingPage() {
                         <tr key={r.symbol} className="border-t border-[var(--color-border)]">
                           <td className="py-2.5 font-mono font-semibold text-[var(--color-text)]">{r.symbol}</td>
                           <td className="py-2.5 text-[var(--color-text-secondary)]">{r.name}</td>
-                          <td className="py-2.5 text-right font-mono text-[var(--color-sky)]">{r.spread}</td>
-                          <td className="py-2.5 text-right font-mono text-[var(--color-text-secondary)]">{r.leverage}</td>
+                          <td className="py-2.5 text-right font-mono nums text-[var(--color-sky)]">{r.spread}</td>
+                          <td className="py-2.5 text-right font-mono nums text-[var(--color-text-secondary)]">{r.leverage}</td>
                         </tr>
                       ))}
                     </tbody>

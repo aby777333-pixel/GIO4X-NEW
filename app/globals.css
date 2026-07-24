@@ -22,9 +22,9 @@
   body {
     color: var(--color-text);
     background-color: var(--color-bg);
-    font-family: "Inter", system-ui, sans-serif;
+    font-family: var(--font-sans), "Inter", system-ui, sans-serif;
     font-size: var(--text-body);
-    line-height: 1.6;
+    line-height: 1.7;
     transition: background-color var(--duration-normal) var(--ease-out),
                 color var(--duration-normal) var(--ease-out);
   }
@@ -138,6 +138,126 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Tabular, non-jiggling figures — terminal-grade numerics everywhere a
+     price, spread or stat appears. */
+  .nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+  }
+
+  /* Ideal reading measure for body copy. */
+  .measure {
+    max-width: 65ch;
+  }
+}
+
+@layer components {
+  /* ---- Display serif — headline-only pairing with Inter body. ---- */
+  .font-display {
+    font-family: var(--font-serif), Georgia, Cambria, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    font-optical-sizing: auto;
+  }
+
+  /* ---- Light-luxury background mesh: faint tinted blooms, never flat. ---- */
+  .mesh-bg {
+    background-color: var(--color-bg);
+    background-image:
+      radial-gradient(60% 55% at 10% 6%, rgba(41, 171, 226, 0.06), transparent 60%),
+      radial-gradient(48% 45% at 90% 2%, rgba(201, 168, 76, 0.05), transparent 55%),
+      radial-gradient(50% 42% at 50% 102%, rgba(27, 58, 107, 0.05), transparent 62%);
+  }
+
+  /* ---- Fine paper grain — kills banding, adds printed richness. ---- */
+  .grain {
+    position: relative;
+  }
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---- Two-tier glass: an elevated variant for hero / featured cards. ---- */
+  .glass-elevated {
+    backdrop-filter: blur(26px) saturate(185%);
+    -webkit-backdrop-filter: blur(26px) saturate(185%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.84) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: var(--radius-lg, 26px);
+    box-shadow: var(--shadow-lg), var(--hairline-top);
+  }
+
+  /* ---- "Light from above" top-edge highlight for premium cards. ---- */
+  .card-topline {
+    position: relative;
+  }
+  .card-topline::before {
+    content: "";
+    position: absolute;
+    left: 12%;
+    right: 12%;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
+    pointer-events: none;
+  }
+
+  /* ---- Gold hairline divider with a centred jewel — signature detail. ---- */
+  .premium-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+  }
+  .premium-divider::before,
+  .premium-divider::after {
+    content: "";
+    height: 1px;
+    flex: 1 1 auto;
+    max-width: 220px;
+    background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.55));
+  }
+  .premium-divider::after {
+    background: linear-gradient(90deg, rgba(201, 168, 76, 0.55), transparent);
+  }
+  .premium-divider__gem {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 auto;
+    transform: rotate(45deg);
+    background: var(--gradient-gold);
+    box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.1);
+  }
+
+  /* ---- Terminal-grade tables: tabular figures, hairline rows, hover. ---- */
+  .premium-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+  }
+  .premium-table tbody tr {
+    transition: background-color var(--duration-fast, 0.15s) var(--ease-out);
+  }
+  .premium-table tbody tr:hover {
+    background: rgba(41, 171, 226, 0.045);
+  }
+
+  /* Delta semantics for price movement. */
+  .delta-up {
+    color: #0EA371;
+  }
+  .delta-down {
+    color: #E0524B;
+  }
 }
 
 /* ============================================================
@@ -201,6 +321,30 @@
   75% { transform: translate(-15px, -10px) scale(0.95); }
 }
 
+/* Primary-button shine sweep on hover — a single premium glint. */
+@keyframes btn-shine-sweep {
+  to { left: 175%; }
+}
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -175%;
+  width: 65%;
+  height: 100%;
+  transform: skewX(-20deg);
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  pointer-events: none;
+}
+.btn-shine:hover::after {
+  animation: btn-shine-sweep 0.9s ease;
+}
+
 /* Utility animation classes */
 .animate-float {
   animation: float 5s ease-in-out infinite;
@@ -224,7 +368,8 @@
    ============================================================ */
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -232,12 +377,33 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-steel);
-  border-radius: 4px;
+  background: linear-gradient(180deg, var(--color-navy) 0%, var(--color-sky) 100%);
+  border-radius: 6px;
+  border: 2px solid var(--color-bg);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-sky);
+  background: linear-gradient(180deg, var(--color-sky) 0%, var(--color-sky-light) 100%);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-sky) var(--color-bg);
+}
+
+/* ============================================================
+   Accessibility — honour reduced-motion (premium = considerate)
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ============================================================

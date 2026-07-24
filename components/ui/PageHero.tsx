@@ -104,7 +104,7 @@ export function PageHero({
               {eyebrow}
             </span>
 
-            <h1 className="mt-4 text-[clamp(2.2rem,5.5vw,4rem)] font-bold leading-[1.08] mb-5 text-balance text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
+            <h1 className="font-display mt-4 text-[clamp(2.2rem,5.5vw,4rem)] font-medium leading-[1.08] mb-5 text-balance text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
               {title}
             </h1>
 
@@ -142,6 +142,14 @@ export function PageHero({
 
           {children}
         </div>
+      </div>
+
+      {/* ---- Signature: thin gold beam sweeping the hero's bottom edge ---- */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-px overflow-hidden" aria-hidden="true">
+        <div
+          className="h-px w-1/2 animate-beam-sweep"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(226,190,90,0.9), transparent)" }}
+        />
       </div>
     </section>
   );

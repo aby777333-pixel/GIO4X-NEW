@@ -53,7 +53,7 @@ export function TradingStats() {
         <AnimateOnScroll>
           <div className="text-center mb-16">
             <span className="text-[#29ABE2] text-sm font-semibold tracking-[0.25em] uppercase">By The Numbers</span>
-            <h2 className="text-[var(--text-h1)] font-bold text-[#1B3A6B] mt-3 mb-4">
+            <h2 className="font-display text-[var(--text-h1)] font-medium text-[#1B3A6B] mt-3 mb-4">
               Why Traders Choose <span className="gradient-text">GIO4X</span>
             </h2>
             <p className="text-[#5D5F66] max-w-2xl mx-auto text-lg">
